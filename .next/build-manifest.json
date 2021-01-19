@@ -24,11 +24,6 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/signUpTalent": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/signUpTalent.js"
-    ],
     "/talentProfile": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
