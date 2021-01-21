@@ -10,9 +10,12 @@ import {
   Text,
   Select
 } from '@chakra-ui/react'
-import { Radio, RadioGroup } from 'rsuite'
+import { Radio, RadioGroup } from 'rsuite';
+import { useRouter } from 'next/router';
+
 function Step2() {
     const [value, setValue] = React.useState("1")
+    const router = useRouter();
   const [checkedItems, setCheckedItems] = React.useState([
     false,
     false,

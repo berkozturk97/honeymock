@@ -1,0 +1,12 @@
+import { Box } from '@chakra-ui/react'
+import Step3 from '../../components/LoginSteps/Step3'
+
+function LoginStep1() {
+  return (
+    <Box w={1000} h={'auto'} bg="" m={(0, 'auto')} mt={10}>
+      <Step3 />
+    </Box>
+  )
+}
+
+export default LoginStep1
