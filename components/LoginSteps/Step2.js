@@ -138,7 +138,7 @@ function Step2() {
       </Stack>
     </RadioGroup>
 
-      <Button bg="#7DB0E4" color="white" _hover="none" ml={5} mt={5}>
+      <Button bg="#7DB0E4" color="white" _hover="none" ml={5} onClick={() => router.push('/login/loginStep3')} mt={5}>
         Click And Save
       </Button>
     </>

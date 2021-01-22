@@ -1,7 +1,7 @@
 import { Flex } from '@chakra-ui/react'
 import Link from 'next/link'
 import { Navbar, Nav, Icon, Dropdown } from 'rsuite'
-import 'rsuite/lib/styles/index.less'
+
 
 function Navigation() {
   return (
@@ -21,15 +21,15 @@ function Navigation() {
               <a>Sign Up</a>
             </Link>
           </Nav.Item>
-          <Dropdown title="About">
+          {/* <Dropdown title="About">
             <Dropdown.Item>Talent</Dropdown.Item>
             <Dropdown.Item>Company</Dropdown.Item>
             <Dropdown.Item>Us</Dropdown.Item>
-          </Dropdown>
+          </Dropdown> */}
         </Nav>
-        <Nav pullRight>
+        {/* <Nav pullRight>
           <Nav.Item icon={<Icon icon="cog" />}>Settings</Nav.Item>
-        </Nav>
+        </Nav> */}
       </Navbar.Body>
     </Navbar>
   )

@@ -40,10 +40,7 @@ function Step3() {
         setJobs(updatedJobs);
     }
   }
-  const handleCheck = () => {
-    setCheckedItems(!checkedItems)
-    console.log(checkedItems)
-  }
+ 
 
   return (
     <>
@@ -141,7 +138,7 @@ function Step3() {
         return <JobExpeerience job={job} index={index + 1} />
       })}
 
-      <Button bg="#7DB0E4" color="white" _hover="none" ml={5} mt={5}>
+      <Button bg="#7DB0E4" color="white" _hover="none" onClick={() => router.push('/login/loginStep4')} ml={5} mt={5}>
         Click And Save
       </Button>
     </>

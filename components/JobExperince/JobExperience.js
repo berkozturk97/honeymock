@@ -18,7 +18,7 @@ export const JobExpeerience = ({job,index}) => {
         {job.key}
       </Text>
 
-      <Select placeholder="Select years of experience"  w={300} ml={10} mt={8}>
+      <Select placeholder="Select years of experience"  w={300} ml={40} mt={8}>
         <option value="0">{`<1 Years`}</option>
         <option value="1">1 Year</option>
         <option value="2">2 Years</option>

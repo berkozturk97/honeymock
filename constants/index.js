@@ -81,7 +81,7 @@ export const Constants = {
     START_TIME: {
       NOW: {
         key: 'Now',
-        value: 1,
+        value: 0,
       },
       MY_NOTICE_PERIOD: {
         key: 'My Notice Period',
@@ -89,7 +89,7 @@ export const Constants = {
       },
       AFTER_SPECIFIC_DATE: {
         key: 'After Specific Date',
-        value: 1,
+        value: 2,
       },
     },
     LANGUAGE_LEVEL: {
@@ -97,24 +97,28 @@ export const Constants = {
         key: 'Basic',
         value: 0,
       },
-      INTERMEDIATE: {
-        key: 'Intermediate',
-        value: 1,
+      CONVERSATIONAL: {
+          key: 'Conversational',
+          value: 1
       },
-      MAIN: {
-        key: 'Main',
+      WORKING_PROFICIENCY: {
+          key: 'Working Proficiency',
+          value: 2,
+      },
+      FLUENT: {
+        key: 'Fluent',
         value: 3,
+      },
+      NATIVE: {
+        key: 'Native',
+        value: 4,
       },
     },
     CURRENCY: {
       DOLLAR: {
         key: 'Dollar',
         value: '$',
-      },
-      EURO: {
-        key: 'Euro',
-        value: '€',
-      },
+      }
     },
     COMPANY_SIZE: {
       1000: {

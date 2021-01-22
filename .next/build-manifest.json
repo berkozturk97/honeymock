@@ -26,15 +26,35 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/login/loginStep2": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/login/loginStep2.js"
-    ],
     "/login/loginStep3": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/login/loginStep3.js"
+    ],
+    "/login/loginStep4": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/login/loginStep4.js"
+    ],
+    "/login/loginStep5": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/login/loginStep5.js"
+    ],
+    "/login/loginStep6": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/login/loginStep6.js"
+    ],
+    "/login/loginStep7": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/login/loginStep7.js"
+    ],
+    "/next/dist/pages/_error": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/next/dist/pages/_error.js"
     ]
   },
   "ampFirstPages": []

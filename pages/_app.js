@@ -7,7 +7,7 @@ import 'rsuite/lib/styles/index.less';
 export default function App({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
-      <MasterPage/>
+      {typeof window !== 'undefined' && <MasterPage/>}
       <CSSReset />
       <Component {...pageProps} />
     </ThemeProvider>

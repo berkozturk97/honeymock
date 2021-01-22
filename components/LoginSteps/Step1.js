@@ -7,8 +7,11 @@ import {
     Input,
     Text
   } from '@chakra-ui/react'
+import { useRouter } from 'next/router';
   import { ImLinkedin, ImXing, ImGithub, ImStackoverflow } from 'react-icons/im'
+  
 function Step1() {
+  const router = useRouter();
     return(
         <>
              <Text ml={5} color="#979EA7" fontSize="3xl">
@@ -209,7 +212,7 @@ function Step1() {
     </form>
   </Flex>
 
-  <Button bg="#7DB0E4" color="white" _hover="none" ml={5} mt={5}>
+  <Button bg="#7DB0E4" color="white" _hover="none" ml={5} mt={5} onClick={() => router.push('/login/loginStep2')} >
     Click And Save
   </Button>
         </>
