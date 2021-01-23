@@ -78,7 +78,7 @@ function Step1() {
 
       <Flex d="flex" flexWrap="wrap">
         <form>
-          <FormControl id="city" ml={5} mt={4}>
+          <FormControl id="linkedIn" ml={5} mt={4}>
             <label
               style={{
                 display: 'inline-block',
@@ -119,7 +119,7 @@ function Step1() {
             </Box>
           </FormControl>
 
-          <FormControl id="city" ml={5} mt={4}>
+          <FormControl id="xing" ml={5} mt={4}>
             <label
               style={{
                 display: 'inline-block',
@@ -160,7 +160,7 @@ function Step1() {
             </Box>
           </FormControl>
 
-          <FormControl id="city" ml={5} mt={4}>
+          <FormControl id="github" ml={5} mt={4}>
             <label
               style={{
                 display: 'inline-block',
@@ -201,7 +201,7 @@ function Step1() {
             </Box>
           </FormControl>
 
-          <FormControl id="city" ml={5} mt={4}>
+          <FormControl id="sof" ml={5} mt={4}>
             <label
               style={{
                 display: 'inline-block',

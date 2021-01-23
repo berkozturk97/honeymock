@@ -22,11 +22,19 @@ function LoginTalentForm() {
     e.preventDefault()
     const body = { email, password };
     const userInformations = await loginTalent({body: body});
+    console.log(userInformations);
     if (userInformations !== null || undefined){
         localStorage.setItem('userInformations', JSON.stringify(userInformations));
-        router.push({
+        if( userInformations.isFirstLogin === false){
+           router.push({
             pathname: '/talentProfile'
         });
+        } else {
+          router.push({
+            pathname: '/login/loginStep1'
+        });
+        }
+       
     }
   }
 

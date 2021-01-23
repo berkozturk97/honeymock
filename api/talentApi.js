@@ -38,7 +38,7 @@ export const createTalent = ({body=null}) => {
         })
             .then((response) => {
                 console.log(response)
-                resolve(response.data)
+                resolve(response)
             }).catch((err) => {
                 reject(null);
             })

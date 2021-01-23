@@ -5,11 +5,12 @@ import {
     Button,
     Heading
   } from '@chakra-ui/react'
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { createTalent } from '../../api/talentApi';
 
 function SignUpFormTalent() {
-
+  const router = useRouter();
     const [values, setValues] = useState({
         name: '',
         surname: '',
@@ -28,7 +29,15 @@ function SignUpFormTalent() {
         const body = { name: values.name, surname: values.surname, password: values.password, email: values.email };
         console.log(body);
         const userInformations = await createTalent({body: body});
-        console.log(userInformations);
+        if (userInformations.status === 200){
+      
+             router.push({
+              pathname: '/loginTalent'
+          });
+         
+         
+      }
+       
       }
     return(
     <Box w={400}>
