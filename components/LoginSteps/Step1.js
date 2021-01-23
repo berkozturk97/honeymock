@@ -11,7 +11,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { ImLinkedin, ImXing, ImGithub, ImStackoverflow } from 'react-icons/im'
 import { useDispatch } from 'react-redux'
-import { addDeneme } from '../../redux/actions/stepOneAction'
+import { addUserData } from '../../redux/actions/stepOneAction'
 
 function Step1() {
   const [city, setCity] = useState('')
@@ -24,15 +24,16 @@ function Step1() {
   const dispatch = useDispatch()
   const router = useRouter()
 
-  const addCity = () => {
+  const goNextPage = () => {
+   
     let updatedData = { 
-      city, 
+      livingCity: city, 
       linkedInUrl: links.linkedInUrl,
       githubUrl: links.githubUrl,
       sofUrl: links.sofUrl,
       xingUrl: links.xingUrl,
      }
-    dispatch(addDeneme(updatedData))
+    dispatch(addUserData(updatedData))
     router.push('/login/loginStep2')
   }
   return (
@@ -249,7 +250,7 @@ function Step1() {
         _hover="none"
         ml={5}
         mt={5}
-        onClick={addCity}
+        onClick={goNextPage}
       >
         Click And Save
       </Button>

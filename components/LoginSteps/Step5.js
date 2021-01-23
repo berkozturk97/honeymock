@@ -16,11 +16,14 @@ import {
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { AiFillPlusCircle } from 'react-icons/ai'
+import { useDispatch } from 'react-redux'
 import { DatePicker } from 'rsuite'
+import { addUserData } from '../../redux/actions/stepOneAction'
 import ProfessionalExperience from '../JobExperince/ProfessionalExperience'
 import TalentEducation from '../TalentEducation/TalentEducation'
 
 function Step5() {
+  const dispatch = useDispatch()
   const router = useRouter();
   const [study, setStudy] = useState({
     school: '',
@@ -32,9 +35,8 @@ function Step5() {
   function handleSubmit(e) {
     e.preventDefault()
 
-    localStorage.setItem('userEducations', JSON.stringify(study))
-    const deneme = localStorage.getItem('userEducations')
-    setTalentEducations([...talentEducations, JSON.parse(deneme)])
+    
+    setTalentEducations([...talentEducations, study])
     console.log(talentEducations)
   }
   const handleInputChange = (e) => {
@@ -50,6 +52,16 @@ function Step5() {
     setTalentEducations(updatedTalentEducation)
     console.log('guncel', talentEducations);
   }
+
+  const goNextPage = () => {
+    let updatedData = {
+      educations: talentEducations,
+  
+    }
+    dispatch(addUserData(updatedData))
+    router.push('/login/loginStep6')
+  }
+
 
   return (
     <>
@@ -133,7 +145,7 @@ function Step5() {
         })}
       </Box>
 
-      <Button bg="#7DB0E4" color="white" _hover="none" onClick={() => router.push('/login/loginStep6')} ml={5} mt={5}>
+      <Button bg="#7DB0E4" color="white" _hover="none" onClick={goNextPage} ml={5} mt={5}>
         Click And Save
       </Button>
     </>

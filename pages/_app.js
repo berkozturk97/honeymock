@@ -7,7 +7,7 @@ import { createWrapper } from 'next-redux-wrapper';
 import store from '../redux/store';
 
 import '../style/app.less';
-import 'rsuite/lib/styles/index.less';
+
 
 class MyApp extends App {
   render(){

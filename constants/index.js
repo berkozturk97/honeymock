@@ -4,9 +4,18 @@ export const Constants = {
       TALENT: 1,
     },
     WHAT_BRINGS: {
-      LOOKING_JOB: 0,
-      INTERESTING_OFFER: 1,
-      CURIOUS: 2,
+      LOOKING_JOB: {
+        key: 'I am actively looking for a job',
+        value: 0
+      },
+      INTERESTING_OFFER: {
+        key: 'I am open to an interesting offer',
+        value: 1
+      },
+      CURIOUS: {
+        key: 'I am just curious',
+        value: 2
+      }
     },
     JOB_TITLES: {
       FE_ENG: {
@@ -65,16 +74,16 @@ export const Constants = {
         key: 'New York',
         value: 0,
       },
-      DALLAS: {
-        key: 'Dallas',
+      SAN_FRANSISCO: {
+        key: 'San Francisco',
         value: 1,
       },
-      DENVER: {
-        key: 'Denver',
+      WASHINGTON: {
+        key: 'Washington D.C.',
         value: 2,
       },
-      LOS_ANGLES: {
-        key: 'Los Angles',
+      SEATTLE: {
+        key: 'Seattle',
         value: 3,
       },
     },

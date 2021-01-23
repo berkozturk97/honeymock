@@ -16,11 +16,16 @@ import {
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Constants } from '../../constants/index'
+import { addUserData } from '../../redux/actions/stepOneAction'
+
+const { LANGUAGE_LEVEL } = Constants
 
 function Step6() {
+  const dispatch = useDispatch()
     const router = useRouter()
-  const [levels, setLevels] = useState(Constants.LANGUAGE_LEVEL)
+
   const [level, setLevel] = useState({})
   const [language, setLanguage] = useState('')
   const [languageLevel, setLanguageLevel] = useState([])
@@ -63,6 +68,16 @@ function Step6() {
       setTalentSkills(updatedLanguageItems);
   }
 
+  const goNextPage = () => {
+    let updatedData = {
+      languages: languageLevel,
+      skills: talentSkills
+  
+    }
+    dispatch(addUserData(updatedData))
+    router.push('/login/loginStep7')
+  }
+
   return (
     <>
       <Text ml={5} color="#979EA7" fontSize="3xl">
@@ -99,7 +114,7 @@ function Step6() {
               w={200}
               mt={4}
             >
-              {Object.values(levels).map((language,index) => {
+              {Object.values(LANGUAGE_LEVEL).map((language,index) => {
                 return (
                   <option key={index} value={JSON.stringify(language)}>
                     {language.key}
@@ -201,7 +216,7 @@ function Step6() {
       })}
 
 
-        <Button ml={5} mt={60} onClick={() => router.push('/login/loginStep7')}>
+        <Button ml={5} mt={60} onClick={goNextPage}>
             Save & Next
         </Button>
 

@@ -16,13 +16,20 @@ import { Radio, RadioGroup } from 'rsuite'
 import { useRouter } from 'next/router'
 import { JobExpeerience } from '../JobExperince/JobExperience'
 import { Constants } from '../../constants/index'
+import { useDispatch } from 'react-redux'
+import { addUserData } from '../../redux/actions/stepOneAction'
+
+const { WHAT_BRINGS, JOB_TITLES } = Constants
 
 function Step3() {
-  const [value, setValue] = React.useState('1')
-  const [isVisible, setIsVisible] = useState()
+
+  const dispatch = useDispatch()
+
+  const [whatBrings, setWhatBrings] = React.useState(undefined);
+
   const router = useRouter()
-  const [checkedItems, setCheckedItems] = React.useState(false)
-  const [values, setValues] = useState(Constants.JOB_TITLES)
+  
+  
 
   const [jobs, setJobs] = useState([])
 
@@ -41,6 +48,27 @@ function Step3() {
     }
   }
  
+  const handleBrings = (e) => {
+    setWhatBrings(JSON.parse(e))
+    console.log(whatBrings)
+  }
+
+  const goNextPage = () => {
+    let updatedData = {
+      wantedRoles: jobs,
+      whatBrings
+    }
+    dispatch(addUserData(updatedData))
+    router.push('/login/loginStep4')
+  }
+
+  const handleYears = (e,job,index) => {
+    console.log(e.target.value);
+    const updatedJobs = jobs;
+    updatedJobs[index] = {...updatedJobs[index], ...{ years:  parseInt(e.target.value)}}
+    setJobs(updatedJobs);
+    console.log('en gunceli',jobs)
+  }
 
   return (
     <>
@@ -53,11 +81,15 @@ function Step3() {
         What brings you to Honeypot? *
       </Text>
 
-      <RadioGroup onChange={setValue} mt={10} value={value}>
+      <RadioGroup onChange={handleBrings} mt={10} >
         <Stack ml={5} direction="column">
-          <Radio value="1">I am actively looking for a job</Radio>
-          <Radio value="2">I am open to an interesting offer</Radio>
-          <Radio value="3">I am just curious</Radio>
+          {Object.values(WHAT_BRINGS).map((bring, index) => {
+            return (
+              <Radio key={index} value={JSON.stringify(bring)}>
+                {bring.key}
+              </Radio>
+            )
+          })}
         </Stack>
       </RadioGroup>
 
@@ -76,7 +108,7 @@ function Step3() {
               <Text ml={5} mt={2} fontWeight="bold" fontSize="md">
                 Software Engineering
               </Text>
-              {Object.values(values)
+              {Object.values(JOB_TITLES)
                 .slice(0, 5)
                 .map((job) => {
                   return (
@@ -96,7 +128,7 @@ function Step3() {
             <Text ml={5} mt={2} fontWeight="bold" fontSize="md">
               Infrastructure
             </Text>
-            {Object.values(values)
+            {Object.values(JOB_TITLES)
               .slice(5, 6)
               .map((job) => {
                 return (
@@ -116,7 +148,7 @@ function Step3() {
               <Text ml={5} mt={2} fontWeight="bold" fontSize="md">
                 Leadership
               </Text>
-              {Object.values(values)
+              {Object.values(JOB_TITLES)
                 .slice(6, 8)
                 .map((job) => {
                   return (
@@ -135,10 +167,35 @@ function Step3() {
       </Box>
 
       {jobs.map((job, index) => {
-        return <JobExpeerience job={job} index={index + 1} />
+        return (
+          <Box>
+          <Flex direction="row" h={'auto'}>
+            <Text ml={5} fontWeight="bold" mt={10} fontSize="md">
+              #{index+1}
+            </Text>
+            <Text ml={5} fontWeight="bold" mt={10} fontSize="md">
+              {job.key}
+            </Text>
+      
+            <Select placeholder="Select years of experience" onChange={(e) =>handleYears(e,job.value,index)}  w={300} ml={40} mt={8}>
+              <option value={0}>{`<1 Years`}</option>
+              <option value={1}>1 Year</option>
+              <option value={2}>2 Years</option>
+              <option value={3}>3 Years</option>
+              <option value={4}>4 Years</option>
+              <option value={5}>5+ Years</option>
+            </Select>
+              
+          </Flex>
+          <hr style={{marginTop: '20px'}}/>
+          </Box>
+        )
+        
+        
+        //<JobExpeerience job={job} index={index + 1} />
       })}
 
-      <Button bg="#7DB0E4" color="white" _hover="none" onClick={() => router.push('/login/loginStep4')} ml={5} mt={5}>
+      <Button bg="#7DB0E4" color="white" _hover="none" onClick={goNextPage} ml={5} mt={5}>
         Click And Save
       </Button>
     </>

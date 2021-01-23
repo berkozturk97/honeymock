@@ -3,7 +3,7 @@ import Step6 from '../../components/LoginSteps/Step6'
 
 function LoginStep6() {
   return (
-    <Box w={1000} h={'auto'} bg="" m={(0, 'auto')} mt={10}>
+    <Box w={1000} backgroundColor='#fff' h={'auto'} p={10} m={(0, 'auto')} mt={10}>
       <Step6 />
     </Box>
   )

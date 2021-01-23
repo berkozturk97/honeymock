@@ -1,8 +1,8 @@
 import * as types from '../types';
 
-export function addDeneme(data){
+export function addUserData(data){
     return {
-        type: types.ADD_DENEME,
+        type: types.ADD_USER_DATA,
         payload: data
     }
 } 

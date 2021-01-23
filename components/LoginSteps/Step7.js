@@ -10,17 +10,29 @@ import {
     CloseButton
   } from '@chakra-ui/react'
   import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { updateTalent } from '../../api/talentApi';
   import { Constants } from '../../constants/index'
+import { addUserData } from '../../redux/actions/stepOneAction';
   
-  function Step7() {  
+  function Step7() {
+
+
     const [money, setMoney] = useState('');
-    const [talentSkills, setTalentSkills] = useState([]);
+    
   
-  
-    const saveSkills = () => {
-          setTalentSkills([...talentSkills, {skillName: skill}])
-          console.log(talentSkills);
-          setSkill('');
+    const dispatch = useDispatch()
+
+    const { stepData } = useSelector(state => state.step)
+
+    const goNextPage = () => {
+      let updatedData = {
+        wantedSalary: money,
+        isFirstLogin: false
+      }
+      dispatch(addUserData(updatedData))
+      updateTalent({body: {...stepData, ...updatedData}});
+      //router.push('/talentProfile')
     }
   
   
@@ -50,9 +62,9 @@ import {
               <Input
                 ml={5}
                 w={300}
-                onChange={(e) => setMoney(e.target.value)}
+                onChange={(e) => setMoney(parseInt(e.target.value))}
                 name="skill"
-                type="text"
+                type="number"
                 placeholder="10000 - 500000 (gross/year) "
                 value={money}
                 //   onChange={handleInputChange}
@@ -68,7 +80,7 @@ import {
         <Button left={0} mt={60}>
               Go Back
           </Button>  
-          <Button position='fixed' mr={30} right={40} mt={60}>
+          <Button position='fixed' mr={30} right={40} onClick={goNextPage} mt={60}>
               Save & Next
           </Button>
         </Box>
