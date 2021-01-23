@@ -3,7 +3,7 @@ import Step4 from '../../components/LoginSteps/Step4'
 
 function LoginStep4() {
   return (
-    <Box w={1000} h={'auto'} bg="" m={(0, 'auto')} mt={10}>
+    <Box w={1000} backgroundColor='#fff' h={'auto'} p={10} m={(0, 'auto')} mt={10}>
       <Step4 />
     </Box>
   )

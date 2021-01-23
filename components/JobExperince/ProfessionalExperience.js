@@ -5,9 +5,9 @@ import moment from 'moment';
 function ProfessionalExperience({talentExperience}) {
 
   return (
-    <Box borderWidth='1px' w={400} >
+    <Box borderWidth={1} borderColor={'#7DB0E4'} w={400} mt={10} >
       <Stat ml={5} >
-        <Text fontWeight="bold" mt={10} fontSize="md" >{talentExperience.company}</Text>
+        <Text fontWeight="bold" mt={3} fontSize="md" >{talentExperience.company}</Text>
         <StatLabel>{talentExperience.position}</StatLabel>
         <StatHelpText>{moment(talentExperience.startDate).utc().format('YYYY-MM')} - {moment(talentExperience.endDate).utc().format('YYYY-MM')}</StatHelpText>
       </Stat>

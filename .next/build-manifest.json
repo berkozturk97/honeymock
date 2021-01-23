@@ -26,6 +26,16 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
+    "/login/loginStep1": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/login/loginStep1.js"
+    ],
+    "/login/loginStep2": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/login/loginStep2.js"
+    ],
     "/login/loginStep3": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
@@ -45,11 +55,6 @@
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/login/loginStep6.js"
-    ],
-    "/login/loginStep7": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/login/loginStep7.js"
     ],
     "/next/dist/pages/_error": [
       "static/chunks/main.js",

@@ -1,7 +1,7 @@
 import { Flex } from '@chakra-ui/react'
 import Link from 'next/link'
 import { Navbar, Nav, Icon, Dropdown } from 'rsuite'
-
+import 'rsuite/lib/styles/index.less'; 
 
 function Navigation() {
   return (
