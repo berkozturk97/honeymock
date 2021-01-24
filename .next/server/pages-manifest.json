@@ -3,12 +3,6 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/loginTalent": "pages/loginTalent.js",
-  "/login/loginStep2": "pages/login/loginStep2.js",
-  "/talentProfile": "pages/talentProfile.js",
   "/login/loginStep1": "pages/login/loginStep1.js",
-  "/login/loginStep7": "pages/login/loginStep7.js",
-  "/login/loginStep3": "pages/login/loginStep3.js",
-  "/login/loginStep4": "pages/login/loginStep4.js",
-  "/login/loginStep5": "pages/login/loginStep5.js",
-  "/login/loginStep6": "pages/login/loginStep6.js"
+  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js"
 }

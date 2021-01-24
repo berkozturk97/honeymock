@@ -7,10 +7,12 @@ import {
   Input,
   Text
 } from '@chakra-ui/react'
+import axios from 'axios'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { ImLinkedin, ImXing, ImGithub, ImStackoverflow } from 'react-icons/im'
 import { useDispatch } from 'react-redux'
+import { Uploader } from 'rsuite'
 import { addUserData } from '../../redux/actions/stepOneAction'
 
 function Step1() {
@@ -23,7 +25,23 @@ function Step1() {
   })
   const dispatch = useDispatch()
   const router = useRouter()
+  const uploadFile = async (e) => {
+    console.log(e)
+    const data = new FormData()
+    data.append('document',{name: e.name, data: e.blobFile})
+    let body = { pdf: e, fileName: e.name }
 
+    await axios.put('https://honeypot-server.herokuapp.com/talent/uploadTaletCV',body,{
+      headers: axios.defaults.headers
+  })
+      .then((response) => {
+          console.log(response)
+    
+      }).catch((err) => {
+          console.log(err);
+      })
+   
+  }
   const goNextPage = () => {
    
     let updatedData = { 
@@ -52,9 +70,7 @@ function Step1() {
         file size limit of 20MB
       </Text>
 
-      <Button bg="#7DB0E4" color="white"  ml={5} mt={5}>
-        Upload Cv
-      </Button>
+      <Uploader  onUpload={uploadFile} />
 
       <Text ml={5} fontWeight="bold" mt={10} fontSize="xl">
         Please let us know where you are located at the moment!
