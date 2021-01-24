@@ -25,7 +25,7 @@ function TalenProfile() {
     //setUser(JSON.parse(userInformations))
     const userData = await getTalentById();
     setUser(userData);
-    console.log('dad',user);
+    console.log('dadss',user);
     setIsLogin(true);
   }
 
@@ -82,7 +82,7 @@ function TalenProfile() {
         <GridItem colSpan={50} bg='#ffffff' borderColor  borderWidth={1} borderRadius={7}>
               <TalentRoles user={user}/>
           </GridItem>
-        <GridItem rowSpan={2} colSpan={20} bg="tomato" />
+        <GridItem rowSpan={2} colSpan={20} bg="#FFFFFF" />
         <GridItem colSpan={50} bg='#ffffff'  borderWidth={1} borderRadius={7}>
               <TalentSummary />
           </GridItem>
