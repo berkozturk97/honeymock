@@ -1,15 +1,31 @@
 import { Box, Flex, Text } from '@chakra-ui/react'
 
-function TalentSkills() {
+function TalentSkills({user}) {
     return(
         <Box>
-        <Text  fontSize="3xl">Skills</Text>
+        <Text ml={2} fontSize="3xl">Skills</Text>
   
-        <Flex justify='flex-start' m={4} p={4}  width='auto'>
-              <span style={{border: '1px solid #3685d6', borderRadius: '16px', color: '#525252', height: '30px', margin: '4px 4px 4px 0'}}>Agile</span>
-              <span style={{border: '1px solid #3685d6', borderRadius: '16px', color: '#525252', margin: '4px 4px 4px 0'}}>Git</span>
-              <span style={{border: '1px solid #3685d6', borderRadius: '16px', color: '#525252', margin: '4px 4px 4px 0'}}>Js</span>
-        </Flex>
+        {user[0].skills.map((skill, index) => {
+        return (
+          <Flex key={index} float="left" direction="row">
+            <Box
+              pr={2}
+              display="inline-flex"
+              w={'auto'}
+              h={30}
+              borderWidth="1px"
+              borderRadius="8px"
+              mt={10}
+              ml={5}
+              mb={2}
+            >
+              <Text ml={1} mt={1}>
+                {skill.skillName}
+              </Text>
+            </Box>
+          </Flex>
+        )
+      })}
       </Box>
     )
 }

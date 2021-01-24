@@ -12,11 +12,14 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 
 import { loginTalent } from '../../api/talentApi';
+import { HEADER, ID } from '../../constants/header';
+import axios from 'axios';
 
 function LoginTalentForm() {
   const router = useRouter();
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -25,6 +28,9 @@ function LoginTalentForm() {
     console.log(userInformations);
     if (userInformations !== null || undefined){
         localStorage.setItem('userInformations', JSON.stringify(userInformations));
+        axios.defaults.headers.token = userInformations.tokenCode;
+        HEADER.tokenCode = userInformations.tokenCode;
+        ID._id = userInformations._id;
         if( userInformations.isFirstLogin === false){
            router.push({
             pathname: '/talentProfile'

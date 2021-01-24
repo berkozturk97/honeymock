@@ -39,7 +39,7 @@ function Step1() {
   return (
     <>
       <Text ml={5} color="#979EA7" fontSize="3xl">
-        Hi Berk! Let's start with the basics!{' '}
+        Hi! Let's start with the basics!{' '}
       </Text>
       <hr />
       <Text ml={5} fontWeight="bold" mt={10} fontSize="xl">
@@ -52,7 +52,7 @@ function Step1() {
         file size limit of 20MB
       </Text>
 
-      <Button bg="#7DB0E4" color="white" _hover="none" ml={5} mt={5}>
+      <Button bg="#7DB0E4" color="white"  ml={5} mt={5}>
         Upload Cv
       </Button>
 
@@ -247,7 +247,6 @@ function Step1() {
       <Button
         bg="#7DB0E4"
         color="white"
-        _hover="none"
         ml={5}
         mt={5}
         onClick={goNextPage}

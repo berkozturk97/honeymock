@@ -11,7 +11,7 @@ import '../style/app.less';
 
 class MyApp extends App {
   render(){
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps} = this.props;
     return (
     <Provider store={store}>
     <ThemeProvider theme={theme}>

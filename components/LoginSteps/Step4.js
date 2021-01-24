@@ -16,13 +16,12 @@ import {
 
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import { AiFillPlusCircle } from 'react-icons/ai'
 import { useDispatch } from 'react-redux';
 import { DatePicker } from 'rsuite';
-import { Input as RInput } from 'rsuite';
+
 import { addUserData } from '../../redux/actions/stepOneAction';
 import ProfessionalExperience from '../JobExperince/ProfessionalExperience';
-import AddExperience from '../Modals/AddExperience';
+
 
 
 
@@ -144,7 +143,7 @@ function Step4() {
 
           <FormControl id="description" mt={10}>
             <Textarea
-              componentClass='textarea'
+              componentClass={'textarea'}
               //Text ortadan basliyor
               w={700}
               ml={5}
@@ -171,7 +170,7 @@ function Step4() {
             return (
               <>
                 <ProfessionalExperience talentExperience={talentExperience} index={index} />
-                <Button onClick={() => deleteExperience(talentExperience,index)}>Delete</Button>
+                <Button key={index} onClick={() => deleteExperience(talentExperience,index)}>Delete</Button>
               </>
             )
           })

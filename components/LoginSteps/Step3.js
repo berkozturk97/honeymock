@@ -110,9 +110,10 @@ function Step3() {
               </Text>
               {Object.values(JOB_TITLES)
                 .slice(0, 5)
-                .map((job) => {
+                .map((job,index) => {
                   return (
                     <Checkbox
+                      key={index}
                       border="#555555"
                       onChange={handleClick}
                       value={JSON.stringify(job)}
@@ -130,9 +131,10 @@ function Step3() {
             </Text>
             {Object.values(JOB_TITLES)
               .slice(5, 6)
-              .map((job) => {
+              .map((job,index) => {
                 return (
                   <Checkbox
+                    key={index}
                     border="#555555"
                     onChange={handleClick}
                     value={JSON.stringify(job)}
@@ -150,9 +152,10 @@ function Step3() {
               </Text>
               {Object.values(JOB_TITLES)
                 .slice(6, 8)
-                .map((job) => {
+                .map((job,index) => {
                   return (
                     <Checkbox
+                      key={index}
                       border="#555555"
                       onChange={handleClick}
                       value={JSON.stringify(job)}
@@ -178,12 +181,12 @@ function Step3() {
             </Text>
       
             <Select placeholder="Select years of experience" onChange={(e) =>handleYears(e,job.value,index)}  w={300} ml={40} mt={8}>
-              <option value={0}>{`<1 Years`}</option>
-              <option value={1}>1 Year</option>
-              <option value={2}>2 Years</option>
-              <option value={3}>3 Years</option>
-              <option value={4}>4 Years</option>
-              <option value={5}>5+ Years</option>
+              <option key='1' value={0}>{`<1 Years`}</option>
+              <option key='2' value={1}>1 Year</option>
+              <option key='3' value={2}>2 Years</option>
+              <option key='4' value={3}>3 Years</option>
+              <option key='5' value={4}>4 Years</option>
+              <option key='6' value={5}>5+ Years</option>
             </Select>
               
           </Flex>

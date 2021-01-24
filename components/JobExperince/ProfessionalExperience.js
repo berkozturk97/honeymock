@@ -2,10 +2,10 @@ import { Box, Button, Stat, StatHelpText, StatLabel, StatNumber, Text } from '@c
 import { useEffect } from 'react'
 import moment from 'moment';
 
-function ProfessionalExperience({talentExperience}) {
+function ProfessionalExperience({talentExperience, index}) {
 
   return (
-    <Box borderWidth={1} borderColor={'#7DB0E4'} w={400} mt={10} >
+    <Box key={index} borderWidth={1} borderColor={'#7DB0E4'} w={400} mt={10} >
       <Stat ml={5} >
         <Text fontWeight="bold" mt={3} fontSize="md" >{talentExperience.company}</Text>
         <StatLabel>{talentExperience.position}</StatLabel>

@@ -1,4 +1,5 @@
 import Navigation from '../Nav/navigation'
+
 import Head from 'next/head'
 
 function MasterPage({ children }) {

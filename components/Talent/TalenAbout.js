@@ -1,6 +1,6 @@
 import { Flex, Text } from '@chakra-ui/react'
 
-function TalentAbout() {
+function TalentAbout({user}) {
   return (
     <Flex flexDirection="column" justify="center" align="center" mt={5}>
       <Text fontSize="3xl">About</Text>
@@ -9,15 +9,19 @@ function TalentAbout() {
         Professional experience
       </Text>
       <Text color="#1f2228" fontWeight="400px">
-        1-2 Years
+        {user[0].experienceYear}
       </Text>
 
       <Text mt={10} color="#606c78" fontWeight="400px">
         Contract
       </Text>
-      <Text color="#1f2228" fontWeight="400px">
-        Full-time
-      </Text>
+      {user[0].wantedJobTimes.map((contract, index) => {
+        return (
+          <Text key={index}  color="#1f2228" fontWeight="400px">
+            {contract.key}
+          </Text>
+        )
+      })}
 
       <Text mt={10} color="#606c78" fontWeight="400px">
         Earliest start date
@@ -27,47 +31,35 @@ function TalentAbout() {
       </Text>
 
       <Text mt={10} color="#606c78" fontWeight="400px">
-        EU work permit
+        USA work permit
       </Text>
       <Text color="#1f2228" fontWeight="400px">
-        Yes
+        {user[0].usPermit === true ? 'Yes' : 'No'}
       </Text>
 
       <Text mt={10} color="#606c78" fontWeight="400px">
         Wants to work in (salary)
       </Text>
-      <Text color="#1f2228" fontWeight="400px">
-        Barcelona (> €60,000)
-      </Text>
-      <Text color="#1f2228" fontWeight="400px">
-        Barcelona (> €60,000)
-      </Text>
-      <Text color="#1f2228" fontWeight="400px">
-        Barcelona (> €60,000)
-      </Text>
-      <Text color="#1f2228" fontWeight="400px">
-        Barcelona (> €60,000)
-      </Text>
+      {user[0].wantedWorkCity.map((city, index) => {
+        return (
+          <Text key={index}  color="#1f2228" fontWeight="400px">
+            {city.key} (${user[0].wantedSalary})
+          </Text>
+        )
+      })}
+      
 
       <Text mt={10} color="#606c78" fontWeight="400px">
         Languages
       </Text>
-      <Text color="#1f2228" fontWeight="400px">
-        English
-      </Text>
-      <Text color="#1f2228" fontWeight="400px">
-        Turkish
-      </Text>
+      {user[0].languages.map((language, index) => {
+        return (
+          <Text key={index}  color="#1f2228" fontWeight="400px">
+            {language.language} ({language.level.key})
+          </Text>
+        )
+      })}
 
-      <Text mt={10} color="#606c78" fontWeight="400px">
-        Languages
-      </Text>
-      <Text color="#1f2228" fontWeight="400px">
-        English
-      </Text>
-      <Text color="#1f2228" fontWeight="400px">
-        Turkish
-      </Text>
     </Flex>
   )
 }

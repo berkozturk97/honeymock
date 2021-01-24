@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { HEADER, ID } from '../constants/header';
 
 export const loginTalent = ({body=null}) => {
     return new Promise((resolve, reject) => {
@@ -28,13 +29,26 @@ export const getTalents = (token) => {
     });
 };
 
+export const getTalentById = () => {
+    return new Promise((resolve, reject) => {
+        let REQUEST_URL = "https://honeypot-server.herokuapp.com/talent/getTalentById/" + ID._id;
+        axios.get(REQUEST_URL, {
+            headers: axios.defaults.headers
+        })
+            .then((response) => {
+                resolve(response.data)
+            }).catch((err) => {
+                reject(null);
+            })
+    });
+};
+
+
 export const createTalent = ({body=null}) => {
     return new Promise((resolve, reject) => {
         let REQUEST_URL = "https://honeypot-server.herokuapp.com/talent/createTalent";
         axios.post(REQUEST_URL,body,{
-            headers: {
-                'token': "16108922870918d187342fbbfb548b2b329629db4a2fe20c46e91"
-            }
+            headers: axios.defaults.headers
         })
             .then((response) => {
                 console.log(response)
@@ -46,12 +60,11 @@ export const createTalent = ({body=null}) => {
 };
 
 export const updateTalent = ({body=null}) => {
+    console.log(body);
     return new Promise((resolve, reject) => {
-        let REQUEST_URL = "https://honeypot-server.herokuapp.com/talent/updateTalent" + "/600c44dcb3f6170015a62778";
+        let REQUEST_URL = "https://honeypot-server.herokuapp.com/talent/updateTalent/" + ID._id;
         axios.put(REQUEST_URL,body,{
-            headers: {
-                'token': "161141687816889126aa000a636876f9ae938314952b6da18ac88"
-            }
+            headers: axios.defaults.headers
         })
             .then((response) => {
                 console.log(response)

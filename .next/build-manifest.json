@@ -26,15 +26,15 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/login/loginStep1": [
+    "/login/loginStep7": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/login/loginStep1.js"
+      "static/chunks/pages/login/loginStep7.js"
     ],
-    "/loginTalent": [
+    "/talentProfile": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/loginTalent.js"
+      "static/chunks/pages/talentProfile.js"
     ]
   },
   "ampFirstPages": []

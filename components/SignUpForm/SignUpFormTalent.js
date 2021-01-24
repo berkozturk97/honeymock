@@ -30,7 +30,13 @@ function SignUpFormTalent() {
         console.log(body);
         const userInformations = await createTalent({body: body});
         if (userInformations.status === 200){
-      
+            setValues({
+              name: '',
+              surname: '',
+              email: '',
+              password: '',
+              rePassword: '',
+            })
              router.push({
               pathname: '/loginTalent'
           });

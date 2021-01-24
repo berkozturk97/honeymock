@@ -1,24 +1,26 @@
 import { Flex } from '@chakra-ui/react'
 import Link from 'next/link'
 import { Navbar, Nav, Icon, Dropdown } from 'rsuite'
-import 'rsuite/lib/styles/index.less'; 
+import 'rsuite/lib/styles/index.less'
 
 function Navigation() {
   return (
     <Navbar>
       <Navbar.Body>
         <Nav>
-          <Nav.Item icon={<Icon icon="home" />}><Link href='/'>
-            <a>Home Page</a>
-        </Link></Nav.Item>
-          <Nav.Item ren>
-            <Link href="/loginTalent">
-              <a>Login</a>
+          <Nav.Item componentClass='span' icon={<Icon icon="home" />}>
+            <Link href="/">
+              Home Page
             </Link>
           </Nav.Item>
-          <Nav.Item>
+          <Nav.Item componentClass='span' >
+            <Link href="/loginTalent">
+              Login
+            </Link>
+          </Nav.Item>
+          <Nav.Item componentClass='span' > 
             <Link href="/signUpTalent">
-              <a>Sign Up</a>
+              Sign Up
             </Link>
           </Nav.Item>
           {/* <Dropdown title="About">
