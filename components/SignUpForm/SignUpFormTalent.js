@@ -8,6 +8,7 @@ import {
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { createTalent } from '../../api/talentApi';
+import LinkedInSignUp from '../LinkedIn/LinkedInSignUp';
 
 function SignUpFormTalent() {
   const router = useRouter();
@@ -100,6 +101,8 @@ function SignUpFormTalent() {
       <Button type='submit' width="full" mt={4}>
         Sign Up
       </Button>
+
+      <LinkedInSignUp />
       </form>
     </Box>    )
     

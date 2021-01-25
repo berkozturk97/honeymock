@@ -16,7 +16,7 @@ import { Uploader } from 'rsuite'
 import { addUserData } from '../../redux/actions/stepOneAction'
 
 function Step1() {
-  const [cvUrl, setCity] = useState('')
+  const [cvUrl, setCvUrl] = useState('')
   const [city, setCity] = useState('')
   const [links, setLinks] = useState({
     linkedInUrl: '',
@@ -89,7 +89,7 @@ function Step1() {
        const data = e.target.result;
        await axios.put(url, base64ToBinary(data), {headers: getHeaderFromBase64(data)})
       .then((response) => {
-          setCity(response.request.responseURL.split('?Con')[0]);
+          setCvUrl(response.request.responseURL.split('?Con')[0]);
       }).catch((err) => {
           console.log(err);
       })  

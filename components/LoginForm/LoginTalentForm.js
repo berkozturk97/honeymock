@@ -14,6 +14,7 @@ import { useRouter } from 'next/router';
 import { loginTalent } from '../../api/talentApi';
 import { HEADER, ID } from '../../constants/header';
 import axios from 'axios';
+import LinkedInLogin from '../LinkedIn/LinkedInLogin';
 
 function LoginTalentForm() {
   const router = useRouter();
@@ -75,6 +76,7 @@ function LoginTalentForm() {
           Log In
         </Button>
       </form>
+      <LinkedInLogin />
     </Box>
   )
 }

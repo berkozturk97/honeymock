@@ -18,7 +18,7 @@ function LoginTalent() {
       align="center"
       direction="column"
     >
-        <LoginTalentForm />
+      <LoginTalentForm />
     </Flex>
      </Box>
   )
