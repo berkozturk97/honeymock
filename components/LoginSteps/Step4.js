@@ -116,10 +116,12 @@ function Step4() {
             </FormControl>
           </Flex>
 
-          <FormControl w={[160,160,320,320]} ml={5} id="password" mt={20}>
-            <DatePicker style={{width:320}} onChange={date => setExperience({ ...experience, startDate: date })} format='YYYY-MM' />
-            <DatePicker style={{width:320, marginLeft:35}} onChange={date => setExperience({ ...experience, endDate: date })} format='YYYY-MM' />
+          <Flex d='flex' float='left'>
+          <FormControl  ml={5} id="password" mt={10} mb={10}>
+            <DatePicker style={{width:200}} onChange={date => setExperience({ ...experience, startDate: date })} format='YYYY-MM' />
+            <DatePicker style={{width:200, marginLeft:35}} onChange={date => setExperience({ ...experience, endDate: date })} format='YYYY-MM' />
           </FormControl>
+          </Flex>
 
           <FormControl id="description" mt={10}>
             <Textarea

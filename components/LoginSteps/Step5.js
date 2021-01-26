@@ -103,6 +103,7 @@ function Step5() {
 
           <FormControl ml={5} id="password" mt={4}>
             <DatePicker
+            style={{width:200}} 
               key='date1'
               onChange={
                 (date) => setStudy({ ...study, startDate: date })
@@ -111,6 +112,7 @@ function Step5() {
               format="YYYY-MM"
             />
             <DatePicker
+            style={{width: 200,marginLeft: '35px'}}
               key='date2'
               onChange={(date2) => setStudy({ ...study, endDate: date2 })
                
