@@ -14,12 +14,10 @@
     "static/development/_ssgManifest.js"
   ],
   "pages": {
-    "/": [
+    "/[talentProfile]": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/css/styles.chunk.css",
-      "static/chunks/styles.js",
-      "static/chunks/pages/index.js"
+      "static/chunks/pages/[talentProfile].js"
     ],
     "/_app": [
       "static/chunks/main.js",
@@ -33,15 +31,10 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/loginTalent": [
+    "/login/loginStep6": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/loginTalent.js"
-    ],
-    "/signUpTalent": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/signUpTalent.js"
+      "static/chunks/pages/login/loginStep6.js"
     ]
   },
   "ampFirstPages": []

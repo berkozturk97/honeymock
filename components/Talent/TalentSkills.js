@@ -2,28 +2,29 @@ import { Box, Flex, Text } from '@chakra-ui/react'
 
 function TalentSkills({user}) {
     return(
-        <Box>
+        <Box h={'auto'}>
         <Text ml={2} fontSize="3xl">Skills</Text>
   
         {user[0].skills.map((skill, index) => {
         return (
-          <Flex key={index} float="left" direction="row">
+        
             <Box
               pr={2}
               display="inline-flex"
               w={'auto'}
-              h={30}
+              h={'auto'}
               borderWidth="1px"
               borderRadius="8px"
-              mt={10}
               ml={5}
               mb={2}
             >
+                <Flex key={index} float="left" direction="row">
               <Text ml={1} mt={1}>
-                {skill.skillName}
+              {skill.skillName}
               </Text>
+              </Flex>
             </Box>
-          </Flex>
+          
         )
       })}
       </Box>

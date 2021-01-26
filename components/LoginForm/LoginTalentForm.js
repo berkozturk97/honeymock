@@ -15,6 +15,7 @@ import { loginTalent } from '../../api/talentApi';
 import { HEADER, ID } from '../../constants/header';
 import axios from 'axios';
 import LinkedInLogin from '../LinkedIn/LinkedInLogin';
+import { LINKEDIN_URL_LOGIN } from '../../helpers/auth';
 
 function LoginTalentForm() {
   const router = useRouter();
@@ -44,6 +45,9 @@ function LoginTalentForm() {
        
     }
   }
+
+  
+  
 
   return (
     <Box w={400}>
@@ -77,6 +81,7 @@ function LoginTalentForm() {
         </Button>
       </form>
       <LinkedInLogin />
+  
     </Box>
   )
 }

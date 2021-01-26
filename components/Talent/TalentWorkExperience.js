@@ -10,17 +10,17 @@ function TalentWorkExperience({user}) {
       {
         user[0].workedCompanies.map((company,index) =>{
           return (
-            <Box key={index}>
+            <Box mt={4} key={index}>
             <Flex
             flexDirection="row"
             justifyContent="space-between"
             alignItems="center"
             w={750}
-            h={50}
+            h={'auto'}
             ml={2}
           >
             <Text fontSize="2xl">{company.position}</Text>
-            <Text color="#1f2228" fontWeight="400px">
+            <Text color="#1f2228" mr={6} fontWeight="400px">
               {moment(company.startDate).format('YYYY-MM')} - {moment(company.endDate).format('YYYY-MM')} 
             </Text>
           </Flex>
@@ -31,6 +31,7 @@ function TalentWorkExperience({user}) {
           <Container centerContent mt={3}>
            {company.description}
           </Container>
+          <hr/>
           </Box>
           )
         })

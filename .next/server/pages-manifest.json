@@ -2,9 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/loginTalent": "pages/loginTalent.js",
-  "/": "pages/index.js",
-  "/api/oauthLogin": "pages/api/oauthLogin.js",
-  "/signUpTalent": "pages/signUpTalent.js",
-  "/api/oauth": "pages/api/oauth.js"
+  "/[talentProfile]": "pages/[talentProfile].js",
+  "/login/loginStep6": "pages/login/loginStep6.js"
 }

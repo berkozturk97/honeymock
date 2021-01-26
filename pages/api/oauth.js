@@ -21,6 +21,7 @@ const Oauth = async (req, res) => {
         headers: { "Content-Type": "application/x-www-form-urlencoded" }
       });
       if (resp.ok) tok = await resp.json();
+      console.log(tok);
 
         let { access_token, expires_in } = tok;
 
@@ -32,14 +33,25 @@ const Oauth = async (req, res) => {
     headers: { Connection: "Keep-Alive", Authorization: auth }
   });
   if (usr.ok) u = await usr.json();
+  console.log(u);
 if (u.localizedFirstName) {
     let body = {
         name: u.localizedFirstName,
         surname: u.localizedLastName,
         linkedInId: u.id, 
     }
-    createTalent({body})
-  res.redirect('/loginTalent')
+    res.redirect('/loginTalent')
+  const user = await createTalent({body: body})
+  console.log(user);
+  if(user === null){
+    res.redirect('/loginTalent')
+  } else {
+    res.redirect('/loginTalent')
+  }
+ 
+    
+  
+  
 }
 };
 

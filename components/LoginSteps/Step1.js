@@ -9,14 +9,23 @@ import {
 } from '@chakra-ui/react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+
 import { ImLinkedin, ImXing, ImGithub, ImStackoverflow } from 'react-icons/im'
 import { useDispatch } from 'react-redux'
 import { Uploader } from 'rsuite'
 import { addUserData } from '../../redux/actions/stepOneAction'
+import Cookies from 'js-cookie'
+import { HEADER } from '../../constants/header'
+
+
 
 function Step1() {
+    useEffect(() => {
+    }, [])
+  
   const [cvUrl, setCvUrl] = useState('')
+  const [cookiee, setCookiee] = useState([])
   const [city, setCity] = useState('')
   const [links, setLinks] = useState({
     linkedInUrl: '',
@@ -27,6 +36,7 @@ function Step1() {
   const dispatch = useDispatch()
   const router = useRouter()
 
+  
   const getFormDataContent = async (e) => {
     let splittedArr = e.target.files[0].name.split('.');
     const extension = splittedArr[splittedArr.length-1];
@@ -329,5 +339,7 @@ function Step1() {
     </>
   )
 }
+
+
 
 export default Step1

@@ -8,7 +8,7 @@ export const loginTalent = ({body=null}) => {
             .then((response) => {
                 resolve(response.data)
             }).catch((err) => {
-                reject(null);
+                reject(err);
             })
     });
 };
@@ -47,9 +47,7 @@ export const getTalentById = () => {
 export const createTalent = ({body=null}) => {
     return new Promise((resolve, reject) => {
         let REQUEST_URL = "https://honeypot-server.herokuapp.com/talent/createTalent";
-        axios.post(REQUEST_URL,body,{
-            headers: axios.defaults.headers
-        })
+        axios.post(REQUEST_URL,body)
             .then((response) => {
                 console.log(response)
                 resolve(response)

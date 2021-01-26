@@ -19,7 +19,7 @@ function TalentEducation({ user }) {
               ml={2}
             >
               <Text fontSize="2xl">{education.school}</Text>
-              <Text color="#1f2228" fontWeight="400px">
+              <Text color="#1f2228" mr={8} fontWeight="400px">
               {moment(education.startDate).format('YYYY-MM')} - {moment(education.endDate).format('YYYY-MM')} 
               </Text>
             </Flex>
