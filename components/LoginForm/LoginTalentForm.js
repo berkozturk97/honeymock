@@ -50,10 +50,10 @@ function LoginTalentForm() {
   
 
   return (
-    <Box w={400}>
-      <Heading>Log In</Heading>
+    <Box w={[300,300,400,400]}>
+      <Heading mt={[6,6,5,4]}>Log In</Heading>
       <form onSubmit={handleSubmit}>
-        <FormControl id="email" mt={4}>
+        <FormControl id="email" mt={[6,6,5,4]}>
           <Input 
           name="email"
            type="email" 

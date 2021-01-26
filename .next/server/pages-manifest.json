@@ -2,6 +2,10 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
+  "/": "pages/index.js",
+  "/loginTalent": "pages/loginTalent.js",
   "/[talentProfile]": "pages/[talentProfile].js",
-  "/loginTalent": "pages/loginTalent.js"
+  "/signUpTalent": "pages/signUpTalent.js",
+  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
+  "/signUpCompany": "pages/signUpCompany.js"
 }

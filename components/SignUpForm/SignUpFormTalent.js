@@ -47,7 +47,7 @@ function SignUpFormTalent() {
        
       }
     return(
-    <Box w={400}>
+    <Box w={[300,300,400,400]}>
     <Heading>Join XXXX</Heading>
     <Heading as="h6" size="xs">
       Create a free XXXX account and let companies apply directly to you.

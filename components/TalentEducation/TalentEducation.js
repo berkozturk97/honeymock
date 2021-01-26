@@ -12,7 +12,7 @@ import moment from 'moment'
 
 function TalentEducation({ talentEducation }) {
   return (
-    <Box borderWidth="1px" w={400}>
+    <Box borderWidth="1px" w={[320,320,500,500]}>
       <Stat ml={5}>
         <Text fontWeight="bold" mt={10} fontSize="md">
           {talentEducation.school}

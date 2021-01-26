@@ -153,7 +153,7 @@ function Step1() {
 
       <FormControl id="city" ml={5} mt={4}>
         <Input
-          w
+          w={[300,300,340,340]}
           name="city"
           type="city"
           placeholder="City"
@@ -184,8 +184,8 @@ function Step1() {
               <span>
                 <Icon
                   mr={5}
-                  width="40px"
-                  height="40px"
+                  w={10}
+                  h={10}
                   fontSize="14px"
                   fontWeight="400px"
                   lineHeight="1px"
@@ -197,7 +197,7 @@ function Step1() {
                 />
               </span>
               <Input
-                w={340}
+                w={[250,250,340,340]}
                 name="linkedIn"
                 type="text"
                 placeholder="https://www.linkedin.com/in/yourusername"
@@ -225,8 +225,8 @@ function Step1() {
               <span>
                 <Icon
                   mr={5}
-                  width="40px"
-                  height="40px"
+                  w={10}
+                  h={10}
                   fontSize="14px"
                   fontWeight="400px"
                   lineHeight="1px"
@@ -238,7 +238,7 @@ function Step1() {
                 />
               </span>
               <Input
-                w={340}
+                w={[250,250,340,340]}
                 name="xing"
                 type="text"
                 placeholder="https://xing.com/profile/username"
@@ -266,8 +266,8 @@ function Step1() {
               <span>
                 <Icon
                   mr={5}
-                  width="40px"
-                  height="40px"
+                  w={10}
+                  h={10}
                   fontSize="14px"
                   fontWeight="400px"
                   lineHeight="1px"
@@ -279,7 +279,7 @@ function Step1() {
                 />
               </span>
               <Input
-                w={340}
+                w={[250,250,340,340]}
                 name="github"
                 type="text"
                 placeholder="https://github.com/yourusername"
@@ -307,8 +307,8 @@ function Step1() {
               <span>
                 <Icon
                   mr={5}
-                  width="40px"
-                  height="40px"
+                  w={10}
+                  h={10}
                   fontSize="14px"
                   fontWeight="400px"
                   lineHeight="1px"
@@ -320,7 +320,7 @@ function Step1() {
                 />
               </span>
               <Input
-                w={340}
+               w={[250,250,340,340]}
                 name="stackOverFlow"
                 type="text"
                 placeholder="http://stackoverflow.com/users/1234/yourusername"

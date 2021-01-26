@@ -72,7 +72,7 @@ function Step4() {
         Years of professional experience *
       </Text>
 
-      <Select placeholder="Select years of professional experience" onChange={handleYears} w={700} ml={5} mt={8}>
+      <Select placeholder="Select years of professional experience" onChange={handleYears} w={[300,400,500,700]} ml={5} mt={8}>
         <option key='1' value="0">{`<1 Years`}</option>
         <option key='2' value="1">1 Year</option>
         <option key='3' value="2">2 Years</option>
@@ -93,7 +93,7 @@ function Step4() {
       <Flex direction='row'>
         <form onSubmit={handleSubmit}>
           <Flex float={'left'}>
-            <FormControl id="company" w={320} mt={4}>
+            <FormControl id="company" w={[160,160,320,320]} mt={4}>
               <Input
                 ml={5}
                 name="company"
@@ -104,7 +104,7 @@ function Step4() {
               />
             </FormControl>
 
-            <FormControl id="position" ml={30} w={320} mt={4}>
+            <FormControl id="position" ml={30} w={[160,160,320,320]} mt={4}>
               <Input
                 ml={5}
                 name="position"
@@ -116,7 +116,7 @@ function Step4() {
             </FormControl>
           </Flex>
 
-          <FormControl ml={5} id="password" mt={20}>
+          <FormControl w={[160,160,320,320]} ml={5} id="password" mt={20}>
             <DatePicker style={{width:320}} onChange={date => setExperience({ ...experience, startDate: date })} format='YYYY-MM' />
             <DatePicker style={{width:320, marginLeft:35}} onChange={date => setExperience({ ...experience, endDate: date })} format='YYYY-MM' />
           </FormControl>
@@ -125,7 +125,7 @@ function Step4() {
             <Textarea
               componentclass={'textarea'}
               //Text ortadan basliyor
-              w={700}
+              w={[350,400,500,700]}
               ml={5}
               h={100}
               name="description"
