@@ -35,7 +35,7 @@ function Step7() {
   const goNextPage = () => {
     let updatedData = {
       wantedSalary: money,
-      isFirstLogin: false
+      isFirstLogin: 'false'
     }
     dispatch(addUserData(updatedData))
     updateTalent({ body: { ...stepData, ...updatedData } })

@@ -171,7 +171,7 @@ function Step3() {
 
       {jobs.map((job, index) => {
         return (
-          <Box>
+          <Box key={index} >
           <Flex direction="row" h={'auto'}>
             <Text ml={5} fontWeight="bold" mt={10} fontSize="md">
               #{index+1}

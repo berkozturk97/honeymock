@@ -17,6 +17,8 @@
     "/[talentProfile]": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
+      "static/css/styles.chunk.css",
+      "static/chunks/styles.js",
       "static/chunks/pages/[talentProfile].js"
     ],
     "/_app": [
@@ -31,10 +33,10 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/login/loginStep6": [
+    "/loginTalent": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/login/loginStep6.js"
+      "static/chunks/pages/loginTalent.js"
     ]
   },
   "ampFirstPages": []

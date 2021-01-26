@@ -10,22 +10,20 @@ import {
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-
+import { loginTalent } from '../../api/talentApi';
 import { ImLinkedin, ImXing, ImGithub, ImStackoverflow } from 'react-icons/im'
 import { useDispatch } from 'react-redux'
-import { Uploader } from 'rsuite'
 import { addUserData } from '../../redux/actions/stepOneAction'
-import Cookies from 'js-cookie'
-import { HEADER } from '../../constants/header'
-
-
+import { HEADER, ID } from '../../constants/header';
 
 function Step1() {
     useEffect(() => {
+      console.log(router.query.loginStep1);
+      getUser();
+
     }, [])
   
-  const [cvUrl, setCvUrl] = useState('')
-  const [cookiee, setCookiee] = useState([])
+  const [cvUrl, setCvUrl] = useState('');
   const [city, setCity] = useState('')
   const [links, setLinks] = useState({
     linkedInUrl: '',
@@ -36,7 +34,19 @@ function Step1() {
   const dispatch = useDispatch()
   const router = useRouter()
 
-  
+
+  const getUser = async () => {
+    if(router.query.loginStep1){
+       let body = {
+      linkedInId: router.query.loginStep1
+    }
+    const userInformations = await loginTalent({ body: body })
+    axios.defaults.headers.token = userInformations.tokenCode; 
+    ID._id = userInformations._id;
+    console.log(userInformations)
+    }
+   
+  }
   const getFormDataContent = async (e) => {
     let splittedArr = e.target.files[0].name.split('.');
     const extension = splittedArr[splittedArr.length-1];
@@ -45,7 +55,7 @@ function Step1() {
       contentType: extension,
       fileName: splittedArr[0].trim() + '.' + extension,
     }
-    await axios.put('http://localhost:8080/talent/getSignedUploadUrl',body,{
+    await axios.put('https://honeypot-server.herokuapp.com/talent/getSignedUploadUrl',body,{
       headers: {
         'token': '161151808514230e399acdc9f25a5f7811876a9c6bff0ca3b1bf7'
       }
@@ -88,7 +98,6 @@ function Step1() {
     }
     return new Blob([ia], {type: mimeString});
   };
-
   const deneme = async (event)=> {
     const {url} = await getFormDataContent(event);
     const file = event.target.files[0];
@@ -106,15 +115,14 @@ function Step1() {
               
      }
   }
-
   const goNextPage = () => {
-   
     let updatedData = { 
       livingCity: city, 
       linkedInUrl: links.linkedInUrl,
       githubUrl: links.githubUrl,
       sofUrl: links.sofUrl,
       xingUrl: links.xingUrl,
+      cvUrl: cvUrl,
      }
     dispatch(addUserData(updatedData))
     router.push('/login/loginStep2')

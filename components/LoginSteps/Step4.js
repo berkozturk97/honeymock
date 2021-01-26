@@ -2,15 +2,10 @@ import {
   Box,
   Button,
   Flex,
-  Checkbox,
-  Stack,
   Input,
   FormControl,
   Text,
   Select,
-  CheckboxGroup,
-  HStack,
-  Icon,
   Textarea
 } from '@chakra-ui/react'
 
@@ -21,9 +16,6 @@ import { DatePicker } from 'rsuite';
 
 import { addUserData } from '../../redux/actions/stepOneAction';
 import ProfessionalExperience from '../JobExperince/ProfessionalExperience';
-
-
-
 
 function Step4() {
   const router = useRouter()
@@ -39,9 +31,6 @@ function Step4() {
   const [talentExperiences, setTalentExperiences] = useState([]);
   function handleSubmit(e) {
     e.preventDefault()
-
-    // localStorage.setItem('userExperience', JSON.stringify(experience));
-    // const deneme = localStorage.getItem('userExperience');
     setTalentExperiences([...talentExperiences, experience]);
     console.log(talentExperiences);
 
@@ -102,13 +91,6 @@ function Step4() {
       </Text>
 
       <Flex direction='row'>
-        {/* <span>
-            <Icon mr={5}
-              width="15px"
-              height="15px"
-              borderRadius="4px" as={AiFillPlusCircle} />
-        </span> */}
-        {/* <AddExperience/> */}
         <form onSubmit={handleSubmit}>
           <Flex float={'left'}>
             <FormControl id="company" w={320} mt={4}>
@@ -139,11 +121,9 @@ function Step4() {
             <DatePicker style={{width:320, marginLeft:35}} onChange={date => setExperience({ ...experience, endDate: date })} format='YYYY-MM' />
           </FormControl>
 
-
-
           <FormControl id="description" mt={10}>
             <Textarea
-              componentClass={'textarea'}
+              componentclass={'textarea'}
               //Text ortadan basliyor
               w={700}
               ml={5}

@@ -1,37 +1,29 @@
-import { Box, Flex, Text } from '@chakra-ui/react'
-
+import { Box, Text } from '@chakra-ui/react'
+import CardHeader from '../material-ui-component/Card/CardHeader'
+import GridItem from '../material-ui-component/Grid/GridItem'
+import './talent.less'
 function TalentRoles({ user }) {
   return (
-    <Box flexDirection="row">
-      <Text justifySelf="center" ml={2} fontSize="3xl">
+    <div class={"back"}>
+    <CardHeader>
+    <GridItem>
+      <Text justifySelf="center" ml={2} fontSize="2xl">
         Desired Roles
       </Text>
       <Box>
       {user[0].wantedRoles.map((role, index) => {
         return (
-          <Box  w={750}
-          h={'auto'} key={index}>
-            <Flex
-              flexDirection="row"
-              justifyContent="space-between"
-              alignItems="center"
-             
-            >
-              <Text ml={2} color="#606c78" fontWeight="400px">
-                {role.key}
-              </Text>
-              <Text color="#1f2228" fontWeight="400px">
-                {role.years} {role.years === 1 ? 'Year' : 'Years'}
-              </Text>
-
-              <hr />
-            </Flex>
-          </Box>
+          <div class={'main-item-div'}>
+          <a class={'title'}> <a class={'dot'}>•</a> {role.key} </a>
+          <a class={'subtitle'}> - {role.years} {role.years === 1 ? 'Year' : 'Years'}  </a>
+        </div>
         )
       })}
       </Box>
       
-    </Box>
+    </GridItem>
+    </CardHeader>
+    </div>
   )
 }
 

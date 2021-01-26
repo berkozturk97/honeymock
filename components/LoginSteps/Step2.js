@@ -157,7 +157,7 @@ function Step2() {
       <Button
         bg="#7DB0E4"
         color="white"
-        _hover="none"
+        hover="none"
         ml={5}
         onClick={goNextPage}
         mt={5}

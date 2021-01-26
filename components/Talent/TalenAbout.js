@@ -1,11 +1,58 @@
 import { Box, Flex, Text } from '@chakra-ui/react'
-
+import Image from 'next/image'
+import Link from 'next/link'
+import GridItem from '../material-ui-component/Grid/GridItem'
 function TalentAbout({user}) {
   return (
-    <Box w={60} h={'auto'}>
+    <Box h={'auto'}>
       <Flex flexDirection="column" justify="center" align="center" mt={5}>
-        <Text fontSize="3xl">About</Text>
-        <Text mt={20} color="#606c78" fontWeight="400px">
+      <GridItem mt={5} ml={10}>
+        <Text fontSize="3xl">
+          {user[0].name} {user[0].surname}
+        </Text>
+        <Text fontSize="md">{user[0].livingCity}</Text>
+        <GridItem float="left">
+          <a target="_blank" href={user[0].githubUrl}>
+            <Image
+              src="/github.png"
+              width={30}
+              height={30}
+              layout="fixed"
+              alt="Git Hub"
+            />
+          </a>
+
+          <a target="_blank" href={user[0].linkedInUrl}>
+            <Image
+              src="/linkedin.png"
+              width={30}
+              height={30}
+              layout="fixed"
+              alt="Git Hub"
+            />
+          </a>
+          <a target="_blank" href={user[0].xingUrl}>
+            <Image
+              src="/xing.png"
+              width={30}
+              height={30}
+              layout="fixed"
+              alt="Git Hub"
+            />
+          </a>
+          <a target="_blank" href={user[0].sofUrl}>
+            <Image
+              src="/sof.png"
+              width={25}
+              height={25}
+              layout="fixed"
+              alt="Git Hub"
+            />
+          </a>
+        </GridItem>
+      </GridItem>
+        <Text fontSize="2xl">About</Text>
+        <Text mt={10} color="#606c78" fontWeight="400px">
           Professional experience
         </Text>
         <Text color="#1f2228" fontWeight="400px">

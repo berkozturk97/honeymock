@@ -30,7 +30,7 @@ function LoginTalentForm() {
     console.log(userInformations);
     if (userInformations !== null || undefined){
         localStorage.setItem('userInformations', JSON.stringify(userInformations));
-        axios.defaults.headers.token = userInformations.tokenCode;
+        axios.defaults.headers.token =  userInformations.tokenCode;
         HEADER.tokenCode = userInformations.tokenCode;
         ID._id = userInformations._id;
         if( userInformations.isFirstLogin === false){
