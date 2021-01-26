@@ -14,11 +14,6 @@
     "static/development/_ssgManifest.js"
   ],
   "pages": {
-    "/[talentProfile]": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/[talentProfile].js"
-    ],
     "/_app": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
@@ -31,10 +26,30 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
+    "/login/loginStep4": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/login/loginStep4.js"
+    ],
+    "/login/loginStep5": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/login/loginStep5.js"
+    ],
     "/login/loginStep6": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/login/loginStep6.js"
+    ],
+    "/login/loginStep7": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/login/loginStep7.js"
+    ],
+    "/loginTalent": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/loginTalent.js"
     ]
   },
   "ampFirstPages": []

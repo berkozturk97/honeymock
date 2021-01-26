@@ -3,7 +3,8 @@ import {
     Input,
     Box,
     Button,
-    Heading
+    Heading,
+    Flex
   } from '@chakra-ui/react'
 import { useState } from 'react';
 import { createTalent } from '../../api/talentApi';
@@ -34,15 +35,16 @@ function SignUpFormCompany() {
         console.log(userInformations);
       }
     return(
-    <Box  w={400}>
+    <Box  w={[300,300,400,400]}>
     <Heading>Join XXXX</Heading>
     <Heading as="h6" size="xs">
       Find candidates for free!
     </Heading>
     <form onSubmit={handleSubmit}>
+      {/* <Flex float='left'> */}
       <FormControl id="name" mt={4}>
         <Input
-        w={190}
+        w={[140,140,190,190]}
         type="name"
         name="name"
         value={values.name}
@@ -51,14 +53,14 @@ function SignUpFormCompany() {
       
         <Input
         ml={5} 
-        w={190}
+        w={[140,140,190,190]}
         type="name"
         name="surname" 
         value={values.surname}
         onChange={handleInputChange} 
         placeholder="Your Last Name" />
       </FormControl>
-
+      {/* </Flex> */}
       <FormControl id="email" mt={4}>
         <Input 
         type="email"
@@ -70,7 +72,7 @@ function SignUpFormCompany() {
 
       <FormControl id="phoneAndCity" mt={4}>
         <Input
-        w={190}
+        w={[140,140,190,190]}
         name="phone"
         type="tel"
         value={values.phone}
@@ -79,7 +81,7 @@ function SignUpFormCompany() {
       
         <Input
         ml={5} 
-        w={190}
+        w={[140,140,190,190]}
         type="text" 
         name="city"
         value={values.city}

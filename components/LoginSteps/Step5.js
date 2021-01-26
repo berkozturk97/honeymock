@@ -75,17 +75,12 @@ function Step5() {
       </Text>
 
       <Flex direction="row">
-        {/* <span>
-              <Icon mr={5}
-                width="15px"
-                height="15px"
-                borderRadius="4px" as={AiFillPlusCircle} />
-          </span> */}
-        {/* <AddExperience/> */}
+      
         <form onSubmit={handleSubmit}>
           <FormControl id="school" mt={4}>
             <Input
               ml={5}
+              w={[320,320,500,500]}
               name="school"
               type="text"
               placeholder="University / School"
@@ -97,6 +92,7 @@ function Step5() {
           <FormControl id="degree" mt={4}>
             <Input
               ml={5}
+              w={[320,320,500,500]}
               name="degree"
               type="text"
               placeholder="Degree, field of study"

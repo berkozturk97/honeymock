@@ -98,7 +98,7 @@ function Step6() {
           <FormControl id="language" mt={4}>
             <Input
               ml={5}
-              w={300}
+              w={[200,200,300,300]}
               onChange={(e) => setLanguage(e.target.value)}
               name="language"
               type="text"

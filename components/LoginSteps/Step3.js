@@ -93,7 +93,7 @@ function Step3() {
         </Stack>
       </RadioGroup>
 
-      <Box>
+      <Box >
         <Text ml={5} fontWeight="bold" mt={10} fontSize="xl">
           What type of role are you looking for? *
         </Text>
@@ -102,9 +102,9 @@ function Step3() {
           Select up to 5 roles that describe what you are looking for. These
           will help employers discover your profile
         </Text>
-        <Box d="inline-flex" mt={10}>
+        <Box  d="inline-flex" mt={10}>
           <CheckboxGroup>
-            <Stack ml={5} direction="column">
+            <Stack w={[20,100,200,200]} ml={5} direction="column">
               <Text ml={5} mt={2} fontWeight="bold" fontSize="md">
                 Software Engineering
               </Text>
@@ -125,7 +125,7 @@ function Step3() {
             </Stack>
           </CheckboxGroup>
 
-          <Stack ml={20} direction="column">
+          <Stack w={[20,100,200,200]} ml={20} direction="column">
             <Text ml={5} mt={2} fontWeight="bold" fontSize="md">
               Infrastructure
             </Text>
@@ -146,7 +146,7 @@ function Step3() {
           </Stack>
 
           <CheckboxGroup>
-            <Stack ml={20} direction="column">
+            <Stack w={[20,150,200,200]} ml={20} direction="column">
               <Text ml={5} mt={2} fontWeight="bold" fontSize="md">
                 Leadership
               </Text>
@@ -180,7 +180,7 @@ function Step3() {
               {job.key}
             </Text>
       
-            <Select placeholder="Select years of experience" onChange={(e) =>handleYears(e,job.value,index)}  w={300} ml={40} mt={8}>
+            <Select placeholder="Select years of experience" onChange={(e) =>handleYears(e,job.value,index)}  w={300} ml={[10,30,40,40]} mt={8}>
               <option key='1' value={0}>{`<1 Years`}</option>
               <option key='2' value={1}>1 Year</option>
               <option key='3' value={2}>2 Years</option>
