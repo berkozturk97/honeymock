@@ -12,7 +12,7 @@ function TalentEducation({ user }) {
       <Text ml={2} fontSize="2xl">
         Education
       </Text>
-      {user[0].educations.map((education, index) => {
+      {user.educations.map((education, index) => {
         return (
        <div class={'main-item-div'}>
          <a class={'title'}> <a class={'dot'}>•</a> {education.school}</a>

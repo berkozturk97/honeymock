@@ -58,7 +58,7 @@ function Step4() {
       experienceYear: year
     }
     dispatch(addUserData(updatedData))
-    router.push('/login/loginStep5')
+    router.push('/talent/education')
   }
 
   return (

@@ -10,10 +10,10 @@ export default function LinkedInLogin() {
   }
   return (
     <a href={LINKEDIN_URL_LOGIN}>
-    <div
+    <div 
       onClick={handleLinkedInLogin}
       type="submit"
-      style={{ height: '40px', width: '215px' }}
+      style={{ height: '40px', width: '215px', marginTop: '10px' }}
     >
       <img
         style={{ height: '100%', width: '100%' }}

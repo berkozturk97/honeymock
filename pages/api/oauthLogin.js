@@ -51,7 +51,7 @@ const OauthLogin = async (req, res) => {
       if (userInformations.isFirstLogin === false) {
         res.redirect(`/talentProfile/${userInformations._id}/${userInformations.name}`)
       } else {
-        res.redirect(`/login/${u.id}`)
+        res.redirect(`/talent/${u.id}`)
        
       }
     }

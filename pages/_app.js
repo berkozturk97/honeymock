@@ -5,8 +5,17 @@ import { CookiesProvider } from 'react-cookie';
 import { Provider } from 'react-redux';
 import { createWrapper } from 'next-redux-wrapper';
 import store from '../redux/store';
+import dynamic from 'next/dynamic'
+
+
 
 import '../style/app.less';
+// import Navigation from '../components/Nav/navigation';
+
+const Navigation = dynamic(
+  () => import('../components/Nav/navigation'),
+  { ssr: false }
+)
 
 
 class MyApp extends App {
@@ -14,13 +23,13 @@ class MyApp extends App {
     const { Component, pageProps} = this.props;
     return (
     <Provider store={store}>
-      <CookiesProvider>
+     
     <ThemeProvider theme={theme}>
-      {typeof window !== 'undefined' && <MasterPage/>}
+      {typeof window !== 'undefined' && <Navigation/>}
       <CSSReset />
       <Component {...pageProps} />
     </ThemeProvider>
-    </CookiesProvider>
+  
     </Provider>
   )
   }

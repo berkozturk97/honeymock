@@ -18,7 +18,7 @@ import { addUserData } from '../../redux/actions/stepOneAction'
 
 function Step7() {
   const [money, setMoney] = useState('')
-  const [login, setLogin] = useState(false)
+  const [login, setLogin] = useState('false')
   const [userData, setUserData] = useState([])
 
   useEffect(() => {
@@ -35,7 +35,7 @@ function Step7() {
   const goNextPage = () => {
     let updatedData = {
       wantedSalary: money,
-      isFirstLogin: 'false'
+      isFirstLogin: login
     }
     dispatch(addUserData(updatedData))
     updateTalent({ body: { ...stepData, ...updatedData } })

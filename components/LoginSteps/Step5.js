@@ -59,7 +59,7 @@ function Step5() {
   
     }
     dispatch(addUserData(updatedData))
-    router.push('/login/loginStep6')
+    router.push('/talent/skills')
   }
 
 

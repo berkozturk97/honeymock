@@ -8,7 +8,7 @@ function TalentSkills({user}) {
       <CardHeader>
         <GridItem h={'auto'}>
         <Text ml={2} fontSize="2xl">Skills</Text>
-        {user[0].skills.map((skill, index) => {
+        {user.skills.map((skill, index) => {
         return (
             <Box
               pr={2}

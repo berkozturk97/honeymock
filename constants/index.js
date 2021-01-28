@@ -139,4 +139,86 @@ export const Constants = {
         value: 2000,
       },
     },
+    INDUSTRIES: {
+      AEROSPACE_INDUSTRY: {
+        key: 'Aerospace Industry',
+        value: 0,
+      },
+      TRANSPORT_INDUSTRY: {
+        key: 'Transport Industry',
+        value: 1,
+      },
+      COMPUTER_INDUSTRY: {
+        key: 'Computer Industry',
+        value: 2,
+      },
+      TELECOMMUNICATION_INDUSTRY: {
+        key: 'Telecommunication industry',
+        value: 3,
+      },
+      AGRICULTURE_INDUSTRY: {
+        key: 'Agriculture industry',
+        value: 4,
+      },
+      CONSTRUCTION_INDUSTRY: {
+        key: 'Construction Industry',
+        value: 5,
+      },
+      EDUCATION_INDUSTRY: {
+        key: 'Education Industry',
+        value: 6,
+      },
+      PHARMACEUTICAL_INDUSTRY: {
+        key: 'Pharmaceutical Industry',
+        value: 7,
+      },
+      FOOD_INDUSTRY: {
+        key: 'Food industry',
+        value: 8,
+      },
+      HEALTHCARE_INDUSTRY: {
+        key: 'Healthcare industry',
+        value: 9,
+      },
+      HOSPITALITY_INDUSTRY: {
+        key: 'Hospitality industry',
+        value: 10,
+      },
+      ENTERTAINMENT_INDUSTRY: {
+        key: 'Entertainment industry',
+        value: 11,
+      },
+      NEWSMEDIA_INDUSTRY: {
+        key: 'News Media industry',
+        value: 12,
+      },
+      ENERGY_INDUSTRY: {
+        key: 'Energyindustry',
+        value: 13,
+      },
+      MANIFACTURING_INDUSTRY: {
+        key: 'Manifacturing industry',
+        value: 14,
+      },
+      MUSIC_INDUSTRY: {
+        key: 'Music industry',
+        value: 15,
+      },
+      MINING_INDUSTRY: {
+        key: 'Mining industry',
+        value: 16,
+      },
+      WORLDWIDEWEB_INDUSTRY: {
+        key: 'Worldwide Web industry',
+        value: 17,
+      },
+      ELECTRONIC_INDUSTRY: {
+        key: 'Electronic industry',
+        value: 18,
+      },
+      OTHER_INDUSTRY: {
+        key: 'Other',
+        value: 19,
+      },
+    }
   };

@@ -49,11 +49,10 @@ export default function TalenProfile() {
 
   const loadData = async () => {
     setIsLogin(false)
-    //var userInformations = localStorage.getItem('userInformations')
-    //setUser(JSON.parse(userInformations))
-    const userData = await getTalentById()
-    setUser(userData)
-    console.log('dadsss', user)
+    //const userData = await getTalentById()
+    const userInfos = await JSON.parse(localStorage.getItem('userInformations'))
+    setUser(userInfos)
+    console.log('dadssss', user)
     setIsLogin(true)
   }
   if (isLogin === false) {

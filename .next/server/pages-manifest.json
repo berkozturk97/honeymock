@@ -2,6 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/login/loginStep7": "pages/login/loginStep7.js",
-  "/login/loginStep5": "pages/login/loginStep5.js"
+  "/": "pages/index.js",
+  "/loginTalent": "pages/loginTalent.js"
 }

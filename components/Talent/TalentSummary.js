@@ -10,7 +10,7 @@ function TalentSummary() {
       <Text justifySelf='center' ml={2} fontSize="2xl">Summary</Text>
 
       <Flex align='center' justify='center' pb={10}>
-            <Button>+ Add Summary</Button>
+            
       </Flex>
     </GridItem>
     </CardHeader>

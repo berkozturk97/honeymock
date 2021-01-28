@@ -4,7 +4,7 @@ import { LINKEDIN_URL } from "../../helpers/auth";
 export default function LinkedInSignUp() {
   return (
     <a href={LINKEDIN_URL}>
-      <div type="submit" style={{ height: "40px", width: "215px" }}>
+      <div type="submit" style={{ height: "40px", width: "215px", marginTop: '10px' }}>
         <img
           style={{ height: "100%", width: "100%" }}
           src={

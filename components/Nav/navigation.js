@@ -1,11 +1,21 @@
 import { Flex } from '@chakra-ui/react'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import { Navbar, Nav, Icon, Dropdown } from 'rsuite'
 import 'rsuite/lib/styles/index.less'
 
 function Navigation() {
+  const [name, setName] = useState('')
+  useEffect(() => {
+
+  },[])
+  const getUser = async () => {
+    const userInfos = await JSON.parse(localStorage.getItem('userInformations'))
+    setName(userInfos.name + ' ' + userInfos.surname)
+  }
+
   return (
-    <Navbar>
+    <Navbar appearance='inverse'>
       <Navbar.Body>
         <Nav>
           <Nav.Item componentClass='span' icon={<Icon icon="home" />}>

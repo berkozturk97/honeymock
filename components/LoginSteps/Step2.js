@@ -76,7 +76,7 @@ function Step2() {
       usPermit: usPermit == 'true'
     }
     dispatch(addUserData(updatedData))
-    router.push('/login/loginStep3')
+    router.push('/talent/roles')
   }
 
   return (

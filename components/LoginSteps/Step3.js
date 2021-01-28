@@ -59,7 +59,7 @@ function Step3() {
       whatBrings
     }
     dispatch(addUserData(updatedData))
-    router.push('/login/loginStep4')
+    router.push('/talent/experience')
   }
 
   const handleYears = (e,job,index) => {

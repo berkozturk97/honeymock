@@ -33,13 +33,13 @@ function LoginTalentForm() {
         axios.defaults.headers.token =  userInformations.tokenCode;
         HEADER.tokenCode = userInformations.tokenCode;
         ID._id = userInformations._id;
-        if( userInformations.isFirstLogin === false){
+        if( userInformations.isFirstLogin === 'false'){
            router.push({
             pathname: '/talentProfile'
         });
         } else {
           router.push({
-            pathname: '/login/loginStep1'
+            pathname: '/talent/basics'
         });
         }
        

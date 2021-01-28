@@ -8,11 +8,11 @@ function TalentAbout({user}) {
       <Flex flexDirection="column" justify="center" align="center" mt={5}>
       <GridItem mt={5} ml={10}>
         <Text fontSize="3xl">
-          {user[0].name} {user[0].surname}
+          {user.name} {user.surname}
         </Text>
-        <Text fontSize="md">{user[0].livingCity}</Text>
+        <Text fontSize="md">{user.livingCity}</Text>
         <GridItem float="left">
-          <a target="_blank" href={user[0].githubUrl}>
+          <a target="_blank" href={user.githubUrl}>
             <Image
               src="/github.png"
               width={30}
@@ -22,7 +22,7 @@ function TalentAbout({user}) {
             />
           </a>
 
-          <a target="_blank" href={user[0].linkedInUrl}>
+          <a target="_blank" href={user.linkedInUrl}>
             <Image
               src="/linkedin.png"
               width={30}
@@ -31,7 +31,7 @@ function TalentAbout({user}) {
               alt="Git Hub"
             />
           </a>
-          <a target="_blank" href={user[0].xingUrl}>
+          <a target="_blank" href={user.xingUrl}>
             <Image
               src="/xing.png"
               width={30}
@@ -40,7 +40,7 @@ function TalentAbout({user}) {
               alt="Git Hub"
             />
           </a>
-          <a target="_blank" href={user[0].sofUrl}>
+          <a target="_blank" href={user.sofUrl}>
             <Image
               src="/sof.png"
               width={25}
@@ -56,13 +56,13 @@ function TalentAbout({user}) {
           Professional experience
         </Text>
         <Text color="#1f2228" fontWeight="400px">
-          {user[0].experienceYear}
+          {user.experienceYear}
         </Text>
 
         <Text mt={10} color="#606c78" fontWeight="400px">
           Contract
         </Text>
-        {user[0].wantedJobTimes.map((contract, index) => {
+        {user.wantedJobTimes.map((contract, index) => {
           return (
             <Text key={index} color="#1f2228" fontWeight="400px">
               {contract.key}
@@ -81,16 +81,16 @@ function TalentAbout({user}) {
           USA work permit
         </Text>
         <Text color="#1f2228" fontWeight="400px">
-          {user[0].usPermit === true ? 'Yes' : 'No'}
+          {user.usPermit === true ? 'Yes' : 'No'}
         </Text>
 
         <Text mt={10} color="#606c78" fontWeight="400px">
           Wants to work in (salary)
         </Text>
-        {user[0].wantedWorkCity.map((city, index) => {
+        {user.wantedWorkCity.map((city, index) => {
           return (
             <Text key={index} color="#1f2228" fontWeight="400px">
-              {city.key} (${user[0].wantedSalary})
+              {city.key} (${user.wantedSalary})
             </Text>
           )
         })}
@@ -98,7 +98,7 @@ function TalentAbout({user}) {
         <Text mt={10} color="#606c78" fontWeight="400px">
           Languages
         </Text>
-        {user[0].languages.map((language, index) => {
+        {user.languages.map((language, index) => {
           return (
             <Text key={index} color="#1f2228" fontWeight="400px">
               {language.language} ({language.level.key})

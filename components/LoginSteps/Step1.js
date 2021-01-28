@@ -10,20 +10,25 @@ import {
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import { loginTalent } from '../../api/talentApi';
+import { loginTalent } from '../../api/talentApi'
 import { ImLinkedin, ImXing, ImGithub, ImStackoverflow } from 'react-icons/im'
 import { useDispatch } from 'react-redux'
 import { addUserData } from '../../redux/actions/stepOneAction'
-import { HEADER, ID } from '../../constants/header';
+import { HEADER, ID } from '../../constants/header'
+import {
+  getHeaderFromBase64,
+  getFormDataContent,
+  base64ToBinary,
+  dataURItoBlob
+} from '../../utils/functions/upload'
 
 function Step1() {
-    useEffect(() => {
-      console.log(router.query.loginStep1);
-      getUser();
-
-    }, [])
-  
-  const [cvUrl, setCvUrl] = useState('');
+  useEffect(() => {
+    console.log()
+    getUser()
+  }, [])
+  const [userData, setUserData] = useState([]);
+  const [cvUrl, setCvUrl] = useState('')
   const [city, setCity] = useState('')
   const [links, setLinks] = useState({
     linkedInUrl: '',
@@ -34,98 +39,54 @@ function Step1() {
   const dispatch = useDispatch()
   const router = useRouter()
 
-
   const getUser = async () => {
-    if(router.query.loginStep1){
-       let body = {
-      linkedInId: router.query.loginStep1
-    }
-    const userInformations = await loginTalent({ body: body })
-    axios.defaults.headers.token = userInformations.tokenCode; 
-    ID._id = userInformations._id;
-    console.log(userInformations)
-    }
-   
-  }
-  const getFormDataContent = async (e) => {
-    let splittedArr = e.target.files[0].name.split('.');
-    const extension = splittedArr[splittedArr.length-1];
-    let responseData;
-    let body = {
-      contentType: extension,
-      fileName: splittedArr[0].trim() + '.' + extension,
-    }
-    await axios.put('https://honeypot-server.herokuapp.com/talent/getSignedUploadUrl',body,{
-      headers: {
-        'token': '161151808514230e399acdc9f25a5f7811876a9c6bff0ca3b1bf7'
+    if (router.query.basic !== 'basics') {
+      let body = {
+        linkedInId: router.query.basics
       }
-     })
-      .then((response) => {
-        console.log(response.data)
-        responseData = response.data;
-    
-      }).catch((err) => {
-          console.log(err);
-      })  
-    
-      return responseData;
-  };
-  const getHeaderFromBase64 = (data) => {
-    var head = data.split(";");
-    var type = head[0].split(":");
-    return {
-      "Content-Type": type[1]
-    };
-  };
-  const base64ToBinary =  (data) => {
-    return dataURItoBlob(data);
-  };
-  const dataURItoBlob = (dataURI) => {
-    // convert base64/URLEncoded data component to raw binary data held in a string
-    var byteString;
-    if (dataURI.split(',')[0].indexOf('base64') >= 0) {
-      byteString = atob(dataURI.split(',')[1]);
+      const userInformations = await loginTalent({ body: body })
+      localStorage.setItem('userInformations', JSON.stringify(userInformations));
+      axios.defaults.headers.token = userInformations.tokenCode
+      ID._id = userInformations._id
+      console.log(userInformations)
     } else {
-      byteString = decodeURI(dataURI.split(',')[1]);
+       const userInfos = await JSON.parse(localStorage.getItem('userInformations'))
+      //  JSON.parse(userInfos)
+       setUserData(userInfos);
+       console.log('dsaddd',userData);
     }
-    // separate out the mime component
-    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-  
-    // write the bytes of the string to a typed array
-   var ia = new Uint8Array(byteString.length);
-    for (var i = 0; i < byteString.length; i++) {
-      ia[i] = byteString.charCodeAt(i);
-    }
-    return new Blob([ia], {type: mimeString});
-  };
-  const deneme = async (event)=> {
-    const {url} = await getFormDataContent(event);
-    const file = event.target.files[0];
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(file);
+  }
+ 
+
+  const upload = async (event) => {
+    const { url } = await getFormDataContent(event)
+    const file = event.target.files[0]
+    const fileReader = new FileReader()
+    fileReader.readAsDataURL(file)
 
     fileReader.onloadend = async function (e) {
-       const data = e.target.result;
-       await axios.put(url, base64ToBinary(data), {headers: getHeaderFromBase64(data)})
-      .then((response) => {
-          setCvUrl(response.request.responseURL.split('?Con')[0]);
-      }).catch((err) => {
-          console.log(err);
-      })  
-              
-     }
+      const data = e.target.result
+      await axios
+        .put(url, base64ToBinary(data), { headers: getHeaderFromBase64(data) })
+        .then((response) => {
+          setCvUrl(response.request.responseURL.split('?Con')[0])
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
   }
   const goNextPage = () => {
-    let updatedData = { 
-      livingCity: city, 
+    let updatedData = {
+      livingCity: city,
       linkedInUrl: links.linkedInUrl,
       githubUrl: links.githubUrl,
       sofUrl: links.sofUrl,
       xingUrl: links.xingUrl,
-      cvUrl: cvUrl,
-     }
+      cvUrl: cvUrl
+    }
     dispatch(addUserData(updatedData))
-    router.push('/login/loginStep2')
+    router.push('/talent/employment')
   }
   return (
     <>
@@ -142,18 +103,14 @@ function Step1() {
         here to see how. Supported file formats: PDF and DOC(X) with maximum
         file size limit of 20MB
       </Text>
-      <input
-        type="file"
-        onChange={deneme}
-        multiple
-      />
+      <input type="file" onChange={upload} multiple />
       <Text ml={5} fontWeight="bold" mt={10} fontSize="xl">
         Please let us know where you are located at the moment!
       </Text>
 
       <FormControl id="city" ml={5} mt={4}>
         <Input
-          w={[300,300,340,340]}
+          w={[300, 300, 340, 340]}
           name="city"
           type="city"
           placeholder="City"
@@ -197,7 +154,7 @@ function Step1() {
                 />
               </span>
               <Input
-                w={[250,250,340,340]}
+                w={[250, 250, 340, 340]}
                 name="linkedIn"
                 type="text"
                 placeholder="https://www.linkedin.com/in/yourusername"
@@ -238,7 +195,7 @@ function Step1() {
                 />
               </span>
               <Input
-                w={[250,250,340,340]}
+                w={[250, 250, 340, 340]}
                 name="xing"
                 type="text"
                 placeholder="https://xing.com/profile/username"
@@ -279,7 +236,7 @@ function Step1() {
                 />
               </span>
               <Input
-                w={[250,250,340,340]}
+                w={[250, 250, 340, 340]}
                 name="github"
                 type="text"
                 placeholder="https://github.com/yourusername"
@@ -320,34 +277,24 @@ function Step1() {
                 />
               </span>
               <Input
-               w={[250,250,340,340]}
+                w={[250, 250, 340, 340]}
                 name="stackOverFlow"
                 type="text"
                 placeholder="http://stackoverflow.com/users/1234/yourusername"
                 borderColor="#979EA7"
                 value={links.sofUrl}
-                onChange={(e) =>
-                  setLinks({ ...links, sofUrl: e.target.value })
-                }
+                onChange={(e) => setLinks({ ...links, sofUrl: e.target.value })}
               />
             </Box>
           </FormControl>
         </form>
       </Flex>
 
-      <Button
-        bg="#7DB0E4"
-        color="white"
-        ml={5}
-        mt={5}
-        onClick={goNextPage}
-      >
+      <Button bg="#7DB0E4" color="white" ml={5} mt={5} onClick={goNextPage}>
         Click And Save
       </Button>
     </>
   )
 }
-
-
 
 export default Step1

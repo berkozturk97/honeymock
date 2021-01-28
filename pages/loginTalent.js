@@ -1,6 +1,12 @@
 import { Flex, Button, Box } from '@chakra-ui/react'
-import LoginTalentForm from '../components/LoginForm/LoginTalentForm'
+// import LoginTalentForm from '../components/LoginForm/LoginTalentForm'
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic'
+
+const LoginTalentForm = dynamic(
+  () => import('../components/LoginForm/LoginTalentForm'),
+  { ssr: false }
+)
 
 function LoginTalent() {
   const router = useRouter();
