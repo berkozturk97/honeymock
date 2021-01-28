@@ -40,7 +40,7 @@ function Step1() {
   const router = useRouter()
 
   const getUser = async () => {
-    if (router.query.basic !== 'basics') {
+    if (router.query.basics !== 'basics') {
       let body = {
         linkedInId: router.query.basics
       }

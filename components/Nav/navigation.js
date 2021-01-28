@@ -1,29 +1,34 @@
 import { Flex } from '@chakra-ui/react'
+
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Navbar, Nav, Icon, Dropdown } from 'rsuite'
 import 'rsuite/lib/styles/index.less'
+import { setUserData } from '../../redux/actions/userAction'
 
 function Navigation() {
   const [name, setName] = useState('')
+  const router = useRouter()
+  const dispatch = useDispatch();
+  const { userData } = useSelector(state => state.user)
   useEffect(() => {
+      
+  },[userData])
 
-  },[])
-  const getUser = async () => {
-    const userInfos = await JSON.parse(localStorage.getItem('userInformations'))
-    setName(userInfos.name + ' ' + userInfos.surname)
+  const logOut = async () => {
+    await localStorage.setItem('userInformations', {})
+    await dispatch(setUserData({}))
+    router.push('/')
   }
 
-  return (
-    <Navbar appearance='inverse'>
-      <Navbar.Body>
-        <Nav>
-          <Nav.Item componentClass='span' icon={<Icon icon="home" />}>
-            <Link href="/">
-              Home Page
-            </Link>
-          </Nav.Item>
-          <Nav.Item componentClass='span' >
+  const renderNav = () => {
+    if(userData === undefined || userData === null) {
+      console.log('userData.name !== ')
+      return(
+        <>
+        <Nav.Item componentClass='span' >
             <Link href="/loginTalent">
               Login
             </Link>
@@ -33,6 +38,39 @@ function Navigation() {
               Sign Up
             </Link>
           </Nav.Item>
+          </>
+      )
+    } else {
+      return (
+        <>
+        <Nav.Item componentClass='span' >
+            <Link href="/talentProfile">
+              {userData.name + ' ' + userData.surname}
+            </Link>
+          </Nav.Item>
+          <Nav.Item componentClass='span' > 
+            
+              <a onClick={logOut}>
+              Logout
+              </a>
+              
+       
+          </Nav.Item>
+        </>
+      )
+    }
+  }
+  return (
+    <Navbar appearance='inverse'>
+      <Navbar.Body>
+        <Nav>
+          <Nav.Item componentClass='span' icon={<Icon icon="home" />}>
+            <Link href="/">
+              Home Page
+            </Link>
+          </Nav.Item>
+          
+          {renderNav()}
           {/* <Dropdown title="About">
             <Dropdown.Item>Talent</Dropdown.Item>
             <Dropdown.Item>Company</Dropdown.Item>

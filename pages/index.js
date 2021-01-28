@@ -4,17 +4,18 @@ import React, { useEffect } from 'react';
 import { getTalents } from '../api/talentApi';
 import Image from 'next/image';
 import LinkedInAuth from '../components/LinkedIn/LinkedInLogin';
+import { useRouter } from 'next/router';
 
 
 
 function HomePage() {
+   const router = useRouter()
   useEffect(()=> {
-    let userInformations = localStorage.getItem('userInformations');
   },[]);
-  useEffect(() => {
-    //talentDeneme();
-    console.log(process.env.NEXT_PUBLIC_LINKEDIN_CLIENT_ID)
-  },[])
+  // useEffect(() => {
+  //   //talentDeneme();
+  //   console.log(process.env.NEXT_PUBLIC_LINKEDIN_CLIENT_ID)
+  // },[])
   async function talentDeneme(){
     const data = await getTalents();
     console.log(data);
