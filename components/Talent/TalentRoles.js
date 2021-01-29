@@ -11,7 +11,7 @@ function TalentRoles({ user }) {
         Desired Roles
       </Text>
       <Box>
-      {user.wantedRoles.map((role, index) => {
+      {(user.wantedRoles || []).map((role, index) => {
         return (
           <div class={'main-item-div'}>
           <a class={'title'}> <a class={'dot'}>•</a> {role.key} </a>

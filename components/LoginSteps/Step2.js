@@ -130,7 +130,7 @@ function Step2() {
       <Select
         onChange={handlePermit}
         placeholder='--Select--'
-        w={300}
+        w={250}
         ml={5}
         mt={5}
       >

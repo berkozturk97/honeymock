@@ -92,8 +92,7 @@ function Step6() {
         <Box display="inline-flex">
           <FormControl id="language" mt={4}>
             <Input
-              ml={5}
-              w={[200, 200, 300, 300]}
+             
               onChange={(e) => setLanguage(e.target.value)}
               name="language"
               type="text"
@@ -106,7 +105,6 @@ function Step6() {
             <Select
               onChange={handleLanguageLevel}
               placeholder="Select Level"
-              w={200}
               mt={4}
             >
               {Object.values(LANGUAGE_LEVEL).map((language, index) => {
@@ -167,7 +165,6 @@ function Step6() {
           <FormControl id="skill" mt={4}>
             <Input
               ml={5}
-              w={300}
               onChange={(e) => setSkill(e.target.value)}
               name="skill"
               type="text"
@@ -177,7 +174,7 @@ function Step6() {
             />
           </FormControl>
 
-          <Button ml={5} mt={4} onClick={saveSkills}>
+          <Button ml={10} mt={4} onClick={saveSkills}>
             Add
           </Button>
         </Flex>
@@ -220,8 +217,6 @@ function Step6() {
           _hover="none"
           onClick={goNextPage}
           ml={5}
-          left={750}
-          right={10}
           mt={10}
         >
           Click And Save

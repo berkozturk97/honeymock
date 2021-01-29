@@ -12,7 +12,7 @@ function TalentWorkExperience({user}) {
         Work Experience
       </Text>
       {
-        user.workedCompanies.map((company,index) =>{
+        (user.workedCompanies || []).map((company,index) =>{
           return (
             <div class={'main-item-div'}>
             <a class={'title'}> <a class={'dot'}>•</a> {company.position} ({company.company}) ({moment(company.startDate).format('YYYY')} - {moment(company.endDate).format('YYYY')}) </a>

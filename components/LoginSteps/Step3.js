@@ -22,23 +22,15 @@ import { addUserData } from '../../redux/actions/stepOneAction'
 const { WHAT_BRINGS, JOB_TITLES } = Constants
 
 function Step3() {
-
   const dispatch = useDispatch()
-
   const [whatBrings, setWhatBrings] = React.useState(undefined);
-
   const router = useRouter()
-  
-  
-
   const [jobs, setJobs] = useState([])
-
   useEffect(() => {}, [jobs])
 
   const handleClick = (e) => {
     const { value, checked } = e.target
     if (checked === true) {
-    //   setCheckedItems()
     setJobs([...jobs, JSON.parse(value)])
       console.log(jobs)
     } else {
@@ -104,7 +96,7 @@ function Step3() {
         </Text>
         <Box  d="inline-flex" mt={10}>
           <CheckboxGroup>
-            <Stack w={[20,100,200,200]} ml={5} direction="column">
+            <Stack w={[15,100,200,200]} ml={5} direction="column">
               <Text ml={5} mt={2} fontWeight="bold" fontSize="md">
                 Software Engineering
               </Text>
@@ -125,7 +117,7 @@ function Step3() {
             </Stack>
           </CheckboxGroup>
 
-          <Stack w={[20,100,200,200]} ml={20} direction="column">
+          <Stack w={[15,100,200,200]} ml={20} direction="column">
             <Text ml={5} mt={2} fontWeight="bold" fontSize="md">
               Infrastructure
             </Text>
@@ -146,7 +138,7 @@ function Step3() {
           </Stack>
 
           <CheckboxGroup>
-            <Stack w={[20,150,200,200]} ml={20} direction="column">
+            <Stack w={[15,150,200,200]} ml={20} direction="column">
               <Text ml={5} mt={2} fontWeight="bold" fontSize="md">
                 Leadership
               </Text>

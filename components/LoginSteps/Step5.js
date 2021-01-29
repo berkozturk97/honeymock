@@ -15,11 +15,9 @@ import {
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import { AiFillPlusCircle } from 'react-icons/ai'
 import { useDispatch } from 'react-redux'
 import { DatePicker } from 'rsuite'
 import { addUserData } from '../../redux/actions/stepOneAction'
-import ProfessionalExperience from '../JobExperince/ProfessionalExperience'
 import TalentEducation from '../TalentEducation/TalentEducation'
 
 function Step5() {
@@ -80,7 +78,7 @@ function Step5() {
           <FormControl id="school" mt={4}>
             <Input
               ml={5}
-              w={[320,320,500,500]}
+              w={[250,320,500,500]}
               name="school"
               type="text"
               placeholder="University / School"
@@ -92,7 +90,7 @@ function Step5() {
           <FormControl id="degree" mt={4}>
             <Input
               ml={5}
-              w={[320,320,500,500]}
+              w={[250,320,500,500]}
               name="degree"
               type="text"
               placeholder="Degree, field of study"
@@ -103,7 +101,7 @@ function Step5() {
 
           <FormControl ml={5} id="password" mt={4}>
             <DatePicker
-            style={{width:200}} 
+            style={{width:250}} 
               key='date1'
               onChange={
                 (date) => setStudy({ ...study, startDate: date })
@@ -112,7 +110,7 @@ function Step5() {
               format="YYYY-MM"
             />
             <DatePicker
-            style={{width: 200,marginLeft: '35px'}}
+            style={{width: 250,marginLeft: '35px'}}
               key='date2'
               onChange={(date2) => setStudy({ ...study, endDate: date2 })
                
@@ -121,7 +119,7 @@ function Step5() {
             />
           </FormControl>
 
-          <Button ml={5} type="submit" width="full" mt={4}>
+          <Button w={[250,320,500,500]} ml={5} type="submit" width="full" mt={4}>
             Save
           </Button>
         </form>

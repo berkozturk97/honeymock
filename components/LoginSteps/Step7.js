@@ -32,18 +32,24 @@ function Step7() {
 
   const { stepData } = useSelector((state) => state.step)
 
-  const goNextPage = () => {
+  const goNextPage = async () => {
     let updatedData = {
       wantedSalary: money,
       isFirstLogin: login
     }
     dispatch(addUserData(updatedData))
-    updateTalent({ body: { ...stepData, ...updatedData } })
-    router.push('/talentProfile')
+    const user = await updateTalent({ body: { ...stepData, ...updatedData } })
+    if (user !== null || undefined){
+      console.log('user',user)
+      localStorage.setItem('userInformations', JSON.stringify(user));
+      router.push({
+          pathname: '/talentProfile'
+      });
+  }
   }
 
   return (
-    <>
+    <Box>
       <Text ml={5} color="#979EA7" fontSize="3xl">
         One last thing...
       </Text>
@@ -69,7 +75,7 @@ function Step7() {
           <FormControl id="money" mt={4}>
             <Input
               ml={5}
-              w={300}
+              w={250}
               onChange={(e) => setMoney(parseInt(e.target.value))}
               name="skill"
               type="number"
@@ -80,22 +86,23 @@ function Step7() {
           </FormControl>
         </Flex>
       </Box>
-
-      <Box h={100} display="block">
-        <Button left={0} mt={60}>
+      <Box mt={20} ml={2}>
+        <Button>
           Go Back
         </Button>
         <Button
           position="fixed"
-          mr={30}
-          right={40}
+          bg="#7DB0E4"
+          color="white"
+          _hover="none"
           onClick={goNextPage}
-          mt={60}
+          ml={50}
         >
           Save & Next
         </Button>
       </Box>
-    </>
+  
+    </Box>
   )
 }
 

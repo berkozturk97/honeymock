@@ -63,7 +63,7 @@ export default function TalenProfile() {
     )
   } else {
   return (
-    <div style={{marginTop:30}}>
+    <div style={{margin:30}}>
       <GridContainer>
       <GridItem xs={12} sm={12} md={4}>
           <Card profile>

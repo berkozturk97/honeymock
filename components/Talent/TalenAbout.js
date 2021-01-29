@@ -62,7 +62,7 @@ function TalentAbout({user}) {
         <Text mt={10} color="#606c78" fontWeight="400px">
           Contract
         </Text>
-        {user.wantedJobTimes.map((contract, index) => {
+        {(user.wantedJobTimes || []).map((contract, index) => {
           return (
             <Text key={index} color="#1f2228" fontWeight="400px">
               {contract.key}

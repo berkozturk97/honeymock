@@ -103,14 +103,14 @@ function Step1() {
         here to see how. Supported file formats: PDF and DOC(X) with maximum
         file size limit of 20MB
       </Text>
-      <input type="file" onChange={upload} multiple />
+      <input style={{marginLeft:20, marginTop:20}} type="file" onChange={upload} multiple />
       <Text ml={5} fontWeight="bold" mt={10} fontSize="xl">
         Please let us know where you are located at the moment!
       </Text>
 
       <FormControl id="city" ml={5} mt={4}>
         <Input
-          w={[300, 300, 340, 340]}
+          w={[250, 300, 340, 340]}
           name="city"
           type="city"
           placeholder="City"
@@ -154,7 +154,7 @@ function Step1() {
                 />
               </span>
               <Input
-                w={[250, 250, 340, 340]}
+                w={[200, 300, 340, 340]}
                 name="linkedIn"
                 type="text"
                 placeholder="https://www.linkedin.com/in/yourusername"
@@ -195,7 +195,7 @@ function Step1() {
                 />
               </span>
               <Input
-                w={[250, 250, 340, 340]}
+                w={[200, 300, 340, 340]}
                 name="xing"
                 type="text"
                 placeholder="https://xing.com/profile/username"
@@ -236,7 +236,7 @@ function Step1() {
                 />
               </span>
               <Input
-                w={[250, 250, 340, 340]}
+                w={[200, 300, 340, 340]}
                 name="github"
                 type="text"
                 placeholder="https://github.com/yourusername"
@@ -277,7 +277,7 @@ function Step1() {
                 />
               </span>
               <Input
-                w={[250, 250, 340, 340]}
+                w={[200, 300, 340, 340]}
                 name="stackOverFlow"
                 type="text"
                 placeholder="http://stackoverflow.com/users/1234/yourusername"
