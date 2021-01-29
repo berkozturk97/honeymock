@@ -9,6 +9,8 @@ const initialState = {
 };
 const middleware = [thunk];
 
+
+
 function loadFromStorage() {
     try {
         const serializedState = localStorage.getItem('userInformations')

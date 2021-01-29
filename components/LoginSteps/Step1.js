@@ -21,13 +21,14 @@ import {
   base64ToBinary,
   dataURItoBlob
 } from '../../utils/functions/upload'
+import { setUserData } from '../../redux/actions/userAction'
 
 function Step1() {
   useEffect(() => {
     console.log()
     getUser()
   }, [])
-  const [userData, setUserData] = useState([]);
+  const [userDatas, setUserDatas] = useState([]);
   const [cvUrl, setCvUrl] = useState('')
   const [city, setCity] = useState('')
   const [links, setLinks] = useState({
@@ -46,14 +47,15 @@ function Step1() {
       }
       const userInformations = await loginTalent({ body: body })
       localStorage.setItem('userInformations', JSON.stringify(userInformations));
+      dispatch(setUserData(JSON.stringify(userInformations)))
       axios.defaults.headers.token = userInformations.tokenCode
       ID._id = userInformations._id
       console.log(userInformations)
     } else {
        const userInfos = await JSON.parse(localStorage.getItem('userInformations'))
       //  JSON.parse(userInfos)
-       setUserData(userInfos);
-       console.log('dsaddd',userData);
+       setUserDatas(userInfos);
+       console.log('dsaddd',userDatas);
     }
   }
  

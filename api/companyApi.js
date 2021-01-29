@@ -1,14 +1,15 @@
 import axios from 'axios';
 import { HEADER, ID } from '../constants/header';
 
-export const loginTalent = ({body=null}) => {
+export const loginCompany = ({body=null}) => {
     return new Promise((resolve, reject) => {
-        let REQUEST_URL = "https://honeypot-server.herokuapp.com/auth/loginTalent";
+        let REQUEST_URL = "https://honeypot-server.herokuapp.com/auth/loginEmployer";
         axios.post(REQUEST_URL,body)
             .then((response) => {
                 resolve(response.data)
-            }).catch((response) => {
-                console.log('gercek erir',response)
+                console.log('erir',response)
+            }).catch((err) => {
+                console.log('gercek erir',err)
                 resolve(null);
             })
     });
@@ -45,15 +46,15 @@ export const getTalentById = () => {
 };
 
 
-export const createTalent = ({body=null}) => {
+export const createCompany = ({body=null}) => {
     return new Promise((resolve, reject) => {
-        let REQUEST_URL = "https://honeypot-server.herokuapp.com/talent/createTalent";
+        let REQUEST_URL = "https://honeypot-server.herokuapp.com/employer/createEmployer";
         axios.post(REQUEST_URL,body)
             .then((response) => {
                 console.log(response)
                 resolve(response)
-            }).catch((response) => {
-                resolve(response);
+            }).catch((err) => {
+                resolve(null);
             })
     });
 };
@@ -68,9 +69,9 @@ export const updateTalent = ({body=null}) => {
             .then((response) => {
                 console.log(response)
                 resolve(response.data)
-            }).catch((response) => {
-                
-                resolve(null);
+            }).catch((err) => {
+                console.log(err)
+                reject(null);
             })
     });
 };

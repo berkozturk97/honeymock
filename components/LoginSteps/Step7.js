@@ -8,6 +8,7 @@ import {
   Select,
   CloseButton
 } from '@chakra-ui/react'
+import axios from 'axios'
 import { useRouter } from 'next/router'
 
 import { useEffect, useState } from 'react'
@@ -15,23 +16,42 @@ import { useDispatch, useSelector } from 'react-redux'
 import { updateTalent } from '../../api/talentApi'
 import { HEADER, ID } from '../../constants/header'
 import { addUserData } from '../../redux/actions/stepOneAction'
+import SuccessModal from '../Modals/Modal'
 
 function Step7() {
   const [money, setMoney] = useState('')
   const [login, setLogin] = useState('false')
-  const [userData, setUserData] = useState([])
+  const [data, setData] = useState([])
+  const [modalOptions, setModalOptions] = useState({
+    open: false,
+    message: '',
+    title: '',
+    isSuccess: false,
+    yesButton: true,
+  })
 
-  useEffect(() => {
-    setUserData(JSON.parse(localStorage.getItem('userInformations')))
+  useEffect(async() => {
+    await getTokenAndId();
     console.log(ID._id)
     console.log(HEADER.tokenCode)
   }, [])
 
+  const { stepData } = useSelector((state) => state.step)
+  const { userData } = useSelector(state => state.user)
   const dispatch = useDispatch()
   const router = useRouter()
 
-  const { stepData } = useSelector((state) => state.step)
+  
+  const getTokenAndId = async () => {
+      // await setUserData(JSON.parse(localStorage.getItem('userInformations')))
+      // axios.defaults.headers.token = userData.tokenCode
+      // HEADER.tokenCode = userData.tokenCode
+      // ID._id = userData._id
+      console.log('datageldi',userData)
+      setData(JSON.parse(userData));
+      console.log(data)
 
+  }
   const goNextPage = async () => {
     let updatedData = {
       wantedSalary: money,
@@ -39,14 +59,36 @@ function Step7() {
     }
     dispatch(addUserData(updatedData))
     const user = await updateTalent({ body: { ...stepData, ...updatedData } })
-    if (user !== null || undefined){
+    if (user !== null || user !== undefined){
+      setModalOptions({...modalOptions,
+        open: true,
+        message: 'Enjoy with your experience!',
+        title: 'Login Steps Finish!',
+        isSuccess: true,
+        yesButton: false,
+      })
       console.log('user',user)
       localStorage.setItem('userInformations', JSON.stringify(user));
       router.push({
           pathname: '/talentProfile'
       });
+  } else {
+    setModalOptions({...modalOptions,
+      open: true,
+      message: 'Please make sure that complete necessary fields!',
+      title: 'Opps something went wrong please try again',
+      isSuccess: false,
+      yesButton: true
+    })
   }
   }
+
+  const handleCloseSuccess = () => {
+		setModalOptions({
+			...modalOptions,
+			open: false
+		})
+	};
 
   return (
     <Box>
@@ -101,7 +143,7 @@ function Step7() {
           Save & Next
         </Button>
       </Box>
-  
+      <SuccessModal  value={modalOptions} close={handleCloseSuccess}/>
     </Box>
   )
 }

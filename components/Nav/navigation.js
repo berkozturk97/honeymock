@@ -1,5 +1,6 @@
 import { Flex } from '@chakra-ui/react'
 
+
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
@@ -20,11 +21,12 @@ function Navigation() {
   const logOut = async () => {
     await localStorage.setItem('userInformations', {})
     await dispatch(setUserData({}))
-    router.push('/')
+    router.push('/');
+
   }
 
   const renderNav = () => {
-    if(userData === undefined || userData === null) {
+    if(userData === undefined || userData === null || Object.values(userData).length === 0) {
       console.log('userData.name !== ')
       return(
         <>
