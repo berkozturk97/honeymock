@@ -50,7 +50,7 @@ function Step1() {
           wantedWorkCity: workingCities,
         }
         dispatch(addUserData(updatedData))
-        router.push('/company/companyInformation')
+        router.push('/company/contract')
       }
     return(
         <>

@@ -44,7 +44,7 @@ const OauthLogin = async (req, res) => {
       HEADER.tokenCode = userInformations.tokenCode
       ID._id = userInformations._id
       if (userInformations.isFirstLogin === 'false') {
-        res.redirect(`/load/emptyLoadPage/${u.id}`)
+        res.redirect(`/load/${u.id}`)
       } else {
         res.redirect(`/talent/${u.id}`)
        

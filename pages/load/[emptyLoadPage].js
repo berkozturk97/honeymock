@@ -12,21 +12,21 @@ export default function EmptyLoadPage() {
   const dispatch = useDispatch();
 
   useEffect(async () => {
-    // let body = {
-    //   linkedInId: router.query.emptyLoadPage
-    // }
-    // const userInformations = await loginTalent({ body: body })
-    // localStorage.setItem('userInformations', JSON.stringify(userInformations));
-    // dispatch(setUserData(JSON.stringify(userInformations)))
-    // axios.defaults.headers.token = userInformations.tokenCode
-    // ID._id = userInformations._id
-    // console.log(userInformations)
-    // router.push({
-    //   pathname: '/talentProfile',
-    //   query: {
-    //     id: userInformations._id,
-    //   }
-  // });
+    let body = {
+      linkedInId: router.query.emptyLoadPage
+    }
+    const userInformations = await loginTalent({ body: body })
+    localStorage.setItem('userInformations', JSON.stringify(userInformations));
+    dispatch(setUserData(JSON.stringify(userInformations)))
+    axios.defaults.headers.token = userInformations.tokenCode
+    ID._id = userInformations._id
+    console.log(userInformations)
+    router.push({
+      pathname: '/talentProfile',
+      query: {
+        id: userInformations._id,
+      }
+  });
   },[])
   return (
     <Spinner/>
