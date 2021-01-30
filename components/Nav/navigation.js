@@ -15,7 +15,7 @@ function Navigation() {
   const dispatch = useDispatch();
   const { userData } = useSelector(state => state.user)
   useEffect(() => {
-      
+      console.log('navbar', userData)
   },[userData])
 
   const logOut = async () => {
@@ -26,7 +26,7 @@ function Navigation() {
   }
 
   const renderNav = () => {
-    if(userData === undefined || userData === null || Object.values(userData).length === 0) {
+    if(userData === undefined || userData === null || Object.values(userData).length === 0 ) {
       console.log('userData.name !== ')
       return(
         <>

@@ -15,7 +15,7 @@ function loadFromStorage() {
     try {
         const serializedState = localStorage.getItem('userInformations')
         if( serializedState === null ) return undefined
-        return JSON.parse(serializedState)
+        return serializedState
     } catch (error) {
         console.log(error)
     }

@@ -47,9 +47,9 @@ function Step7() {
       // axios.defaults.headers.token = userData.tokenCode
       // HEADER.tokenCode = userData.tokenCode
       // ID._id = userData._id
-      console.log('datageldi',userData)
-      setData(JSON.parse(userData));
-      console.log(data)
+      console.log('datageldi',JSON.parse(userData))
+      // setData(JSON.parse(userData));
+      // console.log(data)
 
   }
   const goNextPage = async () => {
