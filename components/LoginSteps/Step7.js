@@ -20,7 +20,6 @@ import SuccessModal from '../Modals/Modal'
 
 function Step7() {
   const [money, setMoney] = useState('')
-  const [login, setLogin] = useState('false')
   const [data, setData] = useState([])
   const [modalOptions, setModalOptions] = useState({
     open: false,
@@ -31,9 +30,6 @@ function Step7() {
   })
 
   useEffect(async() => {
-    await getTokenAndId();
-    console.log(ID._id)
-    console.log(HEADER.tokenCode)
   }, [])
 
   const { stepData } = useSelector((state) => state.step)
@@ -41,24 +37,14 @@ function Step7() {
   const dispatch = useDispatch()
   const router = useRouter()
 
-  
-  const getTokenAndId = async () => {
-      // await setUserData(JSON.parse(localStorage.getItem('userInformations')))
-      // axios.defaults.headers.token = userData.tokenCode
-      // HEADER.tokenCode = userData.tokenCode
-      // ID._id = userData._id
-      console.log('datageldi',JSON.parse(userData))
-      // setData(JSON.parse(userData));
-      // console.log(data)
-
-  }
   const goNextPage = async () => {
+    const profile = JSON.parse(userData);
     let updatedData = {
       wantedSalary: money,
-      isFirstLogin: login
+      isFirstLogin: 'false'
     }
     dispatch(addUserData(updatedData))
-    const user = await updateTalent({ body: { ...stepData, ...updatedData } })
+    const user = await updateTalent({ body: { ...stepData, ...updatedData }, _id: profile._id , token: profile.tokenCode})
     if (user !== null || user !== undefined){
       setModalOptions({...modalOptions,
         open: true,
@@ -67,11 +53,13 @@ function Step7() {
         isSuccess: true,
         yesButton: false,
       })
-      console.log('user',user)
       localStorage.setItem('userInformations', JSON.stringify(user));
       router.push({
-          pathname: '/talentProfile'
-      });
+        pathname: '/talentProfile',
+        query: {
+          id: user._id,
+        }
+    });
   } else {
     setModalOptions({...modalOptions,
       open: true,

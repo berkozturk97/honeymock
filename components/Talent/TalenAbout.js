@@ -87,7 +87,7 @@ function TalentAbout({user}) {
         <Text mt={10} color="#606c78" fontWeight="400px">
           Wants to work in (salary)
         </Text>
-        {user.wantedWorkCity.map((city, index) => {
+        {(user.wantedWorkCity || []).map((city, index) => {
           return (
             <Text key={index} color="#1f2228" fontWeight="400px">
               {city.key} (${user.wantedSalary})
@@ -98,7 +98,7 @@ function TalentAbout({user}) {
         <Text mt={10} color="#606c78" fontWeight="400px">
           Languages
         </Text>
-        {user.languages.map((language, index) => {
+        {(user.languages || []).map((language, index) => {
           return (
             <Text key={index} color="#1f2228" fontWeight="400px">
               {language.language} ({language.level.key})
