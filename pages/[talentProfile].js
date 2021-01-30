@@ -3,21 +3,19 @@ import React, {useState,useEffect} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import GridItem from "../components/material-ui-component/Grid/GridItem.js";
 import GridContainer from "../components/material-ui-component/Grid/GridContainer.js";
-import Button from "../components/material-ui-component/CustomButtons/Button.js";
 import Card from "../components/material-ui-component/Card/Card.js";
 import CardHeader from "../components/material-ui-component/Card/CardHeader.js";
 import CardAvatar from "../components/material-ui-component/Card/CardAvatar.js";
 import CardBody from "../components/material-ui-component/Card/CardBody.js";
-import CardFooter from "../components/material-ui-component/Card/CardFooter.js";
 import TalentAbout from '../components/Talent/TalenAbout'
 import TalentRoles from '../components/Talent/TalentRoles'
 import TalentSkills from '../components/Talent/TalentSkills'
 import TalentSummary from '../components/Talent/TalentSummary'
 import TalentWorkExperience from '../components/Talent/TalentWorkExperience'
 import TalentEducation from '../components/Talent/TalentEducation'
-import { Icon, Uploader } from 'rsuite'
-import { getTalentById } from '../api/talentApi'
-import { ID } from "../constants/header.js";
+import { Icon, Uploader } from 'rsuite';
+import { useRouter } from "next/router";
+import { getTalentById } from "../api/talentApi.js";
 const styles = {
   cardCategoryWhite: {
     color: "rgba(255,255,255,.62)",
@@ -36,23 +34,23 @@ const styles = {
     textDecoration: "none"
   }
 };
-
 const useStyles = makeStyles(styles);
 
 export default function TalenProfile() {
   const classes = useStyles();
   const [user, setUser] = useState([])
   const [isLogin, setIsLogin] = useState(false)
+  const router = useRouter()
   useEffect(() => {
     loadData();
   }, [])
 
   const loadData = async () => {
-    setIsLogin(false)
-    //const userData = await getTalentById()
-    const userInfos = await JSON.parse(localStorage.getItem('userInformations'))
-    setUser(userInfos)
-    console.log('dadssss', user)
+    setIsLogin(false);
+    const mainUser = await JSON.parse(localStorage.getItem('userInformations'));
+    const userInfos = await getTalentById({_id: router.query.id, token: mainUser.tokenCode })
+    console.log(userInfos)
+    setUser(userInfos[0])
     setIsLogin(true)
   }
   if (isLogin === false) {

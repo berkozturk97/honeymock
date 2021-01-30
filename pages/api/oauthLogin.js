@@ -40,12 +40,11 @@ const OauthLogin = async (req, res) => {
     const userInformations = await loginTalent({ body: body })
     //console.log('userinfo',userInformations)
     if (userInformations !== null || undefined) {
-      
       axios.defaults.headers.token = userInformations.tokenCode
       HEADER.tokenCode = userInformations.tokenCode
       ID._id = userInformations._id
-      if (userInformations.isFirstLogin === false) {
-        res.redirect(`/talentProfile/${userInformations._id}/${userInformations.name}`)
+      if (userInformations.isFirstLogin === 'false') {
+        res.redirect(`/load/emptyLoadPage/${u.id}`)
       } else {
         res.redirect(`/talent/${u.id}`)
        

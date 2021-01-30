@@ -10,7 +10,6 @@ import 'rsuite/lib/styles/index.less'
 import { setUserData } from '../../redux/actions/userAction'
 
 function Navigation() {
-  const [name, setName] = useState('')
   const router = useRouter()
   const dispatch = useDispatch();
   const { userData } = useSelector(state => state.user)
@@ -27,7 +26,6 @@ function Navigation() {
 
   const renderNav = () => {
     if(userData === undefined || userData === null || Object.values(userData).length === 0 ) {
-      console.log('userData.name !== ')
       return(
         <>
         <Nav.Item componentClass='span' >
@@ -47,16 +45,13 @@ function Navigation() {
         <>
         <Nav.Item componentClass='span' >
             <Link href="/talentProfile">
-              {userData.name + ' ' + userData.surname}
+              Profile
             </Link>
           </Nav.Item>
           <Nav.Item componentClass='span' > 
-            
               <a onClick={logOut}>
               Logout
-              </a>
-              
-       
+              </a> 
           </Nav.Item>
         </>
       )
@@ -71,17 +66,8 @@ function Navigation() {
               Home Page
             </Link>
           </Nav.Item>
-          
           {renderNav()}
-          {/* <Dropdown title="About">
-            <Dropdown.Item>Talent</Dropdown.Item>
-            <Dropdown.Item>Company</Dropdown.Item>
-            <Dropdown.Item>Us</Dropdown.Item>
-          </Dropdown> */}
         </Nav>
-        {/* <Nav pullRight>
-          <Nav.Item icon={<Icon icon="cog" />}>Settings</Nav.Item>
-        </Nav> */}
       </Navbar.Body>
     </Navbar>
   )
