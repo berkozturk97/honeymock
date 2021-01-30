@@ -8,9 +8,9 @@ function Contract() {
   return (
     
     <Box
-      width={[400,500,600,1000]}
-      bgcolor="#fff"
-      height={'auto'}
+      w={[350,500,600,1000]}
+      backgroundColor="#fff"
+      h={'auto'}
       p={10}
       m={(0, 'auto')}
       mt={10}

@@ -40,11 +40,7 @@ const OauthLogin = async (req, res) => {
     const userInformations = await loginTalent({ body: body })
     //console.log('userinfo',userInformations)
     if (userInformations !== null || undefined) {
-      if(typeof window !== "undefined"){
-        localStorage.getItem('userLinkedInInformations')
-        localStorage.setItem('userLinkedInInformations', JSON.stringify(userInformations));
-      }
-    
+      
       axios.defaults.headers.token = userInformations.tokenCode
       HEADER.tokenCode = userInformations.tokenCode
       ID._id = userInformations._id
