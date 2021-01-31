@@ -53,7 +53,7 @@ function Step7() {
         isSuccess: true,
         yesButton: false,
       })
-      localStorage.setItem('userInformations', JSON.stringify(user));
+      // localStorage.setItem('userInformations', JSON.stringify(user));
       router.push({
         pathname: '/talentProfile',
         query: {

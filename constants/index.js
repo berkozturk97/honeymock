@@ -237,4 +237,26 @@ export const Constants = {
         value: 19,
       },
     },
+    EXPERIENCE_YEAR: {
+      1: {
+        key: 1,
+        value: 0,
+      },
+      2: {
+        key: 2,
+        value: 1,
+      },
+      3: {
+        key: 3,
+        value: 2,
+      },
+      4: {
+        key: 4,
+        value: 3,
+      },
+      5: {
+        key: 5,
+        value: 4,
+      },
+    }
   };

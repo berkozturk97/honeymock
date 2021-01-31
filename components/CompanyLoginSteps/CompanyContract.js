@@ -15,7 +15,7 @@ import { useDispatch } from 'react-redux'
 import { Constants } from '../../constants/index'
 import { addUserData } from '../../redux/actions/stepOneAction'
 
-const { JOB_TITLES, JOB_TIME } = Constants
+const { JOB_TITLES, JOB_TIME, EXPERIENCE_YEAR } = Constants
 
 function CompanyContract() {
   const [companyInfo, setCompanyInfo] = useState({
@@ -30,9 +30,20 @@ function CompanyContract() {
   const [contract, setContract] = useState([])
   const router = useRouter()
   const dispatch = useDispatch()
+
   const handleTitle = (e) => {
     const { name, value } = e.target
     setCompanyInfo({ ...companyInfo, [name]: value })
+    console.log(companyInfo)
+  }
+  const handleExperience = (e) => {
+    const { name, value } = e.target
+    setCompanyInfo({ ...companyInfo, experience: JSON.parse(value) })
+    console.log(companyInfo)
+  }
+  const handleSalary = (e) => {
+    const { name, value } = e.target
+    setCompanyInfo({ ...companyInfo, salary: parseInt(value) })
     console.log(companyInfo)
   }
   const saveSkills = () => {
@@ -95,33 +106,23 @@ function CompanyContract() {
         </Select>
         <Select
           placeholder="Select experience"
-          onChange={handleTitle}
+          onChange={handleExperience}
           name="experience"
           mt={4}
           ml={5}
         >
-          <option key="1" value={1}>
-            1
+          {Object.values(EXPERIENCE_YEAR).map((year,index) => (
+            <option key={index} value={JSON.stringify(year.key)}>
+            {year.key}
           </option>
-          <option key="2" value={2}>
-            2
-          </option>
-          <option key="3" value={3}>
-            3
-          </option>
-          <option key="4" value={4}>
-            4
-          </option>
-          <option key="5" value={5}>
-            5
-          </option>
+          ))}
         </Select>
       </Box>
 
       <Input
         ml={5}
         w={100}
-        onChange={handleTitle}
+        onChange={handleSalary}
         name="salary"
         type="text"
         placeholder="Salary"

@@ -2,7 +2,8 @@ import { Box, Button, Checkbox, CloseButton, Flex, FormControl, Image, Input, Te
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { updateCompany } from '../../api/companyApi'
 
 import { addUserData } from '../../redux/actions/stepOneAction'
 
@@ -12,34 +13,34 @@ import {
   base64ToBinary,
   dataURItoBlob
 } from '../../utils/functions/upload'
+import SuccessModal from '../Modals/Modal'
 
 function Step4() {
   const [imageUrl, setImageUrl] = useState('')
 
   const [isVisible, setIsVisible] = useState(true)
   const [skill, setSkill] = useState('');
+  const [visionMission, setVisionMission] = useState('')
   const [talentSkills, setTalentSkills] = useState([]);
+  const [modalOptions, setModalOptions] = useState({
+    open: false,
+    message: '',
+    title: '',
+    isSuccess: false,
+    yesButton: true,
+  })
   const router = useRouter()
   const dispatch = useDispatch()
+  const { stepData } = useSelector((state) => state.step)
+  const { userData } = useSelector(state => state.user)
+
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target
-    setCompanyInfo({ ...companyInfo, [name]: value })
-    console.log(companyInfo)
+    const { value } = e.target
+    setVisionMission(value);
   }
-  const handleEmployeeNumber = (e) => {
-    setCompanyInfo({ ...companyInfo, employee: e.target.value })
-    console.log(companyInfo)
-  }
+  
 
-  const handleIndustry = (e) => {
-    if (e.target.value === 'Other') {
-      setIsVisible(false)
-    } else {
-      setIsVisible(true)
-      setCompanyInfo({ ...companyInfo, industry: e.target.value })
-    }
-  }
   const saveSkills = () => {
     setTalentSkills([...talentSkills, { skillName: skill }])
     console.log(talentSkills);
@@ -52,6 +53,13 @@ function Step4() {
     )
     setTalentSkills(updatedLanguageItems);
   }
+
+  const handleCloseSuccess = () => {
+		setModalOptions({
+			...modalOptions,
+			open: false
+		})
+	};
 
   const upload = async (event) => {
     const { url } = await getFormDataContent(event)
@@ -73,17 +81,39 @@ function Step4() {
   }
 
   const goNextPage = async () => {
+    const profile = JSON.parse(userData);
     let updatedData = {
-      companyLogoUrl: jobs,
-      visionMission: workingCities,
-      wantedSkills: sdds,
+      companyLogoUrl: imageUrl,
+      visionMission,
+      wantedSkills: talentSkills,
+      isFirstLogin: 'false'
     }
-   // dispatch(addUserData(updatedData))
-    const mainUser = await JSON.parse(localStorage.getItem('userInformations'));
-    router.push({
-      pathname: '/company/companyProfile',
-      query: { id: mainUser._id }
+   dispatch(addUserData(updatedData))
+   const user = await updateCompany({ body: { ...stepData, ...updatedData }, _id: profile._id , token: profile.tokenCode})
+   console.log(user);
+   if(user !== null || user !== undefined){
+    setModalOptions({...modalOptions,
+      open: true,
+      message: 'Enjoy with your experience!',
+      title: 'Login Steps Finish!',
+      isSuccess: true,
+      yesButton: false,
     })
+    // localStorage.setItem('userInformations', JSON.stringify(user));
+    // router.push({
+    //   pathname: '/company/companyProfile',
+    //   query: { id: profile._id }
+    // })
+   } else {
+    setModalOptions({...modalOptions,
+      open: true,
+      message: 'Please make sure that complete necessary fields!',
+      title: 'Opps something went wrong please try again',
+      isSuccess: false,
+      yesButton: true
+    })
+   }
+    
   }
   return (
     <Box >
@@ -124,7 +154,7 @@ function Step4() {
       <Text ml={5} mt={2} fontSize="md">
         A compelling mission statement is meaninful to candidates who look for a strong sense of purpose to connect with. Consider using what is on your company's careers page.
       </Text>
-      <Textarea ml={5} mt={2} h={'auto'} />
+      <Textarea onChange={handleInputChange} ml={5} mt={2} h={'auto'} />
 
       <Box>
         <Text ml={5} fontWeight="bold" mt={10} fontSize="md">
@@ -198,6 +228,7 @@ function Step4() {
           Click And Save
       </Button>
       </Box>
+      <SuccessModal value={modalOptions} close={handleCloseSuccess} />
     </Box>
   )
 }

@@ -41,25 +41,25 @@ function Step2() {
   }
 
   const handleIndustry = (e) => {
-    if (e.target.value === 'Other') {
+    if (JSON.parse(e.target.value) === 'Other') {
       setIsVisible(false)
       setCompanyInfo({ ...companyInfo, industry: JSON.parse(e.target.value)})
       console.log(companyInfo)
     } else {
       setIsVisible(true)
-      setCompanyInfo({ ...companyInfo, industry: e.target.value })
+      setCompanyInfo({ ...companyInfo, industry: JSON.parse(e.target.value )})
       console.log(companyInfo)
     }
   }
 
   const goNextPage = () => {
     let updatedData = {
-      companyUrl: 'jobs',
-      headquartersAddress: 'workingCities',
-      companyEmployeeNumber: 'key value',
-      companyIndustry: 'key value'
+      companyUrl: companyInfo.companyUrl,
+      headquartersAddress: companyInfo.hqAddress,
+      companyEmployeeNumber: companyInfo.employee,
+      companyIndustry: companyInfo.industry
     }
-    // dispatch(addUserData(updatedData))
+    dispatch(addUserData(updatedData))
     router.push('/company/terms')
   }
   return (
@@ -137,7 +137,7 @@ function Step2() {
             mt={4}
           >
             {Object.values(INDUSTRIES).map((industry, index) => (
-              <option key={index} value={industry.key}>
+              <option key={index} value={JSON.stringify(industry)}>
                 {industry.key}
               </option>
             ))}
@@ -150,7 +150,6 @@ function Step2() {
             name="industry"
             type="text"
             placeholder="Type Your Industry"
-            value={companyInfo.industry}
             onChange={handleInputChange}
           />
         </FormControl>

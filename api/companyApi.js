@@ -59,19 +59,19 @@ export const createCompany = ({body=null}) => {
     });
 };
 
-export const updateTalent = ({body=null, _id=null, token=null}) => {
+export const updateCompany = ({body=null,_id = null, token=null}) => {
     console.log(body);
     return new Promise((resolve, reject) => {
-        let REQUEST_URL = "https://honeypot-server.herokuapp.com/talent/updateTalent/" + _id;
+        let REQUEST_URL = "https://honeypot-server.herokuapp.com/employer/updateEmployer/" + _id;
         axios.put(REQUEST_URL,body,{
             headers: {token}
         })
             .then((response) => {
                 console.log(response)
                 resolve(response.data)
-            }).catch((err) => {
-                console.log(err)
-                reject(null);
+            }).catch((response) => {
+                
+                resolve(null);
             })
     });
 };

@@ -16,6 +16,9 @@ import TalentEducation from '../../components/Talent/TalentEducation'
 import { Icon, Uploader } from 'rsuite';
 import { useRouter } from "next/router";
 import { getEmployerById } from "../../api/companyApi.js";
+import CompanyAbout from "../../components/Company/CompanyAbout.js";
+import CompanyVision from "../../components/Company/CompanyVision.js";
+import CompanyContract from "../../components/Company/CompanyContract.js";
 const styles = {
   cardCategoryWhite: {
     color: "rgba(255,255,255,.62)",
@@ -71,7 +74,7 @@ export default function CompanyProfile() {
             </button>
             </CardAvatar>
             <CardBody profile>
-             <TalentAbout user={user}  />
+             <CompanyAbout user={user}  />
             </CardBody>
           </Card>
         </GridItem>
@@ -84,27 +87,12 @@ export default function CompanyProfile() {
             <CardBody>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={12}>
-                 <TalentRoles user={user}  />
+                 <CompanyVision  user={user} />
                 </GridItem>
               </GridContainer>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={12}>
-                 <TalentSummary  user={user} />
-                </GridItem>
-              </GridContainer>
-              <GridContainer>
-                <GridItem xs={12} sm={12} md={12}>
-                  <TalentSkills user={user}  />
-                </GridItem>
-              </GridContainer>
-              <GridContainer>
-                <GridItem xs={12} sm={12} md={12}>
-                 <TalentWorkExperience user={user}  />
-                </GridItem>
-              </GridContainer>
-              <GridContainer>
-                <GridItem xs={12} sm={12} md={12}>
-                  <TalentEducation user={user}  />  
+                 <CompanyContract user={user}  />
                 </GridItem>
               </GridContainer>
               <GridContainer>
