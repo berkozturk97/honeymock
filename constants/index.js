@@ -130,13 +130,29 @@ export const Constants = {
       }
     },
     COMPANY_SIZE: {
-      1000: {
-        key: '1000',
-        value: 1000,
+      1: {
+        key: '1-5',
+        value: 0,
       },
-      2000: {
-        key: '2000',
-        value: 2000,
+      2: {
+        key: '5-10',
+        value: 1,
+      },
+      3: {
+        key: '10-50',
+        value: 2,
+      },
+      4: {
+        key: '50-100',
+        value: 3,
+      },
+      5: {
+        key: '100-200',
+        value: 4,
+      },
+      6: {
+        key: '200+',
+        value: 5,
       },
     },
     INDUSTRIES: {
@@ -220,5 +236,5 @@ export const Constants = {
         key: 'Other',
         value: 19,
       },
-    }
+    },
   };

@@ -11,7 +11,9 @@ import {
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Constants } from '../../constants/index'
+import { addUserData } from '../../redux/actions/stepOneAction'
 
 const { JOB_TITLES, JOB_TIME } = Constants
 
@@ -27,6 +29,7 @@ function CompanyContract() {
   const [skill, setSkill] = useState('')
   const [contract, setContract] = useState([])
   const router = useRouter()
+  const dispatch = useDispatch()
   const handleTitle = (e) => {
     const { name, value } = e.target
     setCompanyInfo({ ...companyInfo, [name]: value })
@@ -51,11 +54,10 @@ function CompanyContract() {
     setContract(updatedContracts)
   }
   const goNextPage = () => {
-  /*  let updatedData = {
-      wantedRoles: jobs,
-      wantedWorkCity: workingCities
+   let updatedData = {
+      contract
     }
-    dispatch(addUserData(updatedData))*/
+    dispatch(addUserData(updatedData))
     router.push('/company/companyInformation')
   }
   return (

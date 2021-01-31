@@ -16,6 +16,7 @@ import TalentEducation from '../components/Talent/TalentEducation'
 import { Icon, Uploader } from 'rsuite';
 import { useRouter } from "next/router";
 import { getTalentById } from "../api/talentApi.js";
+import { NoSsr } from "@material-ui/core";
 const styles = {
   cardCategoryWhite: {
     color: "rgba(255,255,255,.62)",
@@ -61,6 +62,7 @@ export default function TalenProfile() {
     )
   } else {
   return (
+    <NoSsr>
     <div style={{margin:30}}>
       <GridContainer>
       <GridItem xs={12} sm={12} md={4}>
@@ -115,6 +117,7 @@ export default function TalenProfile() {
    
       </GridContainer>
     </div>
+    </NoSsr>
   );
   }
 }

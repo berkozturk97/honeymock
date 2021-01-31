@@ -15,7 +15,7 @@ import { useDispatch } from 'react-redux'
 import { Constants } from '../../constants/index'
 import { addUserData } from '../../redux/actions/stepOneAction'
 
-const { INDUSTRIES } = Constants
+const { INDUSTRIES, COMPANY_SIZE } = Constants
 
 function Step2() {
   const [companyInfo, setCompanyInfo] = useState({
@@ -36,24 +36,29 @@ function Step2() {
     console.log(companyInfo)
   }
   const handleEmployeeNumber = (e) => {
-    setCompanyInfo({ ...companyInfo, employee: e.target.value })
+    setCompanyInfo({ ...companyInfo, employee: JSON.parse(e.target.value) })
     console.log(companyInfo)
   }
 
   const handleIndustry = (e) => {
     if (e.target.value === 'Other') {
       setIsVisible(false)
+      setCompanyInfo({ ...companyInfo, industry: JSON.parse(e.target.value)})
+      console.log(companyInfo)
     } else {
       setIsVisible(true)
       setCompanyInfo({ ...companyInfo, industry: e.target.value })
+      console.log(companyInfo)
     }
   }
 
   const goNextPage = () => {
-    // let updatedData = {
-    //   wantedRoles: jobs,
-    //   wantedWorkCity: workingCities
-    // }
+    let updatedData = {
+      companyUrl: 'jobs',
+      headquartersAddress: 'workingCities',
+      companyEmployeeNumber: 'key value',
+      companyIndustry: 'key value'
+    }
     // dispatch(addUserData(updatedData))
     router.push('/company/terms')
   }
@@ -109,24 +114,11 @@ function Step2() {
             onChange={handleEmployeeNumber}
             mt={4}
           >
-            <option key="1" value="1-5">
-              1-5
-            </option>
-            <option key="2" value="5-10">
-              5-10
-            </option>
-            <option key="3" value="10-50">
-              10-50
-            </option>
-            <option key="4" value="50-100">
-              50-100
-            </option>
-            <option key="5" value="100-200">
-              100-200
-            </option>
-            <option key="6" value="200+">
-              200+
-            </option>
+            {Object.values(COMPANY_SIZE).map((size, index) => (
+              <option value={JSON.stringify(size)} key={index}>
+                {size.key}
+              </option>
+            ))}
           </Select>
         </FormControl>
 

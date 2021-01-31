@@ -73,10 +73,11 @@ function Step4() {
   }
 
   const goNextPage = async () => {
-    // let updatedData = {
-    //   wantedRoles: jobs,
-    //   wantedWorkCity: workingCities
-    // }
+    let updatedData = {
+      companyLogoUrl: jobs,
+      visionMission: workingCities,
+      wantedSkills: sdds,
+    }
    // dispatch(addUserData(updatedData))
     const mainUser = await JSON.parse(localStorage.getItem('userInformations'));
     router.push({

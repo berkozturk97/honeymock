@@ -22,7 +22,6 @@ function SignUpFormCompany() {
     city: '',
     job: '',
     company: '',
-    employees: 0,
     password: '',
     rePassword: ''
   })
@@ -57,7 +56,6 @@ function SignUpFormCompany() {
       companyCity: values.city,
       jobTitle: values.job,
       companyName: values.company,
-      companyEmployeeNumber: values.employees,
       phone: values.phone,
     }
     console.log(body)
@@ -69,7 +67,6 @@ function SignUpFormCompany() {
       values.city.trim().length === 0 ||
       values.job.trim().length === 0 ||
       values.company.trim().length === 0 ||
-      values.employees.trim().length === 0 ||
       values.rePassword.trim().length === 0 ||
       values.password.trim().length === 0 ||
       values.password.trim().length < 6 ||
@@ -223,15 +220,6 @@ function SignUpFormCompany() {
           />
         </FormControl>
 
-        <FormControl id="employees" mt={4}>
-          <Input
-            type="number"
-            name="employees"
-            value={values.employees}
-            onChange={handleInputChange}
-            placeholder="Employees"
-          />
-        </FormControl>
 
         <Button type="submit" width="full" mt={4}>
           Sign Up
