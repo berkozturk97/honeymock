@@ -57,7 +57,6 @@ function LoginTalentForm() {
           pathname: '/talentProfile',
           query: {
             id: userInformations._id,
-            t: userInformations.tokenCode,
           }
       });
       } else {

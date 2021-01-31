@@ -1,4 +1,5 @@
 import { Box, Button, Checkbox, CloseButton, Flex, FormControl, Image, Input, Text, Textarea } from '@chakra-ui/react'
+import axios from 'axios'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
@@ -14,7 +15,7 @@ import {
 
 function Step4() {
   const [imageUrl, setImageUrl] = useState('')
- 
+
   const [isVisible, setIsVisible] = useState(true)
   const [skill, setSkill] = useState('');
   const [talentSkills, setTalentSkills] = useState([]);
@@ -40,17 +41,17 @@ function Step4() {
     }
   }
   const saveSkills = () => {
-    setTalentSkills([...talentSkills, {skillName: skill}])
+    setTalentSkills([...talentSkills, { skillName: skill }])
     console.log(talentSkills);
     setSkill('');
-}
+  }
 
-const deleteSkill = (talentSkill,index) => {
-const updatedLanguageItems = talentSkills.filter(
-    (item,i) => i !== index
-  )
-  setTalentSkills(updatedLanguageItems);
-}
+  const deleteSkill = (talentSkill, index) => {
+    const updatedLanguageItems = talentSkills.filter(
+      (item, i) => i !== index
+    )
+    setTalentSkills(updatedLanguageItems);
+  }
 
   const upload = async (event) => {
     const { url } = await getFormDataContent(event)
@@ -71,13 +72,17 @@ const updatedLanguageItems = talentSkills.filter(
     }
   }
 
-  const goNextPage = () => {
+  const goNextPage = async () => {
     // let updatedData = {
     //   wantedRoles: jobs,
     //   wantedWorkCity: workingCities
     // }
-    dispatch(addUserData(updatedData))
-    router.push('/login/companyStep4')
+   // dispatch(addUserData(updatedData))
+    const mainUser = await JSON.parse(localStorage.getItem('userInformations'));
+    router.push({
+      pathname: '/company/companyProfile',
+      query: { id: mainUser._id }
+    })
   }
   return (
     <Box >
@@ -107,9 +112,9 @@ const updatedLanguageItems = talentSkills.filter(
           'https://via.placeholder.com/300x150?text=Upload+Your+Company+Logo'
         }
       />
-        <Box ml={5}
+      <Box ml={5}
         mt={2}>
-      <input type="file" onChange={upload} multiple />
+        <input type="file" onChange={upload} multiple />
       </Box>
 
       <Text ml={5} fontWeight="bold" mt={10} fontSize="md">
@@ -118,18 +123,18 @@ const updatedLanguageItems = talentSkills.filter(
       <Text ml={5} mt={2} fontSize="md">
         A compelling mission statement is meaninful to candidates who look for a strong sense of purpose to connect with. Consider using what is on your company's careers page.
       </Text>
-    <Textarea ml={5} mt={2} h={'auto'} />
+      <Textarea ml={5} mt={2} h={'auto'} />
 
-    <Box>
-    <Text ml={5} fontWeight="bold" mt={10} fontSize="md">
-        Tech Stack
+      <Box>
+        <Text ml={5} fontWeight="bold" mt={10} fontSize="md">
+          Tech Stack
       </Text>
-      <Text ml={5} mt={2} fontSize="md">
-        The tech stack you employ is key for matching skills and candidate preferences. Add as many technologies as you think relevant for prospective candidates.
+        <Text ml={5} mt={2} fontSize="md">
+          The tech stack you employ is key for matching skills and candidate preferences. Add as many technologies as you think relevant for prospective candidates.
       </Text>
 
-      <Flex float='left'>
-        <FormControl id="skill" mt={4}>
+        <Flex float='left'>
+          <FormControl id="skill" mt={4}>
             <Input
               ml={5}
               w={300}
@@ -138,7 +143,7 @@ const updatedLanguageItems = talentSkills.filter(
               type="text"
               placeholder="Type in a skill and press 'Add' "
               value={skill}
-              //   onChange={handleInputChange}
+            //   onChange={handleInputChange}
             />
           </FormControl>
 
@@ -150,46 +155,46 @@ const updatedLanguageItems = talentSkills.filter(
 
       {talentSkills.map((talentSkill, index) => {
         return (
-            <Box>
-          <Box mt={20} key={index}>
-            <Flex
-              float='left'
-              display="inline-flex"
-              w={'auto'}
-              h={30}
-              borderWidth="1px"
-              borderRadius="8px"
-              mt={10}
-              ml={5}
-            >
-              <Text ml={1} mt={1}>
-                {talentSkill.skillName}
-              </Text>
-              <CloseButton
-                onClick={() => deleteSkill(talentSkill,index)}
-                color="red"
-                alignSelf="center"
-                ml={1}
-                size="sm"
-              />
-            </Flex>
-          </Box>
+          <Box>
+            <Box mt={20} key={index}>
+              <Flex
+                float='left'
+                display="inline-flex"
+                w={'auto'}
+                h={30}
+                borderWidth="1px"
+                borderRadius="8px"
+                mt={10}
+                ml={5}
+              >
+                <Text ml={1} mt={1}>
+                  {talentSkill.skillName}
+                </Text>
+                <CloseButton
+                  onClick={() => deleteSkill(talentSkill, index)}
+                  color="red"
+                  alignSelf="center"
+                  ml={1}
+                  size="sm"
+                />
+              </Flex>
+            </Box>
           </Box>
         )
       })}
 
-        <Box w={100} h={'auto'} mt={30}>
-      <Button
-        bg="#7DB0E4"
-        color="white"
-        _hover="none"
-        onClick={goNextPage}
-        ml={5}
-        left={750}
-        right={0}
-        mt={10}
-      >
-        Click And Save
+      <Box w={100} h={'auto'} mt={30}>
+        <Button
+          bg="#7DB0E4"
+          color="white"
+          _hover="none"
+          onClick={goNextPage}
+          ml={5}
+          left={750}
+          right={0}
+          mt={10}
+        >
+          Click And Save
       </Button>
       </Box>
     </Box>

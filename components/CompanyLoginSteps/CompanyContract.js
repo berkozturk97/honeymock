@@ -9,6 +9,7 @@ import {
   Button,
   CloseButton
 } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { Constants } from '../../constants/index'
 
@@ -25,6 +26,7 @@ function CompanyContract() {
   const [talentSkills, setTalentSkills] = useState([])
   const [skill, setSkill] = useState('')
   const [contract, setContract] = useState([])
+  const router = useRouter()
   const handleTitle = (e) => {
     const { name, value } = e.target
     setCompanyInfo({ ...companyInfo, [name]: value })
@@ -49,11 +51,11 @@ function CompanyContract() {
     setContract(updatedContracts)
   }
   const goNextPage = () => {
-    let updatedData = {
+  /*  let updatedData = {
       wantedRoles: jobs,
       wantedWorkCity: workingCities
     }
-    dispatch(addUserData(updatedData))
+    dispatch(addUserData(updatedData))*/
     router.push('/company/companyInformation')
   }
   return (
@@ -229,7 +231,6 @@ function CompanyContract() {
           _hover="none"
           onClick={goNextPage}
           ml={5}
-          left={750}
           right={0}
           mt={10}
         >

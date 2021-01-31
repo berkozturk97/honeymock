@@ -31,11 +31,11 @@ export const getTalents = (token) => {
     });
 };
 
-export const getTalentById = () => {
+export const getEmployerById = ({_id = null, token=null}) => {
     return new Promise((resolve, reject) => {
-        let REQUEST_URL = "https://honeypot-server.herokuapp.com/talent/getTalentById/" + ID._id;
+        let REQUEST_URL = "https://honeypot-server.herokuapp.com/employer/getEmployerById/" + _id;
         axios.get(REQUEST_URL, {
-            headers: axios.defaults.headers
+            headers:{token}
         })
             .then((response) => {
                 resolve(response.data)

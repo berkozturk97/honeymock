@@ -18,10 +18,17 @@ function Navigation() {
   },[userData])
 
   const logOut = async () => {
-    await localStorage.setItem('userInformations', {})
-    await dispatch(setUserData({}))
+    await localStorage.setItem('userInformations', null)
+    await dispatch(setUserData(null))
     router.push('/');
 
+  }
+
+  const goProfile = () => {
+    if(JSON.parse(userData).type === 1){
+      return `/talentProfile?id=${JSON.parse(userData) ? JSON.parse(userData)._id : null}`
+    }
+      return `/company/companyProfile?id=${JSON.parse(userData) ? JSON.parse(userData)._id : null}`
   }
 
   const renderNav = () => {
@@ -44,8 +51,8 @@ function Navigation() {
       return (
         <>
         <Nav.Item componentClass='span' >
-            <Link href="/talentProfile">
-              Profile
+            <Link href={goProfile()}>
+             {`${JSON.parse(userData) ? JSON.parse(userData).name : null} ${JSON.parse(userData) ? JSON.parse(userData).surname : ''}`}
             </Link>
           </Nav.Item>
           <Nav.Item componentClass='span' > 
@@ -73,21 +80,4 @@ function Navigation() {
   )
 }
 
-export default Navigation
-
-{
-  /* <Flex bg='tomato' w='100%' h={50} justify='space-evenly' align='center'>
-        <Link href='/'>
-            <a>Home Page</a>
-        </Link>
-        <Link href='/talent'>
-            <a>Talent</a>
-        </Link>
-        <Link href='/login'>
-            <a>Login</a>
-        </Link>
-        <Link href='/signUpTalent'>
-            <a>Sign Up</a>
-        </Link>
-    </Flex> */
-}
+export default Navigation;
