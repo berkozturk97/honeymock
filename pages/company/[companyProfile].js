@@ -7,18 +7,14 @@ import Card from "../../components/material-ui-component/Card/Card.js";
 import CardHeader from "../../components/material-ui-component/Card/CardHeader.js";
 import CardAvatar from "../../components/material-ui-component/Card/CardAvatar.js";
 import CardBody from "../../components/material-ui-component/Card/CardBody.js";
-import TalentAbout from '../../components/Talent/TalenAbout'
-import TalentRoles from '../../components/Talent/TalentRoles'
-import TalentSkills from '../../components/Talent/TalentSkills'
-import TalentSummary from '../../components/Talent/TalentSummary'
-import TalentWorkExperience from '../../components/Talent/TalentWorkExperience'
-import TalentEducation from '../../components/Talent/TalentEducation'
 import { Icon, Uploader } from 'rsuite';
 import { useRouter } from "next/router";
 import { getEmployerById } from "../../api/companyApi.js";
 import CompanyAbout from "../../components/Company/CompanyAbout.js";
 import CompanyVision from "../../components/Company/CompanyVision.js";
 import CompanyContract from "../../components/Company/CompanyContract.js";
+import { Avatar } from "@material-ui/core";
+import Loading from "../../components/Loading/Loading.js";
 const styles = {
   cardCategoryWhite: {
     color: "rgba(255,255,255,.62)",
@@ -37,10 +33,8 @@ const styles = {
     textDecoration: "none"
   }
 };
-const useStyles = makeStyles(styles);
 
 export default function CompanyProfile() {
-  const classes = useStyles();
   const [user, setUser] = useState([])
   const [isLogin, setIsLogin] = useState(false)
   const router = useRouter()
@@ -56,11 +50,20 @@ export default function CompanyProfile() {
     setUser(userInfos[0])
     setIsLogin(true)
   }
+
+  const useStyles = makeStyles((theme) => ({
+    large: {
+      width: theme.spacing(13),
+      height: theme.spacing(13),
+    },
+  }));
+  const classes = useStyles();
+  
   if (isLogin === false) {
     return (
-      <button style={{ width: '100px', height: '100px' }}>
-      <Icon icon="avatar" size="5x" />
-    </button>
+      <div>
+        <Loading/>
+      </div>
     )
   } else {
   return (
@@ -69,9 +72,7 @@ export default function CompanyProfile() {
       <GridItem xs={12} sm={12} md={4}>
           <Card profile>
             <CardAvatar profile>
-            <button style={{ width: '100px', height: '100px' }}>
-              <Icon icon="avatar" size="5x" />
-            </button>
+              <Avatar alt="Cindy Baker" src={user.companyLogoUrl} className={classes.large} />
             </CardAvatar>
             <CardBody profile>
              <CompanyAbout user={user}  />

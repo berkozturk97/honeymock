@@ -13,20 +13,9 @@ import { addUserData } from '../../redux/actions/stepOneAction'
 const { INDUSTRIES } = Constants
 
 function Step3() {
-  
- 
-
   const router = useRouter()
   const dispatch = useDispatch()
-
-  
-
   const goNextPage = () => {
-    // let updatedData = {
-    //   wantedRoles: jobs,
-    //   wantedWorkCity: workingCities
-    // }
-    //dispatch(addUserData(updatedData))
     router.push('/company/final')
   }
   return (

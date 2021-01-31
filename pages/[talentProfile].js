@@ -16,28 +16,32 @@ import TalentEducation from '../components/Talent/TalentEducation'
 import { Icon, Uploader } from 'rsuite';
 import { useRouter } from "next/router";
 import { getTalentById } from "../api/talentApi.js";
-import { NoSsr } from "@material-ui/core";
-const styles = {
-  cardCategoryWhite: {
-    color: "rgba(255,255,255,.62)",
-    margin: "0",
-    fontSize: "14px",
-    marginTop: "0",
-    marginBottom: "0"
-  },
-  cardTitleWhite: {
-    color: "#FFFFFF",
-    marginTop: "0px",
-    minHeight: "auto",
-    fontWeight: "300",
-    fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
-    marginBottom: "3px",
-    textDecoration: "none"
-  }
-};
-const useStyles = makeStyles(styles);
+import { Avatar, NoSsr } from "@material-ui/core";
+import Loading from "../components/Loading/Loading.js";
 
 export default function TalenProfile() {
+  const useStyles = makeStyles((theme) => ({
+    large: {
+      width: theme.spacing(13),
+      height: theme.spacing(13),
+    },
+    cardCategoryWhite: {
+      color: "rgba(255,255,255,.62)",
+      margin: "0",
+      fontSize: "14px",
+      marginTop: "0",
+      marginBottom: "0"
+    },
+    cardTitleWhite: {
+      color: "#FFFFFF",
+      marginTop: "0px",
+      minHeight: "auto",
+      fontWeight: "300",
+      fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+      marginBottom: "3px",
+      textDecoration: "none"
+    }
+  }));
   const classes = useStyles();
   const [user, setUser] = useState([])
   const [isLogin, setIsLogin] = useState(false)
@@ -56,9 +60,9 @@ export default function TalenProfile() {
   }
   if (isLogin === false) {
     return (
-      <button style={{ width: '100px', height: '100px' }}>
-      <Icon icon="avatar" size="5x" />
-    </button>
+      <div>
+      <Loading/>
+    </div>
     )
   } else {
   return (
@@ -68,9 +72,7 @@ export default function TalenProfile() {
       <GridItem xs={12} sm={12} md={4}>
           <Card profile>
             <CardAvatar profile>
-            <button style={{ width: '100px', height: '100px' }}>
-              <Icon icon="avatar" size="5x" />
-            </button>
+             <Avatar alt="Cindy Baker" src={user.profilePhoto} className={classes.large} />
             </CardAvatar>
             <CardBody profile>
               <TalentAbout user={user}  />

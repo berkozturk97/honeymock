@@ -99,11 +99,11 @@ function Step4() {
       isSuccess: true,
       yesButton: false,
     })
-    // localStorage.setItem('userInformations', JSON.stringify(user));
-    // router.push({
-    //   pathname: '/company/companyProfile',
-    //   query: { id: profile._id }
-    // })
+    localStorage.setItem('userInformations', JSON.stringify(user));
+    router.push({
+      pathname: '/company/companyProfile',
+      query: { id: profile._id }
+    })
    } else {
     setModalOptions({...modalOptions,
       open: true,

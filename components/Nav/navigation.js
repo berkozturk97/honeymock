@@ -14,8 +14,8 @@ function Navigation() {
   const dispatch = useDispatch();
   const { userData } = useSelector(state => state.user)
   useEffect(() => {
-      console.log('navbar', userData)
-  },[userData])
+    console.log('navbar', userData)
+  }, [userData])
 
   const logOut = async () => {
     await localStorage.setItem('userInformations', null)
@@ -25,40 +25,45 @@ function Navigation() {
   }
 
   const goProfile = () => {
-    if(JSON.parse(userData).type === 1){
-      return `/talentProfile?id=${JSON.parse(userData) ? JSON.parse(userData)._id : null}`
+    console.log(JSON.parse(userData))
+    if (JSON.parse(userData) !== null) {
+      if (JSON.parse(userData).type === 1) {
+        return `/talentProfile?id=${JSON.parse(userData) ? JSON.parse(userData)._id : null}`;
+      }
+      return `/company/companyProfile?id=${JSON.parse(userData) ? JSON.parse(userData)._id : null}`;
     }
-      return `/company/companyProfile?id=${JSON.parse(userData) ? JSON.parse(userData)._id : null}`
+    return '/';
+
   }
 
   const renderNav = () => {
-    if(userData === undefined || userData === null || Object.values(userData).length === 0 ) {
-      return(
+    if (userData === undefined || userData === null || Object.values(userData).length === 0) {
+      return (
         <>
-        <Nav.Item componentClass='span' >
+          <Nav.Item componentClass='span' >
             <Link href="/loginTalent">
               Login
             </Link>
           </Nav.Item>
-          <Nav.Item componentClass='span' > 
+          <Nav.Item componentClass='span' >
             <Link href="/signUpTalent">
               Sign Up
             </Link>
           </Nav.Item>
-          </>
+        </>
       )
     } else {
       return (
         <>
-        <Nav.Item componentClass='span' >
+          <Nav.Item componentClass='span' >
             <Link href={goProfile()}>
-             {`${JSON.parse(userData) ? JSON.parse(userData).name : null} ${JSON.parse(userData) ? JSON.parse(userData).surname : ''}`}
+              {`${JSON.parse(userData) ? JSON.parse(userData).name : null} ${JSON.parse(userData) ? JSON.parse(userData).surname : ''}`}
             </Link>
           </Nav.Item>
-          <Nav.Item componentClass='span' > 
-              <a onClick={logOut}>
+          <Nav.Item componentClass='span' >
+            <a onClick={logOut}>
               Logout
-              </a> 
+              </a>
           </Nav.Item>
         </>
       )

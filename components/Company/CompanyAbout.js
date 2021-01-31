@@ -18,48 +18,48 @@ function CompanyAbout({user}) {
           Company Name
         </Text>
         <Text color="#1f2228" fontWeight="400px">
-          {user.experienceYear}
+          {user.companyName}
         </Text>
 
         <Text mt={10} color="#606c78" fontWeight="400px">
           Company Employee Size
         </Text>
         <Text color="#1f2228" fontWeight="400px">
-          {user.experienceYear}
+          {user.companyEmployeeNumber.key}
         </Text>
 
         <Text mt={10} color="#606c78" fontWeight="400px">
           Company Website
         </Text>
         <Text color="#1f2228" fontWeight="400px">
-          {user.experienceYear}
+          {user.companyUrl}
         </Text>
 
         <Text mt={10} color="#606c78" fontWeight="400px">
           Company City
         </Text>
         <Text color="#1f2228" fontWeight="400px">
-          {user.experienceYear}
+          {user.companyCity}
         </Text>
 
         <Text mt={10} color="#606c78" fontWeight="400px">
           Company Address and Location
         </Text>
         <Text color="#1f2228" fontWeight="400px">
-          {user.experienceYear}
+          {user.headquartersAddress}
         </Text>
 
         <Text mt={10} color="#606c78" fontWeight="400px">
           Company Phone Number
         </Text>
         <Text color="#1f2228" fontWeight="400px">
-          {user.experienceYear}
+          {user.phone}
         </Text>
 
         <Text mt={10} color="#606c78" fontWeight="400px">
         Wants to work in these cities
         </Text>
-        {(user.wantedJobTimes || []).map((contract, index) => {
+        {(user.wantedWorkCity || []).map((contract, index) => {
           return (
             <Text key={index} color="#1f2228" fontWeight="400px">
               {contract.key}
@@ -67,10 +67,10 @@ function CompanyAbout({user}) {
           )
         })}
 
-<Text mt={10} color="#606c78" fontWeight="400px">
+      <Text mt={10} color="#606c78" fontWeight="400px">
         Wants to work with these roles
         </Text>
-        {(user.wantedJobTimes || []).map((contract, index) => {
+        {(user.wantedRoles || []).map((contract, index) => {
           return (
             <Text key={index} color="#1f2228" fontWeight="400px">
               {contract.key}
@@ -78,15 +78,15 @@ function CompanyAbout({user}) {
           )
         })}
 
-<Text mt={10} color="#606c78" fontWeight="400px">
+      <Text mt={10} color="#606c78" fontWeight="400px">
         Wants to work with these skills
         </Text>
-        {(user.wantedJobTimes || []).map((contract, index) => {
-          return (
-            <Text key={index} color="#1f2228" fontWeight="400px">
-              {contract.key}
-            </Text>
-          )
+        {(user.contract || []).map((item, index) => {
+          return item.skills.map((contractItem) => (
+              <Text key={index} color="#1f2228" fontWeight="400px">
+                {contractItem.skillName}
+              </Text>
+          ))
         })}
 
      

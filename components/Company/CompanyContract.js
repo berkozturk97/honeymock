@@ -12,11 +12,14 @@ function CompanyContract({user}) {
         Open Contracts
       </Text>
       {
-        (user.workedCompanies || []).map((company,index) =>{
+        (user.contract || []).map((contract,index) =>{
           return (
             <div class={'main-item-div'}>
-            <a class={'title'}> <a class={'dot'}>•</a> {company.position} ({company.company}) ({moment(company.startDate).format('YYYY')} - {moment(company.endDate).format('YYYY')}) </a>
-            <a class={'subtitle'}> - {company.description}  </a>
+            <a class={'title'}> <a class={'dot'}>•</a> {contract.companyInfo.jobTitle} ({contract.companyInfo.jobTime}) </a>
+            <a class={'subtitle'}> - {contract.companyInfo.jobTitle}  </a>
+            <a class={'subtitle'}> - Experience: {contract.companyInfo.experience} years </a>
+            <a class={'subtitle'}> - Salary: ${contract.companyInfo.salary}</a>
+            <a class={'subtitle'}> - Role Description: {contract.companyInfo.roleDescription}</a>
           </div>
           )
         })
