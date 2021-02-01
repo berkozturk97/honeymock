@@ -60,7 +60,7 @@ import { updateUserData } from '../../../redux/actions/updateAction'
     }
   
     const handleIndustry = (e) => {
-      if (JSON.parse(e.target.value) === "Other") {
+      if (JSON.parse(e.target.value).key === "Other") {
         setIsVisible(false)
         setCompanyInfo({ ...companyInfo, industry: JSON.parse(e.target.value)})
         console.log(companyInfo)

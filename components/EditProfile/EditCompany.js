@@ -157,8 +157,6 @@ export default function EditCompany({user}) {
           General Informations
       </Text>
         </AccordionSummary>
-
-        
         <AccordionDetails>
             <CompanyInformations infos={user} />
         </AccordionDetails>
