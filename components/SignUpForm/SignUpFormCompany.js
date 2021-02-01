@@ -99,7 +99,6 @@ function SignUpFormCompany() {
           phone: '',
           city: '',
           job: '',
-          employees: 0,
           company: '',
           password: '',
           rePassword: ''

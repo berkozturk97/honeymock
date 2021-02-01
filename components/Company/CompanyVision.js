@@ -9,7 +9,7 @@ function CompanyVision({user}) {
       <GridItem>
       <Text justifySelf='center' ml={2} fontSize="2xl">Company Vision and Mission</Text>
       <Text ml={2} justifySelf="center" fontSize="md">
-        Our Mission is {user.visionMission}
+        {user.visionMission}
       </Text>
       <Flex align='center' justify='center' pb={10}>
             

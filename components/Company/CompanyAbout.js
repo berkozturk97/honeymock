@@ -81,12 +81,12 @@ function CompanyAbout({user}) {
       <Text mt={10} color="#606c78" fontWeight="400px">
         Wants to work with these skills
         </Text>
-        {(user.contract || []).map((item, index) => {
-          return item.skills.map((contractItem) => (
-              <Text key={index} color="#1f2228" fontWeight="400px">
-                {contractItem.skillName}
-              </Text>
-          ))
+        {(user.wantedSkills || []).map((item, index) => {
+         
+              return(<Text key={index} color="#1f2228" fontWeight="400px">
+                {item.skillName}
+              </Text>)
+        
         })}
 
      

@@ -15,6 +15,7 @@ import CompanyVision from "../../components/Company/CompanyVision.js";
 import CompanyContract from "../../components/Company/CompanyContract.js";
 import { Avatar } from "@material-ui/core";
 import Loading from "../../components/Loading/Loading.js";
+import EditCompany from "../../components/EditProfile/EditCompany.js";
 const styles = {
   cardCategoryWhite: {
     color: "rgba(255,255,255,.62)",
@@ -84,6 +85,7 @@ export default function CompanyProfile() {
             <CardHeader color="primary">
               <h4 className={classes.cardTitleWhite}>Profile</h4>
               <p className={classes.cardCategoryWhite}>Information</p>
+              <EditCompany user={user} />
             </CardHeader>
             <CardBody>
               <GridContainer>
