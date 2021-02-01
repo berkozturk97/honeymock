@@ -44,6 +44,7 @@ import { updateUserData } from '../../../redux/actions/updateAction'
             companyName: companyInfo.companyName,
             companyCity: companyInfo.city,
             phone: companyInfo.phone,
+            companyIndustry: {key: companyInfo.industry, value: 19}
           }
           dispatch(updateUserData(updatedData))
         
@@ -62,7 +63,6 @@ import { updateUserData } from '../../../redux/actions/updateAction'
     const handleIndustry = (e) => {
       if (JSON.parse(e.target.value).key === "Other") {
         setIsVisible(false)
-        setCompanyInfo({ ...companyInfo, industry: JSON.parse(e.target.value)})
         console.log(companyInfo)
       } else {
         setIsVisible(true)
@@ -185,6 +185,7 @@ import { updateUserData } from '../../../redux/actions/updateAction'
           <FormControl id="other" mt={[6, 6, 5, 4]}>
             <Input
               isDisabled={isVisible}
+              onBlur={handleOnblur}
               name="industry"
               type="text"
               placeholder="Type Your Industry"
