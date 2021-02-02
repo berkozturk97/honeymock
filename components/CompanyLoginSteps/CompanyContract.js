@@ -22,7 +22,7 @@ function CompanyContract() {
     jobTitle: '',
     jobTime: '',
     experience: 0,
-    salary: 0,
+    salary: '',
     roleDescription: ''
   })
   const [talentSkills, setTalentSkills] = useState([])
