@@ -123,9 +123,9 @@ import {
           w={100}
           onChange={handleSalary}
           name="salary"
-          type="text"
+          type="number"
           placeholder="Salary"
-          value={companyInfo.salary}
+         
         />
   
         <Textarea
