@@ -82,7 +82,7 @@ export default function TalenProfile() {
         </GridItem>
         <GridItem xs={12} sm={12} md={8}>
           <Card>
-            <CardHeader color="primary">
+            <CardHeader  color="primary">
               <h4 className={classes.cardTitleWhite}>Profile</h4>
               <p className={classes.cardCategoryWhite}>Information</p>
               <EditTalent user={user} />

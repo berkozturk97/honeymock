@@ -1,86 +1,108 @@
-import React, { useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import Divider from '@material-ui/core/Divider';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import CloseIcon from '@material-ui/icons/Close';
-import Slide from '@material-ui/core/Slide';
-import { Accordion, AccordionDetails, AccordionSummary} from '@material-ui/core';
-import CompanyContract from '../Company/CompanyContract';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { Box, Text } from '@chakra-ui/react';
+import React, { useEffect } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import Button from '@material-ui/core/Button'
+import Dialog from '@material-ui/core/Dialog'
+import Divider from '@material-ui/core/Divider'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import IconButton from '@material-ui/core/IconButton'
+import Typography from '@material-ui/core/Typography'
+import CloseIcon from '@material-ui/icons/Close'
+import Slide from '@material-ui/core/Slide'
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary
+} from '@material-ui/core'
+import CompanyContract from '../Company/CompanyContract'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import { Box, Text } from '@chakra-ui/react'
 
-import { useDispatch, useSelector } from 'react-redux';
-import { updateUserData } from '../../redux/actions/updateAction';
-import Contract from '../UpdateComponents/Company/Contract';
-import Vision from '../UpdateComponents/Company/Vision';
-import CityAndJob from '../UpdateComponents/Company/CityAndJob';
-import CompanyInformations from '../UpdateComponents/Company/CompanyInformations';
-import { updateCompany } from '../../api/companyApi';
-import { useRouter } from 'next/router';
+import { useDispatch, useSelector } from 'react-redux'
+import { updateUserData } from '../../redux/actions/updateAction'
+import Contract from '../UpdateComponents/Company/Contract'
+import Vision from '../UpdateComponents/Company/Vision'
+import CityAndJob from '../UpdateComponents/Company/CityAndJob'
+import CompanyInformations from '../UpdateComponents/Company/CompanyInformations'
+import { updateCompany } from '../../api/companyApi'
+import { useRouter } from 'next/router'
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    position: 'relative',
+    position: 'relative'
   },
   title: {
     marginLeft: theme.spacing(2),
-    flex: 1,
+    flex: 1
   },
   summary: {
-    backgroundColor: '#f2f2f2',
-  },
-}));
+    backgroundColor: '#f2f2f2'
+  }
+}))
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
+  return <Slide direction="up" ref={ref} {...props} />
+})
 
-export default function EditCompany({user}) {
-  const { updatedData } = useSelector(state => state.update)
+export default function EditCompany({ user }) {
+  const { updatedData } = useSelector((state) => state.update)
   const router = useRouter()
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(updateUserData(user))
-  },[])
-  const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  }, [])
+  const classes = useStyles()
+  const [open, setOpen] = React.useState(false)
 
   const handleClickOpen = () => {
-    setOpen(true);
-  };
+    setOpen(true)
+  }
 
   const handleClose = async () => {
-    var revisedObject = updatedData;
-    delete revisedObject._id;
-    delete revisedObject.type;
-    delete revisedObject.password;
-    delete revisedObject.createdAt;
-    delete revisedObject.updatedAt;
-    delete revisedObject.__v;
-    await updateCompany({ body: revisedObject, _id: user._id , token: user.tokenCode})
+    var revisedObject = updatedData
+    delete revisedObject._id
+    delete revisedObject.type
+    delete revisedObject.password
+    delete revisedObject.createdAt
+    delete revisedObject.updatedAt
+    delete revisedObject.__v
+    await updateCompany({
+      body: revisedObject,
+      _id: user._id,
+      token: user.tokenCode
+    })
     router.reload()
-    setOpen(false);
-  };
+    setOpen(false)
+  }
+  const handleNormalClose = () => {
+    setOpen(false)
+  }
 
   return (
     <div>
-      <Button  color='#fff' onClick={handleClickOpen}>
+      <Button color="#fff" onClick={handleClickOpen}>
         Edit Your Profile
       </Button>
-      <Dialog PaperProps={{
-    style: {
-      backgroundColor: "#f6f6f6",
-      boxShadow: "none"
-    },
-  }} fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
+      <Dialog
+        PaperProps={{
+          style: {
+            backgroundColor: '#f6f6f6',
+            boxShadow: 'none'
+          }
+        }}
+        fullScreen
+        open={open}
+        onClose={handleNormalClose}
+        TransitionComponent={Transition}
+      >
         <AppBar className={classes.appBar}>
           <Toolbar>
-            <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
+            <IconButton
+              edge="start"
+              color="inherit"
+              onClick={handleNormalClose}
+              aria-label="close"
+            >
               <CloseIcon />
             </IconButton>
             <Typography variant="h6" className={classes.title}>
@@ -91,79 +113,89 @@ export default function EditCompany({user}) {
             </Button>
           </Toolbar>
         </AppBar>
-        <Box w={[400,500,600,1000]} backgroundColor='#fff' h={'auto'} p={10} m={(0, 'auto')} mt={10}>
-        <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          classes={{root: classes.summary}}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
+        <Box
+          w={[400, 500, 600, 1000]}
+          backgroundColor="#fff"
+          h={'auto'}
+          p={10}
+          m={(0, 'auto')}
+          mt={10}
         >
-          <Text ml={2} justifySelf="center" fontSize="2xl">
-        Open Contracts
-      </Text>
-        </AccordionSummary>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              classes={{ root: classes.summary }}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <Text ml={2} justifySelf="center" fontSize="2xl">
+                Open Contracts
+              </Text>
+            </AccordionSummary>
 
-        
-        <AccordionDetails>
-            <Contract contracts={user.contract} />
-        </AccordionDetails>
-      </Accordion>
+            <AccordionDetails>
+              <Contract contracts={user.contract} />
+            </AccordionDetails>
+          </Accordion>
 
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          classes={{root: classes.summary}}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Text ml={2} justifySelf="center" fontSize="2xl">
-        Vision / Photo / TechStack
-      </Text>
-        </AccordionSummary>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              classes={{ root: classes.summary }}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <Text ml={2} justifySelf="center" fontSize="2xl">
+                Vision / Photo / TechStack
+              </Text>
+            </AccordionSummary>
 
-        
-        <AccordionDetails>
-            <Vision vision={user.visionMission} photo={user.companyLogoUrl} wantedSkills={user.wantedSkills} />
-        </AccordionDetails>
-      </Accordion>
+            <AccordionDetails>
+              <Vision
+                vision={user.visionMission}
+                photo={user.companyLogoUrl}
+                wantedSkills={user.wantedSkills}
+              />
+            </AccordionDetails>
+          </Accordion>
 
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          classes={{root: classes.summary}}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Text ml={2} justifySelf="center" fontSize="2xl">
-          City / Roles
-      </Text>
-        </AccordionSummary>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              classes={{ root: classes.summary }}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <Text ml={2} justifySelf="center" fontSize="2xl">
+                City / Roles
+              </Text>
+            </AccordionSummary>
 
-        
-        <AccordionDetails>
-            <CityAndJob wantedWorkCities={user.wantedWorkCity} wantedRoles={user.wantedRoles} />
-        </AccordionDetails>
-      </Accordion>
+            <AccordionDetails>
+              <CityAndJob
+                wantedWorkCities={user.wantedWorkCity}
+                wantedRoles={user.wantedRoles}
+              />
+            </AccordionDetails>
+          </Accordion>
 
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          classes={{root: classes.summary}}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Text ml={2} justifySelf="center" fontSize="2xl">
-          General Informations
-      </Text>
-        </AccordionSummary>
-        <AccordionDetails>
-            <CompanyInformations infos={user} />
-        </AccordionDetails>
-      </Accordion>
-
-      </Box>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              classes={{ root: classes.summary }}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <Text ml={2} justifySelf="center" fontSize="2xl">
+                General Informations
+              </Text>
+            </AccordionSummary>
+            <AccordionDetails>
+              <CompanyInformations infos={user} />
+            </AccordionDetails>
+          </Accordion>
+        </Box>
       </Dialog>
     </div>
-  );
+  )
 }

@@ -35,7 +35,7 @@ import LanguageSkill from '../UpdateComponents/Talent/LanguageSkill'
 import Salary from '../UpdateComponents/Talent/Salary'
 import SummaryAndPhoto from '../UpdateComponents/Talent/SummaryAndPhoto'
 import { updateTalent } from '../../api/talentApi'
-
+import EditIcon from '@material-ui/icons/Edit';
 const useStyles = makeStyles((theme) => ({
   appBar: {
     position: 'relative'
@@ -80,12 +80,15 @@ export default function EditTalent({ user }) {
     router.reload()
     setOpen(false)
   }
+  const handleNormalClose = () => {
+    setOpen(false)
+  }
 
   return (
     <div>
-      <Button color="#fff" onClick={handleClickOpen}>
+      <EditIcon color="#fff" onClick={handleClickOpen}>
         Edit Your Profile
-      </Button>
+      </EditIcon>
       <Dialog
         PaperProps={{
           style: {
@@ -95,7 +98,7 @@ export default function EditTalent({ user }) {
         }}
         fullScreen
         open={open}
-        onClose={handleClose}
+        onClose={handleNormalClose}
         TransitionComponent={Transition}
       >
         <AppBar className={classes.appBar}>
@@ -103,7 +106,7 @@ export default function EditTalent({ user }) {
             <IconButton
               edge="start"
               color="inherit"
-              onClick={handleClose}
+              onClick={handleNormalClose}
               aria-label="close"
             >
               <CloseIcon />

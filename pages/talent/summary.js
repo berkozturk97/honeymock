@@ -64,7 +64,7 @@ function Summary() {
       </Text>
 
       <Text ml={5} fontWeight="bold" mt={10} fontSize="md">
-        Company Logo
+        Profile Photo
       </Text>
       <Text ml={5} mt={2} fontSize="md">
         Files should be at least 150px
