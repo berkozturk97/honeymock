@@ -18,6 +18,7 @@ import { useRouter } from "next/router";
 import { getTalentById } from "../api/talentApi.js";
 import { Avatar, NoSsr } from "@material-ui/core";
 import Loading from "../components/Loading/Loading.js";
+import EditTalent from "../components/EditProfile/EditTalent.js";
 
 export default function TalenProfile() {
   const useStyles = makeStyles((theme) => ({
@@ -72,7 +73,7 @@ export default function TalenProfile() {
       <GridItem xs={12} sm={12} md={4}>
           <Card profile>
             <CardAvatar profile>
-             <Avatar alt="Cindy Baker" src={user.profilePhoto} className={classes.large} />
+             <Avatar alt="Cindy Baker" src={user.proilePhoto} className={classes.large} />
             </CardAvatar>
             <CardBody profile>
               <TalentAbout user={user}  />
@@ -84,6 +85,7 @@ export default function TalenProfile() {
             <CardHeader color="primary">
               <h4 className={classes.cardTitleWhite}>Profile</h4>
               <p className={classes.cardCategoryWhite}>Information</p>
+              <EditTalent user={user} />
             </CardHeader>
             <CardBody>
               <GridContainer>

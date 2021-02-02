@@ -23,13 +23,7 @@ function Vision({vision, photo, wantedSkills}) {
   const router = useRouter()
   const dispatch = useDispatch()
 
-//   let updatedData = {
-//     companyLogoUrl: imageUrl,
-//     visionMission,
-//     wantedSkills: talentSkills,
-//     isFirstLogin: 'false'
-//   }
-//  dispatch(addUserData(updatedData))
+
 
   const handleInputChange = (e) => {
     const { value } = e.target

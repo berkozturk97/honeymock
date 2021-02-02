@@ -17,21 +17,21 @@ import {
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { Constants } from '../../constants/index'
-import { addUserData } from '../../redux/actions/stepOneAction'
+import { Constants } from '../../../constants/index'
+import { updateUserData } from '../../../redux/actions/updateAction'
 
 const { LANGUAGE_LEVEL } = Constants
 
-function Step6() {
+function LanguageSkill({ user }) {
   const dispatch = useDispatch()
   const router = useRouter()
 
   const [level, setLevel] = useState({})
   const [language, setLanguage] = useState('')
-  const [languageLevel, setLanguageLevel] = useState([])
+  const [languageLevel, setLanguageLevel] = useState(user.languages)
 
   const [skill, setSkill] = useState('')
-  const [talentSkills, setTalentSkills] = useState([])
+  const [talentSkills, setTalentSkills] = useState(user.skills)
 
   function handleSubmit() {
     // e.preventDefault()
@@ -39,12 +39,23 @@ function Step6() {
       ...languageLevel,
       { language: language, level: JSON.parse(level) }
     ])
+    let updatedData = {
+      languages: [
+        ...languageLevel,
+        { language: language, level: JSON.parse(level) }
+      ]
+    }
+    dispatch(updateUserData(updatedData))
     console.log('toplu', languageLevel)
   }
   const deleteLanguageItem = (languageItem, index) => {
     console.log(languageItem.level)
     const updatedLanguageItems = languageLevel.filter((item, i) => i !== index)
     setLanguageLevel(updatedLanguageItems)
+    let updatedData = {
+      languages: updatedLanguageItems
+    }
+    dispatch(updateUserData(updatedData))
   }
 
   const handleLanguageLevel = (e) => {
@@ -55,6 +66,10 @@ function Step6() {
 
   const saveSkills = () => {
     setTalentSkills([...talentSkills, { skillName: skill }])
+    let updatedData = {
+      skills: [...talentSkills, { skillName: skill }]
+    }
+    dispatch(updateUserData(updatedData))
     console.log(talentSkills)
     setSkill('')
   }
@@ -62,24 +77,14 @@ function Step6() {
   const deleteSkill = (talentSkill, index) => {
     const updatedLanguageItems = talentSkills.filter((item, i) => i !== index)
     setTalentSkills(updatedLanguageItems)
-  }
-
-  const goNextPage = () => {
     let updatedData = {
-      languages: languageLevel,
-      skills: talentSkills
+      skills: updatedLanguageItems
     }
-    dispatch(addUserData(updatedData))
-    router.push('/talent/summary')
+    dispatch(updateUserData(updatedData))
   }
 
   return (
     <Box>
-      <Text ml={5} color="#979EA7" fontSize="3xl">
-        Tell us about your skills!
-      </Text>
-      <hr />
-
       <Text ml={5} fontWeight="bold" mt={10} fontSize="xl">
         Languages *
       </Text>
@@ -90,9 +95,8 @@ function Step6() {
 
       <Flex direction="row">
         <Box display="inline-flex">
-          <FormControl id="language" mt={4}>
+          <FormControl id="language" ml={5} mt={4}>
             <Input
-             
               onChange={(e) => setLanguage(e.target.value)}
               name="language"
               type="text"
@@ -209,21 +213,8 @@ function Step6() {
           </Box>
         )
       })}
-
-      <Box w={100} h={'auto'} mt={30}>
-        <Button
-          bg="#7DB0E4"
-          color="white"
-          _hover="none"
-          onClick={goNextPage}
-          ml={5}
-          mt={10}
-        >
-          Click And Save
-        </Button>
-      </Box>
     </Box>
   )
 }
 
-export default Step6
+export default LanguageSkill

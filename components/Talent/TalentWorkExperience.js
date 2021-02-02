@@ -14,7 +14,7 @@ function TalentWorkExperience({user}) {
       {
         (user.workedCompanies || []).map((company,index) =>{
           return (
-            <div class={'main-item-div'}>
+            <div key={index} class={'main-item-div'}>
             <a class={'title'}> <a class={'dot'}>•</a> {company.position} ({company.company}) ({moment(company.startDate).format('YYYY')} - {moment(company.endDate).format('YYYY')}) </a>
             <a class={'subtitle'}> - {company.description}  </a>
           </div>

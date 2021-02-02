@@ -109,14 +109,6 @@ function CityAndJob({wantedRoles, wantedWorkCities}) {
         }
       }
 
-      const goNextPage = () => {
-        let updatedData = {
-          wantedRoles: jobs,
-          wantedWorkCity: workingCities,
-        }
-        dispatch(addUserData(updatedData))
-        router.push('/company/contract')
-      }
     return(
         <Box>
       <Text ml={5} fontWeight="bold" mt={10} fontSize="xl">

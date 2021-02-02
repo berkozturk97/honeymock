@@ -58,7 +58,7 @@ export const createTalent = ({body=null}) => {
     });
 };
 
-export const updateTalent = ({body=null,_id = null, token=null}) => {
+export const updateTalent = ({body=null, _id = null, token=null}) => {
     console.log(body);
     return new Promise((resolve, reject) => {
         let REQUEST_URL = "https://honeypot-server.herokuapp.com/talent/updateTalent/" + _id;

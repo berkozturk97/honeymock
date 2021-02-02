@@ -50,6 +50,9 @@ function TalentAbout({user}) {
             />
           </a>
         </GridItem>
+        <GridItem>
+           <a href={user.cvUrl} target="_blank" rel="cv">Click to see your cv</a>
+        </GridItem>
       </GridItem>
         <Text fontSize="2xl">About</Text>
         <Text mt={10} color="#606c78" fontWeight="400px">

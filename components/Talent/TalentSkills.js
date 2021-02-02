@@ -19,8 +19,9 @@ function TalentSkills({user}) {
               borderRadius="8px"
               ml={5}
               mb={2}
+              key={index}
             >
-              <Flex key={index} float="left" direction="row">
+              <Flex  float="left" direction="row">
               <Text ml={1} mt={1}>
               {skill.skillName}
               </Text>

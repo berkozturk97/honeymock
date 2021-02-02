@@ -57,7 +57,7 @@ function Step7() {
       router.push({
         pathname: '/talentProfile',
         query: {
-          id: user._id,
+          id: profile._id,
         }
     });
   } else {
