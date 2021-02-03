@@ -71,7 +71,7 @@ function SummaryAndPhoto({user}) {
         ml={5}
         mt={2}
         src={ 
-            'https://via.placeholder.com/300x150?text=Upload+Your+Company+Logo' 
+            'https://via.placeholder.com/300x150?text=Upload+Your+Profile+Photo' 
           }
       />
         <Box ml={5}

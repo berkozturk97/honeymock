@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginTalent } from '../../api/talentApi';
+import Loading from '../../components/Loading/Loading';
 import { ID } from '../../constants/header';
 import { setUserData } from '../../redux/actions/userAction';
 
@@ -37,6 +38,6 @@ export default function EmptyLoadPage() {
   }
 
   return (
-    <Spinner/>
+    <Loading/>
   )
 }
