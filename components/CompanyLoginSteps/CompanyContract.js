@@ -74,7 +74,7 @@ function CompanyContract() {
   return (
     <Box h={'auto'}>
       <Text ml={5} color="#979EA7" fontSize="3xl">
-        Let's create company's first contract!{' '}
+        Let's create a position!{' '}
       </Text>
       <hr />
       <Box w={[300, 400, 600, 900]} h={20} display="flex" float="left" mt={10}>
@@ -118,21 +118,25 @@ function CompanyContract() {
           ))}
         </Select>
       </Box>
-
+      <Box d='flex' float='left' w={600}>
+      <Text ml={5} fontWeight="bold" mt={2} fontSize="xl">
+            $
+          </Text>
       <Input
-        ml={5}
-        w={100}
+        ml={1}
+        w={200}
         onChange={handleSalary}
         name="salary"
         type="number"
         placeholder="Salary"
         
       />
+      </Box>
 
       <Textarea
         name="roleDescription"
         onChange={handleTitle}
-        placeholder="What employers need to do?"
+        placeholder="Role description"
         ml={5}
         mt={2}
         h={'auto'}

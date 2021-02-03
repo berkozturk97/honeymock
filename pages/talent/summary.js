@@ -71,10 +71,12 @@ function Summary() {
       </Text>
 
       <Image
+        w={200}
+        h={100}
         ml={5}
         mt={2}
-        src={
-          'https://via.placeholder.com/100x100?text=Upload+Your+Profile+Photo'
+        src={ !imageUrl  || imageUrl.length === 0 || imageUrl === null ?
+          'https://via.placeholder.com/300x150?text=Upload+Your+Company+Logo' : imageUrl
         }
       />
         <Box ml={5}

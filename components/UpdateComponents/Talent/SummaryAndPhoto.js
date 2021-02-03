@@ -1,4 +1,5 @@
 import { Box, Button, Checkbox, CloseButton, Flex, FormControl, Image, Input, Text, Textarea } from '@chakra-ui/react'
+import axios from 'axios'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { updateUserData } from '../../../redux/actions/updateAction'
@@ -70,9 +71,9 @@ function SummaryAndPhoto({user}) {
       <Image
         ml={5}
         mt={2}
-        src={ 
-            'https://via.placeholder.com/300x150?text=Upload+Your+Profile+Photo' 
-          }
+        src={ !imageUrl  || imageUrl.length === 0 || imageUrl === null ?
+          'https://via.placeholder.com/300x150?text=Upload+Your+Company+Logo' : imageUrl
+        }
       />
         <Box ml={5}
         mt={2}>
@@ -85,7 +86,7 @@ function SummaryAndPhoto({user}) {
       <Text ml={5} mt={2} fontSize="md">
         Write your summary.
       </Text>
-    <Textarea onBlur={handleBlur} value={summary} onChange={(e) => e.target.value} ml={5} mt={2} h={'auto'} />
+    <Textarea onBlur={handleBlur} value={summary} onChange={(e) => setSummary(e.target.value)} ml={5} mt={2} h={'auto'} />
 
 
 

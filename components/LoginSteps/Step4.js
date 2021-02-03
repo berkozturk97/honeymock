@@ -6,7 +6,8 @@ import {
   FormControl,
   Text,
   Select,
-  Textarea
+  Textarea,
+  Checkbox
 } from '@chakra-ui/react'
 
 import { useRouter } from 'next/router'
@@ -114,14 +115,18 @@ function Step4() {
                 onChange={handleInputChange}
               />
             </FormControl>
+           
           </Flex>
 
-          <Flex d='flex' float='left'>
+          <Box d='flex' w={900} >
           <FormControl  ml={5} id="password" mt={10} mb={10}>
             <DatePicker style={{width:200}} onChange={date => setExperience({ ...experience, startDate: date })} format='YYYY-MM' />
             <DatePicker style={{width:200, marginLeft:35}} onChange={date => setExperience({ ...experience, endDate: date })} format='YYYY-MM' />
+            <Checkbox  border="#555555" mt={3} ml={10}>
+               Currently Work Here
+            </Checkbox>
           </FormControl>
-          </Flex>
+          </Box>
 
           <FormControl id="description" mt={10}>
             <Textarea

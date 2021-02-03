@@ -100,7 +100,7 @@ function Vision({vision, photo, wantedSkills}) {
         mt={2}
         w={200}
         h={100}
-        src={ imageUrl.length === 0 ?
+        src={ !imageUrl  || imageUrl.length === 0 || imageUrl === null ?
           'https://via.placeholder.com/300x150?text=Upload+Your+Company+Logo' : imageUrl
         }
       />

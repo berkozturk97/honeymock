@@ -69,6 +69,7 @@ export default function EditTalent({ user }) {
 
   const handleClose = async () => {
     var revisedObject = updatedData;
+    revisedObject.isFirstLogin = 'false';
     delete revisedObject._id;
     delete revisedObject.type;
     delete revisedObject.password;

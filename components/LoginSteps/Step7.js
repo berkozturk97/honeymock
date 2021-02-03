@@ -19,7 +19,7 @@ import { addUserData } from '../../redux/actions/stepOneAction'
 import SuccessModal from '../Modals/Modal'
 
 function Step7() {
-  const [money, setMoney] = useState('')
+  const [money, setMoney] = useState(0)
   const [data, setData] = useState([])
   const [modalOptions, setModalOptions] = useState({
     open: false,
@@ -38,9 +38,6 @@ function Step7() {
   const router = useRouter()
 
   const goNextPage = async () => {
-    if(money === ''){
-      setMoney(0);
-    }
     const profile = JSON.parse(userData);
     let updatedData = {
       wantedSalary: money,
@@ -48,7 +45,7 @@ function Step7() {
     }
     dispatch(addUserData(updatedData))
     const user = await updateTalent({ body: { ...stepData, ...updatedData }, _id: profile._id , token: profile.tokenCode})
-    if (user !== null || user !== undefined){
+    if (!user || user !== null || user !== undefined){
       setModalOptions({...modalOptions,
         open: true,
         message: 'Enjoy with your experience!',
@@ -56,7 +53,7 @@ function Step7() {
         isSuccess: true,
         yesButton: false,
       })
-      // localStorage.setItem('userInformations', JSON.stringify(user));
+      localStorage.setItem('userInformations', JSON.stringify(user));
       router.push({
         pathname: '/talentProfile',
         query: {
@@ -113,7 +110,7 @@ function Step7() {
               name="skill"
               type="number"
               placeholder="10000 - 500000 (gross/year) "
-              value={money}
+              
               //   onChange={handleInputChange}
             />
           </FormControl>

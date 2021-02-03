@@ -6,7 +6,8 @@ import {
   FormControl,
   Text,
   Select,
-  Textarea
+  Textarea,
+  Checkbox
 } from '@chakra-ui/react'
 
 import { useRouter } from 'next/router'
@@ -197,6 +198,14 @@ function WorkExperience({ user }) {
                   }}
                 />
               </MuiPickersUtilsProvider>
+
+          
+     
+            
+            <Checkbox  border="#555555" mt={3} ml={10}>
+               Currently Work Here
+            </Checkbox>
+        
             </FormControl>
         
           <FormControl id="description" mt={10}>

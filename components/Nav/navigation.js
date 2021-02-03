@@ -37,7 +37,7 @@ function Navigation() {
   }
 
   const renderNav = () => {
-    if (userData === undefined || userData === null || Object.values(userData).length === 0) {
+    if (userData === undefined || JSON.parse(userData) === null || Object.values(userData).length === 0) {
       return (
         <>
           <Nav.Item componentClass='span' >

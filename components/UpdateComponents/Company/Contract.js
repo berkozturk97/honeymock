@@ -118,15 +118,20 @@ import {
           </Select>
         </Box>
   
-        <Input
-          ml={5}
-          w={100}
-          onChange={handleSalary}
-          name="salary"
-          type="number"
-          placeholder="Salary"
-         
-        />
+        <Box d='flex' float='left' w={600}>
+      <Text ml={5} fontWeight="bold" mt={2} fontSize="xl">
+            $
+          </Text>
+      <Input
+        ml={1}
+        w={200}
+        onChange={handleSalary}
+        name="salary"
+        type="number"
+        placeholder="Salary"
+        
+      />
+      </Box>
   
         <Textarea
           w={[250,400,500,800]}
