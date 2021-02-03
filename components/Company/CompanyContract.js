@@ -15,11 +15,11 @@ function CompanyContract({user}) {
         (user.contract || []).map((contract,index) =>{
           return (
             <div class={'main-item-div'}>
-            <a class={'title'}> <a class={'dot'}>•</a> {contract.companyInfo.jobTitle} ({contract.companyInfo.jobTime}) </a>
-            <a class={'subtitle'}> - {contract.companyInfo.jobTitle}  </a>
-            <a class={'subtitle'}> - Experience: {contract.companyInfo.experience} years </a>
-            <a class={'subtitle'}> - Salary: ${contract.companyInfo.salary}</a>
-            <a class={'subtitle'}> - Role Description: {contract.companyInfo.roleDescription}</a>
+            <Text fontSize="md">{contract.companyInfo.jobTitle} ({contract.companyInfo.jobTime}) </Text>
+            <Text fontSize="sm"> - {contract.companyInfo.jobTitle}  </Text>
+            <Text fontSize="sm"> - Experience: {contract.companyInfo.experience} years </Text>
+            <Text fontSize="sm"> - Salary: ${contract.companyInfo.salary}</Text>
+            <Text fontSize="sm"> - Role Description: {contract.companyInfo.roleDescription}</Text>
           </div>
           )
         })

@@ -15,8 +15,8 @@ function TalentEducation({ user }) {
       {(user.educations || []).map((education, index) => {
         return (
        <div key={index} class={'main-item-div'}>
-         <a class={'title'}> <a class={'dot'}>•</a> {education.school}</a>
-         <a class={'subtitle'}> - {education.degree} ({moment(education.startDate).format('YYYY')} - {moment(education.endDate).format('YYYY')}) </a>
+         <Text fontSize="md">{education.school}</Text>
+         <Text fontSize="sm"> - {education.degree} ({moment(education.startDate).format('YYYY')} - {moment(education.endDate).format('YYYY')}) </Text>
        </div>
         )
       })}
