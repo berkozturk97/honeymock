@@ -21,8 +21,8 @@ function Step2() {
   const [companyInfo, setCompanyInfo] = useState({
     hqAddress: '',
     companyUrl: '',
-    employee: '',
-    industry: ''
+    employee: {},
+    industry: {}
   })
   const [isVisible, setIsVisible] = useState(true)
 

@@ -38,6 +38,9 @@ function Step7() {
   const router = useRouter()
 
   const goNextPage = async () => {
+    if(money === ''){
+      setMoney(0);
+    }
     const profile = JSON.parse(userData);
     let updatedData = {
       wantedSalary: money,
