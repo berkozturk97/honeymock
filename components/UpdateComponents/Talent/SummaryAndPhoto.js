@@ -1,9 +1,19 @@
-import { Box, Button, Checkbox, CloseButton, Flex, FormControl, Image, Input, Text, Textarea } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Checkbox,
+  CloseButton,
+  Flex,
+  FormControl,
+  Image,
+  Input,
+  Text,
+  Textarea
+} from '@chakra-ui/react'
 import axios from 'axios'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { updateUserData } from '../../../redux/actions/updateAction'
-
 
 import {
   getHeaderFromBase64,
@@ -12,11 +22,10 @@ import {
   dataURItoBlob
 } from '../../../utils/functions/upload'
 
-function SummaryAndPhoto({user}) {
-    const [imageUrl, setImageUrl] = useState(user.proilePhoto)
-    const [summary, setSummary] = useState(user.summary)
- 
-  
+function SummaryAndPhoto({ user }) {
+  const [imageUrl, setImageUrl] = useState(user.proilePhoto)
+  const [summary, setSummary] = useState(user.summary)
+
   const dispatch = useDispatch()
 
   const upload = async (event) => {
@@ -42,59 +51,69 @@ function SummaryAndPhoto({user}) {
     }
   }
   const handleBlur = () => {
-      let updatedData = {
+    let updatedData = {
       summary: summary
     }
     dispatch(updateUserData(updatedData))
-
   }
 
-    return (
-        <Box w={[350,600,780,1000]}  backgroundColor='#fff' h={'auto'} p={10} m={(0, 'auto')} mt={10}>
-             <Box >
-      
-      <Text ml={5} fontWeight="bold" mt={10} fontSize="xl">
-        Update your talent profile
-      </Text>
-      <Text ml={5} mt={2} fontSize="md">
-        The fields below are optional, but our the most successful talents
-        include this info to help maximize their candidate response rate.
-      </Text>
+  return (
+    <Box
+      w={[350, 600, 780, 1000]}
+      backgroundColor="#fff"
+      h={'auto'}
+      p={10}
+      m={(0, 'auto')}
+      mt={10}
+    >
+      <Box>
+        <Text ml={5} fontWeight="bold" mt={10} fontSize="xl">
+          Update your talent profile
+        </Text>
+        <Text ml={5} mt={2} fontSize="md">
+          The fields below are optional, but our the most successful talents
+          include this info to help maximize their candidate response rate.
+        </Text>
 
-      <Text ml={5} fontWeight="bold" mt={10} fontSize="md">
-        Profile Photo
-      </Text>
-      <Text ml={5} mt={2} fontSize="md">
-        Files should be at least 150px
-      </Text>
+        <Text ml={5} fontWeight="bold" mt={10} fontSize="md">
+          Profile Photo
+        </Text>
+        <Text ml={5} mt={2} fontSize="md">
+          Files should be at least 150px
+        </Text>
 
-      <Image
-        ml={5}
-        mt={2}
-        src={ !imageUrl  || imageUrl.length === 0 || imageUrl === null ?
-          'https://via.placeholder.com/300x150?text=Upload+Your+Company+Logo' : imageUrl
-        }
-      />
-        <Box ml={5}
-        mt={2}>
-      <input type="file" onChange={upload} multiple />
-      </Box>
-
-      <Text ml={5} fontWeight="bold" mt={10} fontSize="md">
-        Summary
-      </Text>
-      <Text ml={5} mt={2} fontSize="md">
-        Write your summary.
-      </Text>
-    <Textarea onBlur={handleBlur} value={summary} onChange={(e) => setSummary(e.target.value)} ml={5} mt={2} h={'auto'} />
-
-
-
-
-      
-    </Box>
+        <Image
+          w={200}
+          h={100}
+          ml={5}
+          mt={2}
+          src={
+            !imageUrl || imageUrl.length === 0 || imageUrl === null
+              ? 'https://via.placeholder.com/300x150?text=Upload+Your+Company+Logo'
+              : imageUrl
+          }
+        />
+        <Box ml={5} mt={2}>
+          <input type="file" onChange={upload} multiple />
         </Box>
-      )
+
+        <Text ml={5} fontWeight="bold" mt={10} fontSize="md">
+          Summary
+        </Text>
+        <Text ml={5} mt={2} fontSize="md">
+          Write your summary.
+        </Text>
+        <Textarea
+          onBlur={handleBlur}
+          value={summary}
+          onChange={(e) => setSummary(e.target.value)}
+          ml={5}
+          mt={2}
+          h={'auto'}
+        />
+      </Box>
+    </Box>
+  )
 }
 
-export default SummaryAndPhoto;
+export default SummaryAndPhoto
