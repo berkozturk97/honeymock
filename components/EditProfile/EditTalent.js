@@ -86,9 +86,12 @@ export default function EditTalent({ user }) {
 
   return (
     <div>
-      <EditIcon color="#fff" onClick={handleClickOpen}>
-        Edit Your Profile
-      </EditIcon>
+       <IconButton
+      color='inherit'
+      edge='end'
+      onClick={handleClickOpen}>
+      <EditIcon  />
+      </IconButton>
       <Dialog
         PaperProps={{
           style: {

@@ -31,9 +31,11 @@ function CompanyAbout({user}) {
         <Text mt={10} color="#606c78" fontWeight="400px">
           Company Website
         </Text>
-        <Text color="#1f2228" fontWeight="400px">
-          {user.companyUrl}
-        </Text>
+        
+        <a target="_blank" href={user.companyUrl}>
+          Visit your company page
+        </a>
+      
 
         <Text mt={10} color="#606c78" fontWeight="400px">
           Company City

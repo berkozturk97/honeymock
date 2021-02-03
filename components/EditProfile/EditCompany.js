@@ -26,6 +26,7 @@ import CityAndJob from '../UpdateComponents/Company/CityAndJob'
 import CompanyInformations from '../UpdateComponents/Company/CompanyInformations'
 import { updateCompany } from '../../api/companyApi'
 import { useRouter } from 'next/router'
+import EditIcon from '@material-ui/icons/Edit';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -80,9 +81,13 @@ export default function EditCompany({ user }) {
 
   return (
     <div>
-      <Button color="#fff" onClick={handleClickOpen}>
-        Edit Your Profile
-      </Button>
+      <IconButton
+      color='inherit'
+      edge='end'
+      onClick={handleClickOpen}>
+      <EditIcon  />
+      </IconButton>
+
       <Dialog
         PaperProps={{
           style: {

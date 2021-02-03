@@ -12,7 +12,7 @@ function TalentAbout({user}) {
         </Text>
         <Text fontSize="md">{user.livingCity}</Text>
         <GridItem float="left">
-          <a href={user.githubUrl}>
+          <a target="_blank" href={user.githubUrl}>
             <Image
               src="/github.png"
               width={30}

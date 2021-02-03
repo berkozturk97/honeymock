@@ -19,7 +19,6 @@ const { INDUSTRIES, COMPANY_SIZE } = Constants
 
 function Step2() {
   const [companyInfo, setCompanyInfo] = useState({
-    companyName: '',
     hqAddress: '',
     companyUrl: '',
     employee: '',
@@ -77,16 +76,7 @@ function Step2() {
       </Text>
 
       <Box w={[300, 300, 400, 400]} ml={5}>
-        <FormControl id="companyName" mt={[6, 6, 5, 4]}>
-          <Input
-            isDisabled
-            name="companyName"
-            type="text"
-            placeholder="Company Name"
-            value={companyInfo.companyName}
-            onChange={handleInputChange}
-          />
-        </FormControl>
+       
 
         <FormControl id="hqAddress" mt={4}>
           <Input
