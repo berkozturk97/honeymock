@@ -135,7 +135,7 @@ export default function EditCompany({ user }) {
               id="panel1a-header"
             >
               <Text ml={2} justifySelf="center" fontSize="2xl">
-                Open Contracts
+                Open Positions
               </Text>
             </AccordionSummary>
 

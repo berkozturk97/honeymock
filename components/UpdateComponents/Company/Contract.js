@@ -137,7 +137,7 @@ import {
           w={[250,400,500,800]}
           name="roleDescription"
           onChange={handleTitle}
-          placeholder="What employers need to do?"
+          placeholder="Role description"
           ml={5}
           mt={2}
           h={'auto'}

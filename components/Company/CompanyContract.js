@@ -15,7 +15,7 @@ function CompanyContract({user}) {
         (user.contract || []).map((contract,index) =>{
           return (
             <div class={'main-item-div'}>
-            <Text fontSize="md">{contract.companyInfo.jobTitle} ({contract.companyInfo.jobTime}) </Text>
+            <Text mt={10} fontSize="md">{contract.companyInfo.jobTitle} ({contract.companyInfo.jobTime}) </Text>
             <Text fontSize="sm"> - {contract.companyInfo.jobTitle}  </Text>
             <Text fontSize="sm"> - Experience: {contract.companyInfo.experience} years </Text>
             <Text fontSize="sm"> - Salary: ${contract.companyInfo.salary}</Text>

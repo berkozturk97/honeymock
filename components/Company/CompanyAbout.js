@@ -29,6 +29,13 @@ function CompanyAbout({user}) {
         </Text>
 
         <Text mt={10} color="#606c78" fontWeight="400px">
+          Industry
+        </Text>
+        <Text color="#1f2228" fontWeight="400px">
+          {user.companyIndustry ? (user.companyIndustry.key ? user.companyIndustry.key : '')  : ''}
+        </Text>
+
+        <Text mt={10} color="#606c78" fontWeight="400px">
           Company Website
         </Text>
         
