@@ -6,7 +6,7 @@ import './talent.less'
 function TalentRoles({ user }) {
   return (
     <NoSsr>
-    <div class={"back"}>
+    <div className={"back"}>
     <CardHeader>
     <GridItem>
       <Text justifySelf="center" ml={2} fontSize="2xl">
@@ -15,7 +15,7 @@ function TalentRoles({ user }) {
       <Box>
       {(user.wantedRoles || []).map((role, index) => {
         return (
-          <div key={index} class={'main-item-div'}>
+          <div key={index} className={'main-item-div'}>
           <Text fontSize="md" > {role.key} </Text>
           <Text fontSize="sm"> - {role.years} {role.years === 1 ? 'Year' : 'Years'}  </Text>
         </div>

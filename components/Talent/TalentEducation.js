@@ -6,7 +6,7 @@ import './talent.less'
 
 function TalentEducation({ user }) {
   return (
-    <div class={"back"}>
+    <div className={"back"}>
     <CardHeader>
     <GridItem>
       <Text ml={2} fontSize="2xl">
@@ -14,7 +14,7 @@ function TalentEducation({ user }) {
       </Text>
       {(user.educations || []).map((education, index) => {
         return (
-       <div key={index} class={'main-item-div'}>
+       <div key={index} className={'main-item-div'}>
          <Text fontSize="md">{education.school}</Text>
          <Text fontSize="sm"> - {education.degree} ({moment(education.startDate).format('YYYY')} - {moment(education.endDate).format('YYYY')}) </Text>
        </div>

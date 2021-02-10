@@ -5,7 +5,7 @@ import GridItem from '../material-ui-component/Grid/GridItem';
 import './talent.less'
 function TalentWorkExperience({user}) {
   return (
-    <div class={"back"}>
+    <div className={"back"}>
     <CardHeader>
     <GridItem>
       <Text ml={2} justifySelf="center" fontSize="2xl">
@@ -14,7 +14,7 @@ function TalentWorkExperience({user}) {
       {
         (user.workedCompanies || []).map((company,index) =>{
           return (
-            <div key={index} class={'main-item-div'}>
+            <div key={index} className={'main-item-div'}>
             <Text fontSize="md"> {company.position} ({company.company}) ({moment(company.startDate).format('YYYY')} - {moment(company.endDate).format('YYYY')}) </Text>
             <Text fontSize='sm' > - {company.description}  </Text>
           </div>

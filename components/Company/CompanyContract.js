@@ -5,7 +5,7 @@ import GridItem from '../material-ui-component/Grid/GridItem';
 import '../Talent/talent.less'
 function CompanyContract({user}) {
   return (
-    <div class={"back"}>
+    <div className={"back"}>
     <CardHeader>
     <GridItem>
       <Text ml={2} justifySelf="center" fontSize="2xl">
@@ -14,7 +14,7 @@ function CompanyContract({user}) {
       {
         (user.contract || []).map((contract,index) =>{
           return (
-            <div class={'main-item-div'}>
+            <div key={index} className={'main-item-div'}>
             <Text mt={10} fontSize="md">{contract.companyInfo.jobTitle} ({contract.companyInfo.jobTime}) </Text>
             <Text fontSize="sm"> - {contract.companyInfo.jobTitle}  </Text>
             <Text fontSize="sm"> - Experience: {contract.companyInfo.experience} years </Text>

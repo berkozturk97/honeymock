@@ -44,7 +44,8 @@ export default function TalenProfile() {
     }
   }));
   const classes = useStyles();
-  const [user, setUser] = useState([])
+  const [user, setUser] = useState([]);
+  const [mainUser, setMainUser] = useState();
   const [isLogin, setIsLogin] = useState(false)
   const router = useRouter()
   useEffect(() => {
@@ -53,12 +54,19 @@ export default function TalenProfile() {
 
   const loadData = async () => {
     setIsLogin(false);
-    const mainUser = await JSON.parse(localStorage.getItem('userInformations'));
-    const userInfos = await getTalentById({_id: router.query.id, token: mainUser.tokenCode })
-    console.log(userInfos)
+    const mainUsers = await JSON.parse(localStorage.getItem('userInformations'));
+    const userInfos = await getTalentById({_id: router.query.id, token: mainUsers.tokenCode })
+    setMainUser(mainUsers)
     setUser(userInfos[0])
     setIsLogin(true)
   }
+
+  const renderEdit = () => {
+    if(mainUser && router.query.id === mainUser._id ){
+      return  <EditTalent user={user} />
+    }
+  }
+
   if (isLogin === false) {
     return (
       <div>
@@ -85,7 +93,7 @@ export default function TalenProfile() {
             <CardHeader  color="primary">
               <h4 className={classes.cardTitleWhite}>Profile</h4>
               <p className={classes.cardCategoryWhite}>Information</p>
-              <EditTalent user={user} />
+              {renderEdit()}
             </CardHeader>
             <CardBody>
               <GridContainer>

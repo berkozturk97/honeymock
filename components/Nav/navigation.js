@@ -13,19 +13,14 @@ function Navigation() {
   const router = useRouter()
   const dispatch = useDispatch();
   const { userData } = useSelector(state => state.user)
-  useEffect(() => {
-    console.log('navbar', userData)
-  }, [userData])
 
   const logOut = async () => {
     await localStorage.setItem('userInformations', null)
     await dispatch(setUserData(null))
     router.push('/');
-
   }
 
   const goProfile = () => {
-    console.log(JSON.parse(userData))
     if (JSON.parse(userData) !== null) {
       if (JSON.parse(userData).type === 1) {
         return `/talentProfile?id=${JSON.parse(userData) ? JSON.parse(userData)._id : null}`;
@@ -37,7 +32,7 @@ function Navigation() {
   }
 
   const renderNav = () => {
-    if (userData === undefined || JSON.parse(userData) === null || Object.values(userData).length === 0) {
+    if (!JSON.parse(userData)) {
       return (
         <>
           <Nav.Item componentClass='span' >

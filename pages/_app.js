@@ -24,7 +24,7 @@ class MyApp extends App {
     <Provider store={store}>
      
     <ThemeProvider theme={theme}>
-       <Navigation/>
+      {typeof window !== 'undefined' && <Navigation/>}
       <CSSReset />
       <Component {...pageProps} />
     </ThemeProvider>

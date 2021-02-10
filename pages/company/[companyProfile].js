@@ -38,6 +38,7 @@ const styles = {
 export default function CompanyProfile() {
   const [user, setUser] = useState([])
   const [isLogin, setIsLogin] = useState(false)
+  const [mainUser, setMainUser] = useState();
   const router = useRouter()
   useEffect(() => {
     loadData()
@@ -45,14 +46,20 @@ export default function CompanyProfile() {
 
   const loadData = async () => {
     setIsLogin(false)
-    const mainUser = await JSON.parse(localStorage.getItem('userInformations'))
+    const mainUsers = await JSON.parse(localStorage.getItem('userInformations'))
     const userInfos = await getEmployerById({
       _id: router.query.id,
-      token: mainUser.tokenCode
+      token: mainUsers.tokenCode
     })
-    console.log(userInfos)
+    setMainUser(mainUsers)
     setUser(userInfos[0])
     setIsLogin(true)
+  }
+
+  const renderEdit = () => {
+    if(mainUser && router.query.id === mainUser._id ){
+      return  <EditCompany user={user} />
+    }
   }
 
   const useStyles = makeStyles((theme) => ({
@@ -92,7 +99,7 @@ export default function CompanyProfile() {
               <CardHeader color="primary">
                 <h4 className={classes.cardTitleWhite}>Profile</h4>
                 <p className={classes.cardCategoryWhite}>Information</p>
-                <EditCompany user={user} />
+                {renderEdit()}
               </CardHeader>
               <CardBody>
                 <GridContainer>

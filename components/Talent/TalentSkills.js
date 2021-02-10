@@ -4,7 +4,7 @@ import GridItem from '../material-ui-component/Grid/GridItem';
 import './talent.less'
 function TalentSkills({user}) {
     return(
-      <div class={"back"}>
+      <div className={"back"}>
       <CardHeader>
         <GridItem h={'auto'}>
         <Text ml={2} fontSize="2xl">Skills</Text>
