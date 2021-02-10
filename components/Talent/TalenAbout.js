@@ -1,6 +1,5 @@
 import { Box, Flex, Text } from '@chakra-ui/react'
 import Image from 'next/image'
-import Link from 'next/link'
 import GridItem from '../material-ui-component/Grid/GridItem'
 function TalentAbout({user}) {
   return (

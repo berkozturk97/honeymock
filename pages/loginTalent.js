@@ -2,6 +2,7 @@ import { Flex, Button, Box } from '@chakra-ui/react'
 // import LoginTalentForm from '../components/LoginForm/LoginTalentForm'
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic'
+import AppFooter from '../components/Nav/footer';
 
 const LoginTalentForm = dynamic(
   () => import('../components/LoginForm/LoginTalentForm'),
@@ -11,6 +12,7 @@ const LoginTalentForm = dynamic(
 function LoginTalent() {
   const router = useRouter();
   return (
+    <div>
     <Box width="auto"
     h={600} align='center' >
 
@@ -27,6 +29,8 @@ function LoginTalent() {
       <LoginTalentForm />
     </Flex>
      </Box>
+     <AppFooter/>
+     </div>
   )
 }
 

@@ -5,11 +5,7 @@ import { Provider } from 'react-redux';
 import { createWrapper } from 'next-redux-wrapper';
 import store from '../redux/store';
 import dynamic from 'next/dynamic'
-
-
-
 import '../style/app.less';
-// import Navigation from '../components/Nav/navigation';
 
 const Navigation = dynamic(
   () => import('../components/Nav/navigation'),
