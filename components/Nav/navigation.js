@@ -20,35 +20,15 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
+  button: {
+    textTransform: 'none'
+  },
   title: {
     display: 'none',
+    marginLeft: theme.spacing(2),
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
-  },
-  search: {
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(3),
-      width: 'auto',
-    },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   inputRoot: {
     color: 'inherit',
@@ -122,9 +102,6 @@ export default function Navigation() {
 
   }
 
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -143,16 +120,19 @@ export default function Navigation() {
     if (!JSON.parse(userData)) {
       return (
         <div>
-          <Button href="/" color="inherit">For Talent</Button>
-          <Button href="/" color="inherit">For Employers</Button>
-          <Button href="/" color="inherit">About Us</Button>
-          <Button href="/loginTalent" color="inherit">Login</Button>
+          <Button className={classes.button} href="/" color="inherit">For Talent</Button>
+          <Button className={classes.button} href="/" color="inherit">For Employers</Button>
+          <Button className={classes.button} href="/" color="inherit">About Us</Button>
+          <Button className={classes.button} href="/loginTalent" color="inherit">Login</Button>
           <ColorButton href="/signUpTalent" variant="contained" color= "primary" >Find Me a Job</ColorButton>
         </div>
       )
     } else {
       return (
         <>
+          <Button className={classes.button} href="/" color="inherit">For Talent</Button>
+          <Button className={classes.button} href="/" color="inherit">For Employers</Button>
+          <Button className={classes.button} href="/" color="inherit">About Us</Button>
           <Button href={goProfile()} color="inherit">{`${JSON.parse(userData) ? JSON.parse(userData).name : null} ${JSON.parse(userData) ? JSON.parse(userData).surname : ''}`}</Button>
           <Button onClick={logOut} color="inherit">Logout</Button>
         </>
@@ -165,16 +145,16 @@ export default function Navigation() {
       return (
         <div>
           <MenuItem>
-            <Button href="/" color="inherit">For Talent</Button>
+            <Button className={classes.button} href="/" color="inherit">For Talent</Button>
           </MenuItem>
           <MenuItem>
-            <Button href="/" color="inherit">For Employers</Button>
+            <Button className={classes.button} href="/" color="inherit">For Employers</Button>
           </MenuItem>
           <MenuItem >
-            <Button href="/" color="inherit">About Us</Button>
+            <Button className={classes.button} href="/" color="inherit">About Us</Button>
           </MenuItem>
           <MenuItem>
-            <Button href="/loginTalent" color="inherit">Login</Button>
+            <Button className={classes.button} href="/loginTalent" color="inherit">Login</Button>
           </MenuItem>
           <MenuItem >
             <ColorButton href="/signUpTalent" variant="contained" color= "primary" >Find Me a Job</ColorButton>
@@ -185,10 +165,19 @@ export default function Navigation() {
       return (
         <>
           <MenuItem>
-          <Button href={goProfile()} color="inherit">{`${JSON.parse(userData) ? JSON.parse(userData).name : null} ${JSON.parse(userData) ? JSON.parse(userData).surname : ''}`}</Button>
+            <Button className={classes.button} href="/" color="inherit">For Talent</Button>
           </MenuItem>
           <MenuItem>
-          <Button onClick={logOut} color="inherit">Logout</Button>
+            <Button className={classes.button} href="/" color="inherit">For Employers</Button>
+          </MenuItem>
+          <MenuItem >
+            <Button className={classes.button} href="/" color="inherit">About Us</Button>
+          </MenuItem>
+          <MenuItem>
+            <Button className={classes.button} href={goProfile()} color="inherit">{`${JSON.parse(userData) ? JSON.parse(userData).name : null} ${JSON.parse(userData) ? JSON.parse(userData).surname : ''}`}</Button>
+          </MenuItem>
+          <MenuItem>
+            <Button className={classes.button} onClick={logOut} color="inherit">Logout</Button>
           </MenuItem>
         </>
       )
@@ -196,20 +185,6 @@ export default function Navigation() {
   }
 
   const menuId = 'primary-search-account-menu';
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-    </Menu>
-  );
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
@@ -230,17 +205,10 @@ export default function Navigation() {
     <div className={classes.grow}>
       <AppBar color="white" position="static">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-           TalentZoom
-          </Typography>
+        <svg width="150" height="50"
+           xmlns="http://www.w3.org/2000/svg">
+            <image href="/tz-logo-nav.svg" height="50" width="150"/>
+          </svg>
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
@@ -260,7 +228,6 @@ export default function Navigation() {
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
-      {renderMenu}
     </div>
   );
 }

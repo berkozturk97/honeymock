@@ -3,19 +3,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import Container from '@material-ui/core/Container';
-import { TextField, Typography } from '@material-ui/core';
+import { NoSsr, TextField, Typography } from '@material-ui/core';
+import GridItem from '../material-ui-component/Grid/GridItem';
+import Image from 'next/image'
 
-function Copyright() {
-  return (
-    <React.Fragment>
-      {'© '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-    </React.Fragment>
-  );
-}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,34 +42,32 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
   },
   listItem: {
+    color:'white',
     paddingTop: theme.spacing(0.5),
     paddingBottom: theme.spacing(0.5),
+  },
+  listTitle: {
+    color:'white',
+    fontSize: 13,
   },
   language: {
     marginTop: theme.spacing(1),
     width: 150,
   },
+  socialIcon:{
+    marginLeft: 10,
+  }
 }));
-
-const LANGUAGES = [
-  {
-    code: 'en-US',
-    name: 'English',
-  },
-  {
-    code: 'fr-FR',
-    name: 'Français',
-  },
-];
 
 export default function AppFooter() {
   const classes = useStyles();
 
   return (
+    <NoSsr>
     <Typography component="footer" className={classes.root}>
       <Container className={classes.container}>
         <Grid container spacing={5}>
-          <Grid item xs={6} sm={4} md={3}>
+          <Grid item xs={6} sm={10} md={4}>
             <Grid
               container
               direction="column"
@@ -87,56 +76,85 @@ export default function AppFooter() {
               spacing={2}
             >
               <Grid item className={classes.icons}>
-                <a href="https://material-ui.com/" className={classes.icon}>
-                  <img src="/static/themes/onepirate/appFooterFacebook.png" alt="Facebook" />
-                </a>
-                <a href="https://twitter.com/MaterialUI" className={classes.icon}>
-                  <img src="/static/themes/onepirate/appFooterTwitter.png" alt="Twitter" />
-                </a>
+              <svg width="150" height="50"
+                xmlns="http://www.w3.org/2000/svg">
+                <image href="/tz-logo-footer.svg" height="50" width="150"/>
+              </svg>
               </Grid>
               <Grid item>
-                <Copyright />
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={6} sm={4} md={2}>
-            <Typography variant="h6" marked="left" gutterBottom>
-              Legal
-            </Typography>
+          <Grid item xs={8} sm={10} md={2}>
             <ul className={classes.list}>
               <li className={classes.listItem}>
-                <Link href="/premium-themes/onepirate/terms/">Terms</Link>
+                <Link className={classes.listTitle} href="/">For talent link</Link>
               </li>
               <li className={classes.listItem}>
-                <Link href="/premium-themes/onepirate/privacy/">Privacy</Link>
+                <Link className={classes.listTitle} href="/">Talent FAQ</Link>
+              </li>
+              <li className={classes.listItem}>
+                <Link className={classes.listTitle} href="/">Talent Terms</Link>
               </li>
             </ul>
           </Grid>
-          <Grid item xs={6} sm={8} md={4}>
+          <Grid item xs={8} sm={10} md={2}>
+            <ul className={classes.list}>
+              <li className={classes.listItem}>
+                <Link className={classes.listTitle} href="/">For Employer Link</Link>
+              </li>
+              <li className={classes.listItem}>
+                <Link className={classes.listTitle} href="/">Employer FAQ</Link>
+              </li>
+              <li className={classes.listItem}>
+                <Link className={classes.listTitle} href="/">Employer Terms</Link>
+              </li>
+            </ul>
           </Grid>
-          <Grid item>
-            <Typography variant="caption">
-              {'Icons made by '}
-              <Link href="https://www.freepik.com" rel="sponsored" title="Freepik">
-                Freepik
-              </Link>
-              {' from '}
-              <Link href="https://www.flaticon.com" rel="sponsored" title="Flaticon">
-                www.flaticon.com
-              </Link>
-              {' is licensed by '}
-              <Link
-                href="https://creativecommons.org/licenses/by/3.0/"
-                title="Creative Commons BY 3.0"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                CC 3.0 BY
-              </Link>
-            </Typography>
+          <Grid item xs={8} sm={10} md={2}>
+            <ul className={classes.list}>
+              <li className={classes.listItem}>
+                <Link className={classes.listTitle} href="/">We're social</Link>
+              </li>
+              <li className={classes.listItem}>
+                  <a target="_blank" href={"https://www.google.com"}>
+                    <Image
+                      src="/facebook-white.png"
+                      width={20}
+                      height={20}
+                      layout="fixed"
+                      alt="Git Hub"
+                    />
+                  </a>
+
+                  <a target="_blank" href={"https://www.google.com"}>
+                    <Image
+                      src="/linkedn-white.png"
+                      width={20}
+                      height={20}
+                      layout="fixed"
+                      alt="Git Hub"
+                    />
+                  </a>
+                  <a className={classes.socialIcon} target="_blank" href={"https://www.google.com"}>
+                    <Image
+                      src="/twitter-white.png"
+                      width={20}
+                      height={20}
+                      className={classes.socialIcon}
+                      layout="fixed"
+                      alt="Git Hub"
+                    />
+                  </a>
+              </li>
+              <li className={classes.listItem}>
+                <Link className={classes.listTitle} href="/">About us</Link>
+              </li>
+            </ul>
           </Grid>
         </Grid>
       </Container>
     </Typography>
+    </NoSsr>
   );
 }
