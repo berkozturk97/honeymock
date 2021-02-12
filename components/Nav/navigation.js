@@ -93,7 +93,7 @@ export default function Navigation() {
 
 
   const logOut = async () => {
-    // await localStorage.setItem('userInformations', null)
+    await localStorage.setItem('userInformations', null)
     await dispatch(setUserData(null))
     router.push('/');
   }
