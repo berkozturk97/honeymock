@@ -4,7 +4,11 @@ const withLess = require('@zeit/next-less')
 module.exports = withLess({
   lessLoaderOptions: {
     javascriptEnabled: true,
-  }
+  },
+  images: {
+    loader: "imgix",
+    domains: ['honeypot-web.s3-website.us-east-2.amazonaws.com','localhost:3000'],
+  },
 }),{
   env: {
     LINKEDIN_STATE: process.env.NEXT_PUBLIC_LINKEDIN_STATE,
@@ -15,7 +19,6 @@ module.exports = withLess({
     LINKEDIN_CLIENT_SECRET: process.env.LINKEDIN_CLIENT_SECRET,
   }
 }
-
 
 
 LINKEDIN_STATE="gfdfgjnfdgnjds842394sdhsjkhfkdjs838hdfhs8dfsdh"
