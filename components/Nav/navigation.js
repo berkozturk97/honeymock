@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { fade, makeStyles, withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -77,26 +77,33 @@ export default function Navigation() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [user, setUser] = React.useState(null);
   const router = useRouter()
   const dispatch = useDispatch();
   const { userData } = useSelector(state => state.user)
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
+  useEffect(() => {
+    if(userData){
+      setUser(JSON.parse(userData))
+    }
+  },[userData])
+
 
 
   const logOut = async () => {
-    await localStorage.setItem('userInformations', null)
+    // await localStorage.setItem('userInformations', null)
     await dispatch(setUserData(null))
     router.push('/');
   }
 
   const goProfile = () => {
-    if (JSON.parse(userData) !== null) {
-      if (JSON.parse(userData).type === 1) {
-        return `/talentProfile?id=${JSON.parse(userData) ? JSON.parse(userData)._id : null}`;
+    if (user !== null) {
+      if (user.type === 1) {
+        return `/talentProfile?id=${user ? user._id : null}`;
       }
-      return `/company/companyProfile?id=${JSON.parse(userData) ? JSON.parse(userData)._id : null}`;
+      return `/company/companyProfile?id=${user ? user._id : null}`;
     }
     return '/';
 
@@ -117,7 +124,7 @@ export default function Navigation() {
   };
 
   const renderNav = () => {
-    if (!JSON.parse(userData)) {
+    if (!user) {
       return (
         <div>
           <Button className={classes.button} href="/" color="inherit">For Talent</Button>
@@ -133,7 +140,7 @@ export default function Navigation() {
           <Button className={classes.button} href="/" color="inherit">For Talent</Button>
           <Button className={classes.button} href="/" color="inherit">For Employers</Button>
           <Button className={classes.button} href="/" color="inherit">About Us</Button>
-          <Button href={goProfile()} color="inherit">{`${JSON.parse(userData) ? JSON.parse(userData).name : null} ${JSON.parse(userData) ? JSON.parse(userData).surname : ''}`}</Button>
+          <Button href={goProfile()} color="inherit">{`${user ? user.name : null} ${user ? user.surname : ''}`}</Button>
           <Button onClick={logOut} color="inherit">Logout</Button>
         </>
       )
@@ -141,7 +148,7 @@ export default function Navigation() {
   }
 
   const renderNavMobile = () => {
-    if (!JSON.parse(userData)) {
+    if (!user) {
       return (
         <div>
           <MenuItem>
@@ -174,7 +181,7 @@ export default function Navigation() {
             <Button className={classes.button} href="/" color="inherit">About Us</Button>
           </MenuItem>
           <MenuItem>
-            <Button className={classes.button} href={goProfile()} color="inherit">{`${JSON.parse(userData) ? JSON.parse(userData).name : null} ${JSON.parse(userData) ? JSON.parse(userData).surname : ''}`}</Button>
+            <Button className={classes.button} href={goProfile()} color="inherit">{`${user? user.name : null} ${user ? user.surname : ''}`}</Button>
           </MenuItem>
           <MenuItem>
             <Button className={classes.button} onClick={logOut} color="inherit">Logout</Button>
