@@ -105,9 +105,21 @@ export default function Navigation() {
   const goProfile = () => {
     if (user !== null) {
       if (user.type === 1) {
-        return `/talentProfile/?id=${user ? user._id : null}`;
+        router.push({
+          pathname: '/talentProfile',
+          query: {
+            id: user ? user._id : null,
+          }
+      });
+        // return `/talentProfile/?id=${user ? user._id : null}`;
       }
-      return `/company/companyProfile/?id=${user ? user._id : null}`;
+      router.push({
+        pathname: '/companyProfile',
+        query: {
+          id: user ? user._id : null,
+        }
+    });
+      // return `/company/companyProfile/?id=${user ? user._id : null}`;
     }
     return '/';
 
@@ -144,7 +156,7 @@ export default function Navigation() {
           <Button className={classes.button} href="/" color="inherit">For Talent</Button>
           <Button className={classes.button} href="/employer" color="inherit">For Employers</Button>
           <Button className={classes.button} href="/aboutus" color="inherit">About Us</Button>
-          <Button href={goProfile()} color="inherit">{`${user ? user.name : null} ${user ? user.surname : ''}`}</Button>
+          <Button onClick={goProfile()} color="inherit">{`${user ? user.name : null} ${user ? user.surname : ''}`}</Button>
           <Button onClick={logOut} color="inherit">Logout</Button>
         </>
       )
