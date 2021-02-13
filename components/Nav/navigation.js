@@ -113,7 +113,7 @@ export default function Navigation() {
         });
       }else{
         router.push({
-        pathname: '/companyProfile',
+        pathname: '/company/companyProfile',
         query: {
           id: user ? user._id : null,
         }
