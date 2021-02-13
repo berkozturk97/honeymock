@@ -12,7 +12,7 @@ function LoginCompany() {
       h={600} align='center' >
       <Button bg='white' onClick={() => router.push('/loginTalent')} mt={20}>Talent</Button>
       <Button bg='white'  ml={5} mt={20}>Company</Button>
-      <hr style={{marginTop: '10px', width: '600px', color: '#d3d3d3'}}/>  
+     
     <Flex
       justify="center"
       align="center" 

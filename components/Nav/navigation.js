@@ -141,9 +141,6 @@ export default function Navigation() {
     } else {
       return (
         <>
-          <Button className={classes.button} href="/" color="inherit">For Talent</Button>
-          <Button className={classes.button} href="/employer" color="inherit">For Employers</Button>
-          <Button className={classes.button} href="/aboutus" color="inherit">About Us</Button>
           <Button href={goProfile()} color="inherit">{`${user ? user.name : null} ${user ? user.surname : ''}`}</Button>
           <Button onClick={logOut} color="inherit">Logout</Button>
         </>
@@ -175,15 +172,6 @@ export default function Navigation() {
     } else {
       return (
         <div>
-          <MenuItem>
-            <Button className={classes.button} href="/" color="inherit">For Talent</Button>
-          </MenuItem>
-          <MenuItem>
-            <Button className={classes.button} href="/employer" color="inherit">For Employers</Button>
-          </MenuItem>
-          <MenuItem >
-            <Button className={classes.button} href="/aboutus" color="inherit">About Us</Button>
-          </MenuItem>
           <MenuItem>
             <Button className={classes.button} href={goProfile()} color="inherit">{`${user? user.name : null} ${user ? user.surname : ''}`}</Button>
           </MenuItem>

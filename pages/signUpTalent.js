@@ -11,7 +11,7 @@ function SignUpTalent() {
 
       <Button bg='white' mt={20}>Talent</Button>
       <Button bg='white' onClick={() => router.push('/signUpCompany')} ml={5} mt={20}>Company</Button>
-      <hr style={{marginTop: '10px', width: '600px', color: '#d3d3d3'}}/> 
+     
     <Flex
      
       justify="center"
