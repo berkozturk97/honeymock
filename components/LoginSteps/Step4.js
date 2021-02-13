@@ -125,7 +125,7 @@ function Step4() {
 
           
 
-          <FormControl ml={5} id="password" mt={5} mb={10}>
+          <FormControl ml={5} id="password" mt={10} mb={10}>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <KeyboardDatePicker
               disableToolbar
