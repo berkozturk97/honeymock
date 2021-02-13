@@ -105,9 +105,9 @@ export default function Navigation() {
   const goProfile = () => {
     if (user !== null) {
       if (user.type === 1) {
-        return `/talentProfile?id=${user ? user._id : null}`;
+        return `/talentProfile/?id=${user ? user._id : null}`;
       }
-      return `/company/companyProfile?id=${user ? user._id : null}`;
+      return `/company/companyProfile/?id=${user ? user._id : null}`;
     }
     return '/';
 
