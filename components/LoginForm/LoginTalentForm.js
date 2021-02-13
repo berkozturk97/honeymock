@@ -54,7 +54,7 @@ function LoginTalentForm() {
       dispatch(setUserData(JSON.stringify(userInformations)))
       if( userInformations.isFirstLogin === 'false'){
          router.push({
-          pathname: '/talentProfile',
+          pathname: '/talentProfile/[id]',
           query: {
             id: userInformations._id,
           }
