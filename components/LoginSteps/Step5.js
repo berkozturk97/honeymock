@@ -16,7 +16,11 @@ import {
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { DatePicker } from 'rsuite'
+import DateFnsUtils from '@date-io/date-fns'
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker
+} from '@material-ui/pickers'
 import { addUserData } from '../../redux/actions/stepOneAction'
 import TalentEducation from '../TalentEducation/TalentEducation'
 
@@ -26,8 +30,8 @@ function Step5() {
   const [study, setStudy] = useState({
     school: '',
     degree: '',
-    startDate: '',
-    endDate: ''
+    startDate: '03/03/2020',
+    endDate: '03/03/2020'
   })
   const [talentEducations, setTalentEducations] = useState([])
   function handleSubmit(e) {
@@ -100,23 +104,40 @@ function Step5() {
           </FormControl>
 
           <FormControl ml={5} id="password" mt={4}>
-            <DatePicker
-            style={{width:250}} 
-              key='date1'
-              onChange={
-                (date) => setStudy({ ...study, startDate: date })
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <KeyboardDatePicker
+                disableToolbar
+                variant="inline"
+                format="MM/dd/yyyy"
+                margin="normal"
+                id="date-picker-inline"
+                value={study.startDate}
+                onChange={(date) =>
+                  setStudy({ ...study, startDate: date })
+                }
                 
-              }
-              format="YYYY-MM"
-            />
-            <DatePicker
-            style={{width: 250,marginLeft: '35px'}}
-              key='date2'
-              onChange={(date2) => setStudy({ ...study, endDate: date2 })
-               
-              }
-              format="YYYY-MM"
-            />
+                KeyboardButtonProps={{
+                  'aria-label': 'change date'
+                }}
+              />
+
+              <KeyboardDatePicker
+                disableToolbar
+                style={{ marginLeft: 10 }}
+                value={study.endDate}
+                variant="inline"
+                format="MM/dd/yyyy"
+                margin="normal"
+                onChange={(date) =>
+                    setStudy({ ...study, endDate: date })
+                }
+                id="date-picker-inline"
+                
+                KeyboardButtonProps={{
+                  'aria-label': 'change date'
+                }}
+              />
+            </MuiPickersUtilsProvider>
           </FormControl>
 
           <Button w={[250,320,500,500]} ml={5} type="submit" width="full" mt={4}>

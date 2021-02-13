@@ -89,8 +89,6 @@ function WorkExperience({ user }) {
 
   return (
     <Box>
-      
-
       <Text ml={5} fontWeight="bold" mt={10} fontSize="xl">
         Years of professional experience *
       </Text>
@@ -140,93 +138,88 @@ function WorkExperience({ user }) {
         Add your professional experience
       </Text>
 
-
-        <form onSubmit={handleSubmit}>
-          <Box d='flex'>
-            <FormControl id="company" w={[100, 160, 320, 320]} mt={4}>
-              <Input
-                ml={5}
-                name="company"
-                type="text"
-                placeholder="Company"
-                value={experience.company}
-                onChange={handleInputChange}
-              />
-            </FormControl>
-
-            <FormControl id="position" ml={30} w={[100, 160, 320, 320]} mt={4}>
-              <Input
-                ml={5}
-                name="position"
-                type="text"
-                placeholder="Position"
-                value={experience.position}
-                onChange={handleInputChange}
-              />
-            </FormControl>
-          </Box>
-
-         
-            <FormControl ml={5} id="password" mt={5} mb={10}>
-              <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <KeyboardDatePicker
-                  disableToolbar
-                  variant="inline"
-                  format="MM/dd/yyyy"
-                  margin="normal"
-                  id="date-picker-inline"
-                  value={experience.startDate}
-                  onChange={date => setExperience({ ...experience, startDate: date })}
-                
-                  KeyboardButtonProps={{
-                    'aria-label': 'change date'
-                  }}
-                />
-
-                <KeyboardDatePicker
-                  disableToolbar
-                  style={{marginLeft: 10}}
-                  value={experience.endDate}
-                  variant="inline"
-                  format="MM/dd/yyyy"
-                  margin="normal"
-                  onChange={date => setExperience({ ...experience, endDate: date })}
-                  id="date-picker-inline"
-              
-                  KeyboardButtonProps={{
-                    'aria-label': 'change date'
-                  }}
-                />
-              </MuiPickersUtilsProvider>
-
-          
-     
-            
-            <Checkbox  border="#555555" mt={3} ml={10}>
-               Currently Work Here
-            </Checkbox>
-        
-            </FormControl>
-        
-          <FormControl id="description" mt={10}>
-            <Textarea
-              componentclass={'textarea'}
-              //Text ortadan basliyor
-              w={[250, 400, 500, 700]}
+      <form onSubmit={handleSubmit}>
+        <Box d="flex">
+          <FormControl id="company" w={[100, 160, 320, 320]} mt={4}>
+            <Input
               ml={5}
-              name="description"
+              name="company"
               type="text"
-              placeholder="What did you do?"
-              value={experience.description}
+              placeholder="Company"
+              value={experience.company}
               onChange={handleInputChange}
             />
           </FormControl>
 
-          <Button w={[250, 400, 500, 700]} ml={5} type="submit" mt={4}>
-            Save
-          </Button>
-        </form>
-      
+          <FormControl id="position" ml={30} w={[100, 160, 320, 320]} mt={4}>
+            <Input
+              ml={5}
+              name="position"
+              type="text"
+              placeholder="Position"
+              value={experience.position}
+              onChange={handleInputChange}
+            />
+          </FormControl>
+        </Box>
+
+        <FormControl ml={5} id="password" mt={5} mb={10}>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <KeyboardDatePicker
+              disableToolbar
+              variant="inline"
+              format="MM/dd/yyyy"
+              margin="normal"
+              id="date-picker-inline"
+              value={experience.startDate}
+              onChange={(date) =>
+                setExperience({ ...experience, startDate: date })
+              }
+              KeyboardButtonProps={{
+                'aria-label': 'change date'
+              }}
+            />
+
+            <KeyboardDatePicker
+              disableToolbar
+              style={{ marginLeft: 10 }}
+              value={experience.endDate}
+              variant="inline"
+              format="MM/dd/yyyy"
+              margin="normal"
+              onChange={(date) =>
+                setExperience({ ...experience, endDate: date })
+              }
+              id="date-picker-inline"
+              KeyboardButtonProps={{
+                'aria-label': 'change date'
+              }}
+            />
+          </MuiPickersUtilsProvider>
+
+          <Checkbox border="#555555" mt={3} ml={10}>
+            Currently Work Here
+          </Checkbox>
+        </FormControl>
+
+        <FormControl id="description" mt={10}>
+          <Textarea
+            componentclass={'textarea'}
+            //Text ortadan basliyor
+            w={[250, 400, 500, 700]}
+            ml={5}
+            name="description"
+            type="text"
+            placeholder="What did you do?"
+            value={experience.description}
+            onChange={handleInputChange}
+          />
+        </FormControl>
+
+        <Button w={[250, 400, 500, 700]} ml={5} type="submit" mt={4}>
+          Save
+        </Button>
+      </form>
 
       <Box ml={5} mt={10}>
         {talentExperiences.map((talentExperience, index) => {

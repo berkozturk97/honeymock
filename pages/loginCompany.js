@@ -20,7 +20,7 @@ function LoginCompany() {
         <LoginCompanyForm />
     </Flex>
     </Box>
-    <AppFooter/>
+    
     </div>
   )
 }

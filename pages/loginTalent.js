@@ -29,7 +29,7 @@ function LoginTalent() {
       <LoginTalentForm />
     </Flex>
      </Box>
-     <AppFooter/>
+     
      </div>
   )
 }

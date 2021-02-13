@@ -13,7 +13,11 @@ import {
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { DatePicker } from 'rsuite';
+import DateFnsUtils from '@date-io/date-fns'
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker
+} from '@material-ui/pickers'
 
 import { addUserData } from '../../redux/actions/stepOneAction';
 import ProfessionalExperience from '../JobExperince/ProfessionalExperience';
@@ -24,8 +28,8 @@ function Step4() {
   const [experience, setExperience] = useState({
     company: '',
     position: '',
-    startDate: '',
-    endDate: '',
+    startDate: '03/03/2020',
+    endDate: '03/03/2020',
     description: ''
   });
   const [year, setYear] = useState(undefined);
@@ -118,15 +122,47 @@ function Step4() {
            
           </Flex>
 
-          <Box d='flex' w={900} >
-          <FormControl  ml={5} id="password" mt={10} mb={10}>
-            <DatePicker style={{width:200}} onChange={date => setExperience({ ...experience, startDate: date })} format='YYYY-MM' />
-            <DatePicker style={{width:200, marginLeft:35}} onChange={date => setExperience({ ...experience, endDate: date })} format='YYYY-MM' />
-            <Checkbox  border="#555555" mt={3} ml={10}>
-               Currently Work Here
-            </Checkbox>
-          </FormControl>
-          </Box>
+
+          
+
+          <FormControl ml={5} id="password" mt={5} mb={10}>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <KeyboardDatePicker
+              disableToolbar
+              variant="inline"
+              format="MM/dd/yyyy"
+              margin="normal"
+              id="date-picker-inline"
+              value={experience.startDate}
+              onChange={(date) =>
+                setExperience({ ...experience, startDate: date })
+              }
+              KeyboardButtonProps={{
+                'aria-label': 'change date'
+              }}
+            />
+
+            <KeyboardDatePicker
+              disableToolbar
+              style={{ marginLeft: 10 }}
+              value={experience.endDate}
+              variant="inline"
+              format="MM/dd/yyyy"
+              margin="normal"
+              onChange={(date) =>
+                setExperience({ ...experience, endDate: date })
+              }
+              id="date-picker-inline"
+              KeyboardButtonProps={{
+                'aria-label': 'change date'
+              }}
+            />
+          </MuiPickersUtilsProvider>
+
+          <Checkbox border="#555555" mt={8} ml={10}>
+            Currently Work Here
+          </Checkbox>
+        </FormControl>
 
           <FormControl id="description" mt={10}>
             <Textarea

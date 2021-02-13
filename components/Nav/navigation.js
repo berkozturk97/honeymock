@@ -85,9 +85,9 @@ export default function Navigation() {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   useEffect(() => {
-    if(userData){
+   
       setUser(JSON.parse(userData))
-    }
+    
   },[userData])
 
 
