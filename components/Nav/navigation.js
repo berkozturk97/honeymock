@@ -78,6 +78,7 @@ export default function Navigation() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [user, setUser] = React.useState(null);
+  const [logOuts, setLogOuts] = React.useState(false);
   const router = useRouter()
   const dispatch = useDispatch();
   const { userData } = useSelector(state => state.user)
@@ -85,9 +86,11 @@ export default function Navigation() {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   useEffect(() => {
-   
+    if(userData){
       setUser(JSON.parse(userData))
-    
+    } else {
+      setUser(null);
+    }
   },[userData])
 
 
@@ -95,6 +98,7 @@ export default function Navigation() {
   const logOut = async () => {
     await localStorage.setItem('userInformations', null)
     await dispatch(setUserData(null))
+    setLogOuts(!logOuts);
     router.push('/');
   }
 
@@ -170,7 +174,7 @@ export default function Navigation() {
       )
     } else {
       return (
-        <>
+        <div>
           <MenuItem>
             <Button className={classes.button} href="/" color="inherit">For Talent</Button>
           </MenuItem>
@@ -186,7 +190,7 @@ export default function Navigation() {
           <MenuItem>
             <Button className={classes.button} onClick={logOut} color="inherit">Logout</Button>
           </MenuItem>
-        </>
+        </div>
       )
     }
   }
@@ -210,7 +214,7 @@ export default function Navigation() {
 
   return (
     <div className={classes.grow}>
-      <AppBar color="white" position="static">
+      <AppBar color="default" position="static">
         <Toolbar>
         <svg width="150" height="50"
            xmlns="http://www.w3.org/2000/svg">

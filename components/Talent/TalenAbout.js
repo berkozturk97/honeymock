@@ -1,58 +1,57 @@
 import { Box, Flex, Text } from '@chakra-ui/react'
 import Image from 'next/image'
 import GridItem from '../material-ui-component/Grid/GridItem'
-function TalentAbout({user}) {
+function TalentAbout({ user }) {
   return (
     <Box h={'auto'}>
       <Flex flexDirection="column" justify="center" align="center" mt={5}>
-      <GridItem mt={5} ml={10}>
-        <Text fontSize="3xl">
-          {user.name} {user.surname}
-        </Text>
-        <Text fontSize="md">{user.livingCity}</Text>
-        <GridItem float="left">
-          <a target="_blank" href={user.githubUrl}>
-            <Image
-              src="/github.png"
-              width={30}
-              height={30}
-              layout="fixed"
-              alt="Git Hub"
-            />
-          </a>
+        <GridItem mt={5} ml={10}>
+          <Text fontSize="3xl">
+            {user.name} {user.surname}
+          </Text>
+          <Text fontSize="md">{user.livingCity}</Text>
+          <GridItem>
+            <div style={{display: 'flex', marginLeft: '40px'}}>
+              <a target="_blank" href={user.githubUrl}>
+                <img
+                  src="/github.png"
+                  style={{ width: 30, height: 30 }}
+                  alt="Git Hub"
+                />
+              </a>
 
-          <a target="_blank" href={user.linkedInUrl}>
-            <Image
-              src="/linkedin.png"
-              width={30}
-              height={30}
-              layout="fixed"
-              alt="Git Hub"
-            />
-          </a>
-          <a target="_blank" href={user.xingUrl}>
-            <Image
-              src="/xing.png"
-              width={30}
-              height={30}
-              layout="fixed"
-              alt="Git Hub"
-            />
-          </a>
-          <a target="_blank" href={user.sofUrl}>
-            <Image
-              src="/sof.png"
-              width={25}
-              height={25}
-              layout="fixed"
-              alt="Git Hub"
-            />
-          </a>
+              <a target="_blank" href={user.linkedInUrl}>
+                <img
+                  src="/linkedin.png"
+                  style={{ width: 30, height: 30 }}
+                  layout="fixed"
+                  alt="Git Hub"
+                />
+              </a>
+              <a target="_blank" href={user.xingUrl}>
+                <img
+                  src="/xing.png"
+                  style={{ width: 30, height: 30 }}
+                  layout="fixed"
+                  alt="Git Hub"
+                />
+              </a>
+              <a target="_blank" href={user.sofUrl}>
+                <img
+                  src="/sof.png"
+                  style={{ width: 25, height: 25 }}
+                  layout="fixed"
+                  alt="Git Hub"
+                />
+              </a>
+            </div>
+          </GridItem>
+          <GridItem>
+            <a href={user.cvUrl} target="_blank" rel="cv">
+              Click to see your cv
+            </a>
+          </GridItem>
         </GridItem>
-        <GridItem>
-           <a href={user.cvUrl} target="_blank" rel="cv">Click to see your cv</a>
-        </GridItem>
-      </GridItem>
         <Text fontSize="2xl">About</Text>
         <Text mt={10} color="#606c78" fontWeight="400px">
           Professional experience
