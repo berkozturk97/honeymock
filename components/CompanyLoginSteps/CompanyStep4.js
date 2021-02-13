@@ -101,7 +101,7 @@ function Step4() {
     })
     localStorage.setItem('userInformations', JSON.stringify(user));
     router.push({
-      pathname: '/company/companyProfile',
+      pathname: '/company/companyProfile/[id]',
       query: { id: profile._id }
     })
    } else {

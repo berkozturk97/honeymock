@@ -106,14 +106,14 @@ export default function Navigation() {
     if (user !== null) {
       if (user.type === 1) {
         router.push({
-          pathname: '/talentProfile',
+          pathname: '/talentProfile/[id]',
           query: {
             id: user ? user._id : null,
           }
         });
       }else{
         router.push({
-        pathname: '/company/companyProfile',
+        pathname: '/company/companyProfile/[id]',
         query: {
           id: user ? user._id : null,
         }

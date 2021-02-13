@@ -55,7 +55,7 @@ function Step7() {
       })
       localStorage.setItem('userInformations', JSON.stringify(user));
       router.push({
-        pathname: '/talentProfile',
+        pathname: '/talentProfile/[id]',
         query: {
           id: profile._id,
         }

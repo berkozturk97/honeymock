@@ -47,7 +47,7 @@ import { setUserData } from '../../redux/actions/userAction';
         dispatch(setUserData(JSON.stringify(userInformations)))
         if( userInformations.isFirstLogin === 'false'){
            router.push({
-            pathname: '/company/companyProfile',
+            pathname: '/company/companyProfile/[id]',
             query: {
               id: userInformations._id
             }

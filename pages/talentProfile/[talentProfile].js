@@ -1,24 +1,24 @@
 import React, {useState,useEffect} from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-import GridItem from "../components/material-ui-component/Grid/GridItem.js";
-import GridContainer from "../components/material-ui-component/Grid/GridContainer.js";
-import Card from "../components/material-ui-component/Card/Card.js";
-import CardHeader from "../components/material-ui-component/Card/CardHeader.js";
-import CardAvatar from "../components/material-ui-component/Card/CardAvatar.js";
-import CardBody from "../components/material-ui-component/Card/CardBody.js";
-import TalentAbout from '../components/Talent/TalenAbout'
-import TalentRoles from '../components/Talent/TalentRoles'
-import TalentSkills from '../components/Talent/TalentSkills'
-import TalentSummary from '../components/Talent/TalentSummary'
-import TalentWorkExperience from '../components/Talent/TalentWorkExperience'
-import TalentEducation from '../components/Talent/TalentEducation'
+import GridItem from "../../components/material-ui-component/Grid/GridItem.js";
+import GridContainer from "../../components/material-ui-component/Grid/GridContainer.js";
+import Card from "../../components/material-ui-component/Card/Card.js";
+import CardHeader from "../../components/material-ui-component/Card/CardHeader.js";
+import CardAvatar from "../../components/material-ui-component/Card/CardAvatar.js";
+import CardBody from "../../components/material-ui-component/Card/CardBody.js";
+import TalentAbout from '../../components/Talent/TalenAbout'
+import TalentRoles from '../../components/Talent/TalentRoles'
+import TalentSkills from '../../components/Talent/TalentSkills'
+import TalentSummary from '../../components/Talent/TalentSummary'
+import TalentWorkExperience from '../../components/Talent/TalentWorkExperience'
+import TalentEducation from '../../components/Talent/TalentEducation'
 import { Icon, Uploader } from 'rsuite';
 import { useRouter } from "next/router";
-import { getTalentById } from "../api/talentApi.js";
+import { getTalentById } from "../../api/talentApi.js";
 import { Avatar, NoSsr } from "@material-ui/core";
-import Loading from "../components/Loading/Loading.js";
-import EditTalent from "../components/EditProfile/EditTalent.js";
+import Loading from "../../components/Loading/Loading.js";
+import EditTalent from "../../components/EditProfile/EditTalent.js";
 
 export default function TalenProfile() {
   const useStyles = makeStyles((theme) => ({
@@ -54,6 +54,7 @@ export default function TalenProfile() {
 
   const loadData = async () => {
     setIsLogin(false);
+    console.log(router)
     const mainUsers = await JSON.parse(localStorage.getItem('userInformations'));
     const userInfos = await getTalentById({_id: router.query.id, token: mainUsers.tokenCode })
     setMainUser(mainUsers)
